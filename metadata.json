@@ -1,0 +1,12 @@
+{
+  "name": "Plano de Parto Digital",
+  "description": "Aplicativo para gerenciar o plano de parto, focado em dispositivos móveis e usabilidade simples.",
+  "requestFramePermissions": [
+    "camera",
+    "microphone",
+    "geolocation"
+  ],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}

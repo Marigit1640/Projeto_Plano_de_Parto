@@ -1,0 +1,35 @@
+/* You can add global styles to this file, and also import other style files */
+@import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600;700&family=Inter:wght@400;500;600&display=swap');
+@import url('https://fonts.googleapis.com/icon?family=Material+Icons');
+@import "tailwindcss";
+
+@theme {
+  --color-brand-pink-light: #FDE8F7;
+  --color-brand-pink-dark: #F5E0F5;
+  --color-brand-purple: #9D4EDD;
+  --color-brand-purple-dark: #7B2CBF;
+  --color-brand-purple-light: #C77DFF;
+  --font-sans: 'Inter', sans-serif;
+  --font-display: 'Fredoka', sans-serif;
+}
+
+body {
+  @apply bg-gradient-to-b from-brand-pink-light to-white min-h-screen font-sans text-gray-800 m-0 overflow-x-hidden;
+}
+
+h1, h2, h3, h4, .font-display {
+  @apply font-display text-brand-purple-dark text-center uppercase tracking-wider;
+}
+
+/* Custom utility for the glowing purple text/buttons */
+.button-primary {
+  @apply bg-white border-2 border-brand-purple text-brand-purple-dark font-display uppercase tracking-wide rounded-full px-6 py-3 w-full max-w-sm mx-auto shadow-sm flex items-center justify-center transition-all hover:bg-brand-purple hover:text-white active:scale-95;
+}
+
+.button-primary:disabled {
+  @apply opacity-50 cursor-not-allowed hover:bg-white hover:text-brand-purple-dark active:scale-100;
+}
+
+.audio-btn {
+  @apply fixed bottom-4 right-4 bg-white border-2 border-brand-purple text-brand-purple-dark rounded-full p-4 shadow-lg flex items-center justify-center z-50 transition-transform active:scale-90 hover:bg-brand-pink-light;
+}
