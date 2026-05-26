@@ -1,27 +1,18 @@
-/* You can add global styles to this file, and also import other style files */
 @import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600;700&family=Inter:wght@400;500;600&display=swap');
 @import url('https://fonts.googleapis.com/icon?family=Material+Icons');
-@import "tailwindcss";
 
-@theme {
-  --color-brand-pink-light: #FDE8F7;
-  --color-brand-pink-dark: #F5E0F5;
-  --color-brand-purple: #9D4EDD;
-  --color-brand-purple-dark: #7B2CBF;
-  --color-brand-purple-light: #C77DFF;
-  --font-sans: 'Inter', sans-serif;
-  --font-display: 'Fredoka', sans-serif;
-}
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
 body {
   @apply bg-gradient-to-b from-brand-pink-light to-white min-h-screen font-sans text-gray-800 m-0 overflow-x-hidden;
 }
 
-h1, h2, h3, h4, .font-display {
+h1, h2, h3, h4 {
   @apply font-display text-brand-purple-dark text-center uppercase tracking-wider;
 }
 
-/* Custom utility for the glowing purple text/buttons */
 .button-primary {
   @apply bg-white border-2 border-brand-purple text-brand-purple-dark font-display uppercase tracking-wide rounded-full px-6 py-3 w-full max-w-sm mx-auto shadow-sm flex items-center justify-center transition-all hover:bg-brand-purple hover:text-white active:scale-95;
 }

@@ -14,21 +14,21 @@ import { MatIconModule } from '@angular/material/icon';
           SEU DIREITO,<br/>
           SUA ESCOLHA !
         </h1>
+        <div class="flex flex-col items-center justify-center p-6">
+  
+  <img 
+    src="assets/P1 i1.png" 
+    alt="Imagem tela inicial" 
+    class="w-25 h-25 mx-auto "
+  />
+</div>
         
-        <div class="mt-12 opacity-80 max-w-[280px] w-full">
-          <!-- Main hand holding image abstraction -->
-          <svg viewBox="0 0 200 200" class="w-full text-brand-purple fill-current opacity-20">
-            <ellipse cx="100" cy="100" rx="90" ry="70" />
-            <circle cx="100" cy="80" r="40" class="fill-white" />
-            <path d="M70,80 Q100,20 130,80 Q100,120 70,80" class="fill-brand-purple-light" />
-          </svg>
-        </div>
-      </div>
+     
+
       
       <button class="audio-btn" (click)="playSound()">
         <mat-icon>volume_up</mat-icon>
       </button>
-
       <div class="absolute bottom-10 w-full px-6">
          <button class="button-primary font-bold shadow-lg shadow-purple-200" (click)="navigate()">INICIAR</button>
       </div>
