@@ -14,7 +14,7 @@ import { LocalStorageService } from '../../services/local-storage.service';
     <div class="flex flex-col items-center min-h-screen p-6 w-full relative pb-24">
        <!-- Top Navigation / Progress (Optional, keeping it clean based on UI) -->
        <div class="w-full flex justify-between items-center mb-6" *ngIf="currentIndex() > 0">
-          <button (click)="prev()" class="text-brand-purple p-2" aria-label="Voltar">
+          <button (click)="prev()" class="botao-padrao" aria-label="Voltar">
              <mat-icon>arrow_back</mat-icon>
           </button>
           <span class="text-brand-purple font-medium text-xs">{{currentIndex() + 1}} / {{questions.length}}</span>
@@ -42,7 +42,7 @@ import { LocalStorageService } from '../../services/local-storage.service';
              </div>
 
              <div class="mt-auto pt-8 w-full flex justify-center">
-                <button (click)="next()" class="button-primary bg-brand-purple text-white shadow-xl hover:bg-brand-purple-dark border-none">
+                <button (click)="next()" class="botao-padrao">
                   ENTENDI <mat-icon class="ml-2">check_circle</mat-icon>
                 </button>
              </div>
@@ -72,7 +72,7 @@ import { LocalStorageService } from '../../services/local-storage.service';
              </form>
              
              <div class="mt-12 w-full">
-                <button (click)="next()" [disabled]="formGroup?.invalid" class="button-primary bg-brand-purple text-white border-transparent">
+                <button (click)="next()" [disabled]="formGroup?.invalid" class="botao-padrao">
                   AVANÇAR <mat-icon class="ml-2">arrow_forward</mat-icon>
                 </button>
              </div>
@@ -102,7 +102,7 @@ import { LocalStorageService } from '../../services/local-storage.service';
                         [class.bg-brand-purple]="answers[q.id] === opt"
                         [class.text-white]="answers[q.id] === opt"
                         [class.bg-white]="answers[q.id] !== opt"
-                        class="pl-14 pr-4 w-full h-12 border-2 border-brand-purple rounded-full text-[11px] font-bold tracking-wider uppercase text-brand-purple-dark transition-colors text-left flex items-center"
+                        class="botao-padrao"
                       >
                          {{opt}}
                       </button>
@@ -127,7 +127,7 @@ import { LocalStorageService } from '../../services/local-storage.service';
              </div>
              
              <div class="mt-8 w-full flex flex-col items-center" *ngIf="q.multiple || (answers[q.id] && answers[q.id] !== '')">
-                <button (click)="next()" class="button-primary bg-brand-purple text-white border-transparent">
+                <button (click)="next()" class="botao-padrao">
                   AVANÇAR <mat-icon class="ml-2">arrow_forward</mat-icon>
                 </button>
              </div>

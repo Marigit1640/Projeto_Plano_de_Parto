@@ -34,7 +34,7 @@ import { ReactiveFormsModule, FormBuilder, Validators } from '@angular/forms';
     class="w-22 h-22 mx-auto "
   />
         
-        <button [disabled]="loginForm.invalid" class="button-primary font-bold shadow-lg mt-8 border-transparent bg-brand-purple text-white hover:bg-brand-purple-dark">CONTINUAR</button>
+        <button [disabled]="loginForm.invalid" class="botao-padrao">CONTINUAR</button>
       </form>
     </div>
   `
