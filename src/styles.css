@@ -6,15 +6,18 @@
 @tailwind utilities;
 
 body {
-  @apply bg-gradient-to-b from-brand-pink-light to-white min-h-screen font-sans text-gray-800 m-0 overflow-x-hidden;
+  @apply bg-gradient-to-b from-brand-pink-light to-white min-h-screen text-gray-800 m-0 overflow-x-hidden;
+  font-family: 'Inter', sans-serif;
 }
 
 h1, h2, h3, h4 {
-  @apply font-display text-brand-purple-dark text-center uppercase tracking-wider;
+  @apply text-brand-purple-dark text-center uppercase tracking-wider;
+  font-family: 'Fredoka', sans-serif;
 }
 
 .button-primary {
-  @apply bg-white border-2 border-brand-purple text-brand-purple-dark font-display uppercase tracking-wide rounded-full px-6 py-3 w-full max-w-sm mx-auto shadow-sm flex items-center justify-center transition-all hover:bg-brand-purple hover:text-white active:scale-95;
+  @apply bg-white border-2 border-brand-purple text-brand-purple-dark uppercase tracking-wide rounded-full px-6 py-3 w-full max-w-sm mx-auto shadow-sm flex items-center justify-center transition-all hover:bg-brand-purple hover:text-white active:scale-95;
+  font-family: 'Fredoka', sans-serif;
 }
 
 .button-primary:disabled {

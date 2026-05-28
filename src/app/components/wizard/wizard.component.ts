@@ -50,6 +50,11 @@ import { LocalStorageService } from '../../services/local-storage.service';
 
           <!-- FORM TYPE -->
           <div *ngIf="q.type === 'form'" class="flex flex-col items-center w-full">
+          <img 
+              *ngIf="q.image"
+              [src]="q.image"
+              class="w-40 mx-auto mb-6"
+                  />
              <h2 class="text-2xl font-display font-bold text-brand-purple-dark uppercase mb-8 text-center">{{q.title}}</h2>
              
              <form *ngIf="formGroup" [formGroup]="formGroup" class="w-full flex flex-col space-y-4">

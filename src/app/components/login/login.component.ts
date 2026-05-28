@@ -28,6 +28,11 @@ import { ReactiveFormsModule, FormBuilder, Validators } from '@angular/forms';
             class="pl-16 pr-6 py-4 w-full h-14 border-2 border-brand-purple rounded-full text-sm font-semibold tracking-wide uppercase text-brand-purple-dark focus:outline-none focus:ring-2 focus:ring-brand-purple-light shadow-sm bg-white placeholder-gray-400"
           />
         </div>
+        <img 
+    src="assets/P3 i3.png" 
+    alt="Imagem tela login email" 
+    class="w-22 h-22 mx-auto "
+  />
         
         <button [disabled]="loginForm.invalid" class="button-primary font-bold shadow-lg mt-8 border-transparent bg-brand-purple text-white hover:bg-brand-purple-dark">CONTINUAR</button>
       </form>
@@ -54,3 +59,6 @@ export class LoginComponent {
     }
   }
 }
+
+
+

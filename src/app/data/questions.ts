@@ -3,6 +3,7 @@ export const DEMO_QUESTIONS = [
     id: 'intro',
     type: 'info',
     title: 'VOCÊ SABE O QUE É UM PLANO DE PARTO?',
+    image:'assets/P5 i5.png',
     text: 'O Plano de parto é um jeito simples de você gestante conversar com a equipe de saúde. Nele, você pode dizer o que quer, o que espera e como prefere que seja o seu parto e o pós-parto. Assim, você participa das decisões sobre o seu corpo e do seu bebê, tendo suas escolhas respeitadas.',
     audioUrl: '/audio/saiba-mais.mp3',
     videoUrl: '/video/intro.mp4'
@@ -29,6 +30,7 @@ export const DEMO_QUESTIONS = [
     id: 'baby_info',
     type: 'form',
     title: 'INFORMAÇÕES DO BEBÊ',
+    image:'assets/P5 i5.png',
     fields: [
       { id: 'babyName', label: 'NOME', type: 'text' },
       { id: 'babySex', label: 'SEXO', type: 'text' }
