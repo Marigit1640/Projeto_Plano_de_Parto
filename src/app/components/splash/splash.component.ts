@@ -30,7 +30,7 @@ import { MatIconModule } from '@angular/material/icon';
         <mat-icon>volume_up</mat-icon>
       </button>
       <div class="absolute bottom-10 w-full px-6">
-         <button class="botao-padrao" (click)="navigate()">INICIAR</button>
+         <button class="button-primary font-bold shadow-lg shadow-purple-200" (click)="navigate()">INICIAR</button>
       </div>
     </div>
   `

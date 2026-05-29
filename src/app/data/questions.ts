@@ -3,7 +3,7 @@ export const DEMO_QUESTIONS = [
     id: 'intro',
     type: 'info',
     title: 'VOCÊ SABE O QUE É UM PLANO DE PARTO?',
-    topIcon: 'assets/P2 i2.png',
+    image:'assets/P5-i5.png',
     text: 'O Plano de parto é um jeito simples de você gestante conversar com a equipe de saúde. Nele, você pode dizer o que quer, o que espera e como prefere que seja o seu parto e o pós-parto. Assim, você participa das decisões sobre o seu corpo e do seu bebê, tendo suas escolhas respeitadas.',
     audioUrl: '/audio/saiba-mais.mp3',
     videoUrl: '/video/intro.mp4'
@@ -12,6 +12,7 @@ export const DEMO_QUESTIONS = [
     id: 'why',
     type: 'info',
     title: 'POR QUE FAZER UM PLANO DE PARTO?',
+    image:'assets/P2-i2.png',
     text: 'Fazer um plano de parto ajuda você a se sentir mais segura, informada e preparada para esse momento tão especial. Ele permite que você conheça melhor seus direitos, pense sobre como gostaria que fosse o nascimento do seu bebê e converse com a equipe de saúde sobre suas vontades, dúvidas e preferências. Além disso, o plano de parto contribui para que seu parto seja mais humanizado, respeitoso e com menos intervenções desnecessárias. Essa prática é recomendada pela Organização Mundial da Saúde desde 1996, justamente por ajudar a garantir que você participe ativamente das decisões sobre o seu parto e se torne protagonista desse momento.',
     audioUrl: '/audio/por-que.mp3'
   },
@@ -19,6 +20,7 @@ export const DEMO_QUESTIONS = [
     id: 'personal_info',
     type: 'form',
     title: 'INFORMAÇÕES PESSOAIS',
+    image:'assets/P4 i4.png',
     fields: [
       { id: 'name', label: 'NOME', type: 'text' },
       { id: 'dob', label: 'DATA DE NASCIMENTO', type: 'date' },
@@ -30,7 +32,7 @@ export const DEMO_QUESTIONS = [
     id: 'baby_info',
     type: 'form',
     title: 'INFORMAÇÕES DO BEBÊ',
-    image:'assets/P5 i5.png',
+    image:'assets/P5-i5.png',
     fields: [
       { id: 'babyName', label: 'NOME', type: 'text' },
       { id: 'babySex', label: 'SEXO', type: 'text' }
@@ -41,6 +43,7 @@ export const DEMO_QUESTIONS = [
     type: 'choice',
     title: 'DESEJA CONHECER A MATERNIDADE?',
     options: ['SIM', 'NÃO']
+    
   },
   {
     id: 'companion',
@@ -53,18 +56,21 @@ export const DEMO_QUESTIONS = [
     id: 'procedures_informed',
     type: 'choice',
     title: 'DESEJAM SER INFORMADOS SOBRE OS PROCEDIMENTOS A SEREM REALIZADOS COM VOCÊ E COM O BEBÊ?',
+    image:'assets/P13 i13.png',
     options: ['SIM', 'NÃO']
   },
   {
     id: 'doula',
     type: 'choice',
     title: 'TEREI UMA DOULA ME ACOMPANHANDO?',
+    image:'assets/P14 i14.png',
     options: ['SIM', 'NÃO']
   },
   {
     id: 'photo',
     type: 'choice',
     title: 'DESEJA QUE SEU PARTO SEJA FOTOGRAFADO?',
+    image:'assets/P15 i 15.png',
     options: ['SIM', 'NÃO']
   },
   {
@@ -73,8 +79,8 @@ export const DEMO_QUESTIONS = [
     title: 'DESEJA TER COMO OPÇÃO OS SEGUINTES MÉTODOS PARA ALÍVIO DA DOR?',
     multiple: true,
     options: [
-      'MASSAGENS (REALIZADA PELO ACOMPANHANTE OU PELA DOULA)',
-      'TÉCNICAS DE RESPIRAÇÃO',
+      {texto:'MASSAGENS (REALIZADA PELO ACOMPANHANTE OU PELA DOULA)', imagem: 'assets/P16 i161.png'},
+      {texto:'TÉCNICAS DE RESPIRAÇÃO', imagem: 'assets/P16 i162.png'},
       'MOVIMENTAR E/OU ANDAR CASO EU QUEIRA',
       'EXERCÍCIO DE RELAXAMENTO COM BOLA',
       'BANHO DE CHUVEIRO',
@@ -87,14 +93,16 @@ export const DEMO_QUESTIONS = [
     type: 'choice',
     title: 'NO TRABALHO DE PARTO É RECOMENDADO QUE A MULHER MOVIMENTE-SE LIVREMENTE E A POSIÇÃO DEITADA DE COSTAS DEVE SER EVITADA.',
     subtitle: 'GOSTARIA DE TER LIBERDADE DE ESCOLHER DIVERSAS POSIÇÕES DURANTE O SEU TRABALHO DE PARTO?',
-    options: ['SIM', 'NÃO']
+    options: ['SIM', 'NÃO'],
+    image:'assets/P19 i19.jpg'
   },
   {
     id: 'food',
     type: 'choice',
     title: 'DURANTE O TRABALHO DE PARTO, DESEJA INGERIR ALIMENTOS LEVES, TAIS COMO (ASSINALE UM OU MAIS ITENS):',
     multiple: true,
-    options: ['ÁGUA', 'SUCO DE FRUTAS', 'GELATINA', 'CHÁS', 'OUTROS']
+    options: ['ÁGUA', 'SUCO DE FRUTAS', 'GELATINA', 'CHÁS', 'OUTROS'],
+    image:'assets/P20 i20.jpg'
   },
   {
     id: 'care',
@@ -150,13 +158,15 @@ export const DEMO_QUESTIONS = [
     id: 'episiotomy',
     type: 'choice',
     title: 'DESEJA QUE, NA HORA DO NASCIMENTO, SEJAM EVITADAS TANTO A MANIPULAÇÃO DO SEU PERÍNEO QUANTO A REALIZAÇÃO DE EPISIOTOMIA?',
-    options: ['SIM', 'NÃO']
+    options: ['SIM', 'NÃO'],
+    image:'assets/P30 i30.png'
   },
   {
     id: 'cesarean_companion',
     type: 'choice',
     title: 'CASO SEJA NECESSÁRIA A CESÁRIA DESEJA A PRESENÇA DO SEU ACOMPANHANTE CONFORME LEI 11.108/2005?',
-    options: ['SIM', 'NÃO']
+    options: ['SIM', 'NÃO'],
+    image:'assets/P31 i31.png'
   },
   {
     id: 'after_birth',
@@ -168,13 +178,15 @@ export const DEMO_QUESTIONS = [
       'RECEBER MEU BEBÊ QUANDO EU ME SENTIR PRONTA',
       'INICIAR A AMAMENTAÇÃO O MAIS RÁPIDO POSSÍVEL E DENTRO DA PRIMEIRA HORA DE VIDA',
       'TER PELO MENOS UMA HORA CONTÍNUA COM MEU BEBÊ NO COLO, SE ESTIVER TUDO BEM'
-    ]
+    ],
+    image:'assets/P32 i32.png'
   },
   {
     id: 'cord_cutting',
     type: 'choice',
     title: 'QUANTO AO CORTE DO CORDÃO UMBILICAL, DESEJO QUE SEJA FEITO EM TEMPO OPORTUNO PELO:',
-    options: ['PROFISSIONAL', 'POR MIM MESMA', 'MARIDO / PARCEIRO(A) / ACOMPANHANTE / PAI DO BEBÊ']
+    options: ['PROFISSIONAL', 'POR MIM MESMA', 'MARIDO / PARCEIRO(A) / ACOMPANHANTE / PAI DO BEBÊ'], 
+    image:'assets/P33 i33.png'
   },
   {
     id: 'baby_care',
@@ -186,6 +198,7 @@ export const DEMO_QUESTIONS = [
     id: 'diu',
     type: 'choice',
     title: 'DESEJA, SE POSSÍVEL, A INSERÇÃO DO DIU DE COBRE OU HORMONAL(CONFORME CRITÉRIOS CLÍNICOS) NO PÓS-PARTO IMEDIATO, PARA APROVEITAR A INTERNAÇÃO E GARANTIR SUA CONTRACEPÇÃO?',
-    options: ['SIM', 'NÃO']
+    options: ['SIM', 'NÃO'],
+    image:'assets/P35 i35.png'
   }
 ];
