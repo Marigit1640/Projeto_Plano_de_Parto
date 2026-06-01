@@ -10,7 +10,7 @@ import { LocalStorageService } from '../../services/local-storage.service';
 @Component({
   selector: 'app-wizard',
   imports: [CommonModule, ReactiveFormsModule, MatIconModule],
- template: `
+  template: `
     <div class="flex flex-col items-center min-h-screen p-6 w-full relative pb-24">
         <!-- Top Navigation / Progress -->
         <div class="w-full flex justify-between items-center mb-6" *ngIf="currentIndex() > 0">
@@ -116,29 +116,40 @@ import { LocalStorageService } from '../../services/local-storage.service';
                          <mat-icon class="scale-90 opacity-70">volume_up</mat-icon>
                        </div>
                        <button 
-                         (click)="selectSingleChoice(q.id, opt)" 
-                         [class.bg-brand-purple]="answers[q.id] === opt"
-                         [class.text-white]="answers[q.id] === opt"
-                         [class.bg-white]="answers[q.id] !== opt"
+                         (click)="selectSingleChoice(q.id, opt.texto)"
+                         [class.bg-brand-purple]="answers[q.id] === opt.texto"
+                         [class.text-white]="answers[q.id] === opt.texto"
+                         [class.bg-white]="answers[q.id] !== opt.texto"
                          class="pl-14 pr-4 w-full h-12 border-2 border-brand-purple rounded-full text-[11px] font-bold tracking-wider uppercase text-brand-purple-dark transition-colors text-left flex items-center"
                        >
-                          {{opt}}
+                          {{opt.texto}}
                        </button>
                     </div>
 
-                    <div *ngIf="q.multiple" class="relative w-full flex items-center group cursor-pointer" (click)="toggleMultiChoice(q.id, opt)">
-                       <div class="absolute left-0 text-brand-purple-dark bg-white border-brand-purple border border-r-0 rounded-l-full p-1 h-12 w-12 flex items-center justify-center z-10 group-hover:bg-brand-pink-light transition-colors" (click)="playSound(); $event.stopPropagation()">
+<div *ngIf="q.multiple"
+     class="relative w-full flex flex-col group cursor-pointer"
+     (click)="toggleMultiChoice(q.id, opt.texto)">
+     
+  <div class="absolute left-0 text-brand-purple-dark bg-white border-brand-purple border border-r-0 rounded-l-full p-1 h-12 w-12 flex items-center justify-center z-10 group-hover:bg-brand-pink-light transition-colors"
+       (click)="playSound(); $event.stopPropagation()">
                          <mat-icon class="scale-90 opacity-70">volume_up</mat-icon>
                        </div>
                        <div 
-                         [class.bg-brand-purple]="isArraySelected(q.id, opt)"
-                         [class.text-white]="isArraySelected(q.id, opt)"
-                         [class.bg-white]="!isArraySelected(q.id, opt)"
+                         [class.bg-brand-purple]="isArraySelected(q.id, opt.texto)"
+                        [class.text-white]="isArraySelected(q.id, opt.texto)"
+[class.bg-white]="!isArraySelected(q.id, opt.texto)"
                          class="pl-14 pr-4 w-full min-h-[48px] py-2 border-2 border-brand-purple rounded-full text-[11px] font-bold tracking-wider uppercase text-brand-purple-dark transition-colors text-left flex items-center"
                        >
-                          <mat-icon *ngIf="isArraySelected(q.id, opt)" class="mr-2 scale-75">check_circle</mat-icon>
-                          {{opt}}
+                          <mat-icon *ngIf="isArraySelected(q.id, opt.texto)" class="mr-2 scale-75">
+  check_circle
+</mat-icon>
+                          {{opt.texto}}
                        </div>
+                       <img
+  *ngIf="$any(opt).imagem"
+  [src]="$any(opt).imagem"
+  class="w-40 mx-auto mt-2 mb-4 object-contain"
+/>
                     </div>
 
                  </ng-container>
@@ -154,7 +165,7 @@ import { LocalStorageService } from '../../services/local-storage.service';
 
      </div>
   `,
-  
+
   styles: [`
     .animate-fade-in {
       animation: fadeIn 0.4s ease-in-out;
@@ -173,9 +184,9 @@ export class WizardComponent implements OnInit {
 
   questions = DEMO_QUESTIONS;
   currentIndex = signal<number>(0);
-  
+
   currentQuestion = computed(() => this.questions[this.currentIndex()]);
-  
+
   answers: Record<string, any> = {};
   formGroup: FormGroup | null = null;
 
@@ -196,7 +207,7 @@ export class WizardComponent implements OnInit {
     if (q.type === 'form') {
       const group: any = {};
       q.fields?.forEach(f => {
-         group[f.id] = [this.answers[f.id] || '', Validators.required];
+        group[f.id] = [this.answers[f.id] || '', Validators.required];
       });
       this.formGroup = this.fb.group(group);
     } else {
@@ -210,7 +221,7 @@ export class WizardComponent implements OnInit {
     this.saveProgress();
     // Auto advance on single choice might be jarring if they misclick. Let's let them click avanÇar, or auto-advance after small delay.
     // Given the UI shows they select and then continue, actually wait, the images don't always show continue button. Let's just auto-advance after 400ms.
-    setTimeout(() => this.next(), 400); 
+    setTimeout(() => this.next(), 400);
   }
 
   toggleMultiChoice(questionId: string, option: string) {
@@ -244,7 +255,7 @@ export class WizardComponent implements OnInit {
   next() {
     this.audio.playBubbleSound();
     const q = this.currentQuestion();
-    
+
     // Save form data 
     if (q.type === 'form' && this.formGroup) {
       if (this.formGroup.invalid) return; // Prevent advancing
@@ -254,11 +265,11 @@ export class WizardComponent implements OnInit {
     }
 
     if (this.currentIndex() < this.questions.length - 1) {
-       this.currentIndex.update(v => v + 1);
-       this.buildFormContext();
+      this.currentIndex.update(v => v + 1);
+      this.buildFormContext();
     } else {
-       // navigate to final screen
-       this.router.navigate(['/final']);
+      // navigate to final screen
+      this.router.navigate(['/final']);
     }
   }
 
