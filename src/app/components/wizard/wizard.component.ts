@@ -23,21 +23,43 @@ import { LocalStorageService } from '../../services/local-storage.service';
         <div *ngIf="currentQuestion() as q" class="w-full max-w-sm flex-1 flex flex-col pt-4 animate-fade-in">
            
            <!-- INFO TYPE -->
-           <div *ngIf="q.type === 'info'" class="flex flex-col items-center text-center w-full">
+           <div *ngIf="q.type === 'info'" class="flex flex-col items-center text-center w-full relative">
               
               <!-- Optional Logo -->
-              <div class="mb-6 rounded bg-white p-2 text-brand-purple-dark text-xs border border-brand-purple/20 shadow-sm" *ngIf="q.id === 'intro'">
-                 <p class="font-bold">UNIVERSIDADE FEDERAL DE SÃO JOÃO DEL-REI</p>
-                 <p>CAMPUS CENTRO-OESTE</p>
-              </div>
+              <div
+  *ngIf="q.id === 'intro'"
+  class="mb-8 flex items-center justify-center gap-2"
+>
+  <img
+    src="assets/P2 i2.png"
+    class="w-20 h-20 object-contain flex-shrink-0"
+    alt="Logo UFSJ"
+  />
 
+  <div class="text-brand-purple-dark uppercase leading-tight">
+    <p class="font-semibold italic text-sm">
+      UNIVERSIDADE FEDERAL
+    </p>
+    <p class="font-semibold italic text-sm">
+      DE SÃO JOÃO DEL-REI
+    </p>
+    <p class="font-semibold italic text-sm">
+      CAMPUS CENTRO-OESTE
+    </p>
+  </div>
+</div>
               <!-- ADICIONADO: Imagem para o tipo INFO -->
-              <img 
-                *ngIf="q.image"
-                [src]="q.image"
-                class="w-40 mx-auto mb-6 h-auto object-contain"
-                alt="Imagem explicativa"
-              />
+              <img
+  *ngIf="q.image"
+  [src]="q.image"
+  class="absolute object-contain -z-10"
+  [style.top]="$any(q).posicao?.top"
+  [style.left]="$any(q).posicao?.left"
+  [style.right]="$any(q).posicao?.right"
+  [style.bottom]="$any(q).posicao?.bottom"
+  [style.width]="$any(q).posicao?.width || '120px'"
+  alt="Imagem explicativa"
+/>
 
               <h2 *ngIf="q.title" class="text-2xl font-display font-bold text-brand-purple-dark uppercase mb-6">{{q.title}}</h2>
               <p *ngIf="q.text" class="text-sm font-medium text-gray-700 leading-relaxed text-justify mb-8">{{q.text}}</p>
@@ -145,11 +167,18 @@ import { LocalStorageService } from '../../services/local-storage.service';
 </mat-icon>
                           {{opt.texto}}
                        </div>
-                       <img
-  *ngIf="$any(opt).imagem"
-  [src]="$any(opt).imagem"
-  class="w-40 mx-auto mt-2 mb-4 object-contain"
-/>
+                       <div class="relative w-full h-64">
+  <img
+    *ngIf="$any(opt).imagem"
+    [src]="$any(opt).imagem"
+    class="absolute object-contain"
+    [style.top]="$any(opt).top"
+    [style.left]="$any(opt).left"
+    [style.right]="$any(opt).right"
+    [style.bottom]="$any(opt).bottom"
+    [style.transform]="$any(opt).transform"
+  />
+</div>
                     </div>
 
                  </ng-container>
