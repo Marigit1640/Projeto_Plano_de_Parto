@@ -49,17 +49,7 @@ import { LocalStorageService } from '../../services/local-storage.service';
   </div>
 </div>
               <!-- ADICIONADO: Imagem para o tipo INFO -->
-              <img
-  *ngIf="q.image"
-  [src]="q.image"
-  class="absolute object-contain -z-10"
-  [style.top]="$any(q).posicao?.top"
-  [style.left]="$any(q).posicao?.left"
-  [style.right]="$any(q).posicao?.right"
-  [style.bottom]="$any(q).posicao?.bottom"
-  [style.width]="$any(q).posicao?.width || '120px'"
-  alt="Imagem explicativa"
-/>
+              
 
               <h2 *ngIf="q.title" class="text-2xl font-display font-bold text-brand-purple-dark uppercase mb-6">{{q.title}}</h2>
               <p *ngIf="q.text" class="text-sm font-medium text-gray-700 leading-relaxed text-justify mb-8">{{q.text}}</p>
@@ -71,7 +61,15 @@ import { LocalStorageService } from '../../services/local-storage.service';
                  </video>
               </div>
 
-              <div class="mt-auto pt-8 w-full flex justify-center">
+              
+              <img
+  *ngIf="q.image && q.id !== 'intro'"
+  [src]="q.image"
+  [style.width]="$any(q).width || '140px'"
+  class="object-contain self-start mt-4"
+  alt="Imagem explicativa"
+/>
+<div class="mt-auto pt-8 w-full flex justify-center">
                  <button (click)="next()" class="button-primary bg-brand-purple text-white shadow-xl hover:bg-brand-purple-dark border-none">
                    ENTENDI <mat-icon class="ml-2">check_circle</mat-icon>
                  </button>
@@ -80,12 +78,7 @@ import { LocalStorageService } from '../../services/local-storage.service';
 
            <!-- FORM TYPE -->
            <div *ngIf="q.type === 'form'" class="flex flex-col items-center w-full">
-              <img 
-                *ngIf="q.image"
-                [src]="q.image"
-                class="w-40 mx-auto mb-6 h-auto object-contain"
-                alt="Imagem do formulário"
-              />
+
               <h2 class="text-2xl font-display font-bold text-brand-purple-dark uppercase mb-8 text-center">{{q.title}}</h2>
               
               <form *ngIf="formGroup" [formGroup]="formGroup" class="w-full flex flex-col space-y-4">
@@ -101,6 +94,16 @@ import { LocalStorageService } from '../../services/local-storage.service';
                      />
                  </div>
               </form>
+
+              <img
+  *ngIf="q.image"
+  [src]="q.image"
+  [style.width]="$any(q).width || '140px'"
+  class="object-contain mt-4 self-start"
+  [style.marginLeft]="$any(q).left"
+  [style.marginTop]="$any(q).top"
+  alt="Imagem do formulário"
+/>
               
               <div class="mt-12 w-full">
                  <button (click)="next()" [disabled]="formGroup?.invalid" class="button-primary bg-brand-purple text-white border-transparent">
@@ -113,13 +116,7 @@ import { LocalStorageService } from '../../services/local-storage.service';
            <div *ngIf="q.type === 'choice'" class="flex flex-col items-center w-full">
               
               <!-- ADICIONADO: Imagem para o tipo CHOICE (caso decida colocar imagem nestas telas no futuro) -->
-              <img 
-                *ngIf="q.image"
-                [src]="q.image"
-                class="w-40 mx-auto mb-6 h-auto object-contain"
-                alt="Imagem da pergunta"
-              />
-
+              
               <div class="relative w-full flex flex-col items-center mb-8">
                 <div class="absolute left-[-20px] top-[-10px] cursor-pointer text-brand-purple-dark bg-white border-brand-purple border-2 rounded-full p-2 h-16 w-16 flex items-center justify-center z-10 hover:bg-brand-pink-light shadow-md" (click)="playSound()">
                    <mat-icon class="scale-125">volume_up</mat-icon>
@@ -129,6 +126,11 @@ import { LocalStorageService } from '../../services/local-storage.service';
                   <p *ngIf="q.subtitle" class="text-xs text-brand-purple-dark font-medium text-center mt-2">{{q.subtitle}}</p>
                 </div>
               </div>
+              <img
+  *ngIf="$any(q).imagemTopo"
+  [src]="$any(q).imagemTopo"
+  class="w-40 mx-auto mb-6 object-contain"
+/>
 
               <div class="flex flex-col w-full space-y-4">
                  <ng-container *ngFor="let opt of q.options; let i = index">
@@ -167,22 +169,29 @@ import { LocalStorageService } from '../../services/local-storage.service';
 </mat-icon>
                           {{opt.texto}}
                        </div>
-                       <div class="relative w-full h-64">
-  <img
-    *ngIf="$any(opt).imagem"
-    [src]="$any(opt).imagem"
-    class="absolute object-contain"
-    [style.top]="$any(opt).top"
-    [style.left]="$any(opt).left"
-    [style.right]="$any(opt).right"
-    [style.bottom]="$any(opt).bottom"
-    [style.transform]="$any(opt).transform"
-  />
-</div>
+                       <img
+  *ngIf="$any(opt).imagem"
+  [src]="$any(opt).imagem"
+  [style.width]="$any(opt).width || '140px'"
+  class="object-contain mx-auto my-2"
+  [style.marginLeft]="$any(opt).left"
+  [style.marginTop]="$any(opt).top"
+  alt="Imagem da opção"
+/>
+                       
                     </div>
 
                  </ng-container>
               </div>
+              <img
+                *ngIf="q.image"
+                [src]="q.image"
+                [style.width]="$any(q).width || '140px'"
+                class="object-contain mt-6"
+                [style.marginLeft]="$any(q).left"
+                [style.marginTop]="$any(q).top"
+                alt="Imagem da pergunta"
+              />
               
               <div class="mt-8 w-full flex flex-col items-center" *ngIf="q.multiple || (answers[q.id] && answers[q.id] !== '')">
                  <button (click)="next()" class="button-primary bg-brand-purple text-white border-transparent">

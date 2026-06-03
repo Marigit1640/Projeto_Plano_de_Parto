@@ -13,7 +13,12 @@ export const DEMO_QUESTIONS = [
     id: 'why',
     type: 'info',
     title: 'POR QUE FAZER UM PLANO DE PARTO?',
-    image: 'assets/P2-i2.png',
+    image: 'assets/P7 i7.png',
+    posicao: {
+    bottom: '20px',
+    left: '0px',
+    width: '140px'
+  },
     text: 'Fazer um plano de parto ajuda você a se sentir mais segura, informada e preparada para esse momento tão especial. Ele permite que você conheça melhor seus direitos, pense sobre como gostaria que fosse o nascimento do seu bebê e converse com a equipe de saúde sobre suas vontades, dúvidas e preferências. Além disso, o plano de parto contribui para que seu parto seja mais humanizado, respeitoso e com menos intervenções desnecessárias. Essa prática é recomendada pela Organização Mundial da Saúde desde 1996, justamente por ajudar a garantir que você participe ativamente das decisões sobre o seu parto e se torne protagonista desse momento.',
     audioUrl: '/audio/por-que.mp3'
   },
@@ -21,19 +26,25 @@ export const DEMO_QUESTIONS = [
     id: 'personal_info',
     type: 'form',
     title: 'INFORMAÇÕES PESSOAIS',
-    image: 'assets/P4 i4.png',
     fields: [
       { id: 'name', label: 'NOME', type: 'text' },
       { id: 'dob', label: 'DATA DE NASCIMENTO', type: 'date' },
       { id: 'cpf', label: 'CPF', type: 'text' },
       { id: 'phone', label: 'TELEFONE', type: 'tel' }
-    ]
+    ],
+    image: 'assets/P4 i4.png',
+    width: '140px',
+    left: '0px',
+    top: '20px'
   },
   {
     id: 'baby_info',
     type: 'form',
     title: 'INFORMAÇÕES DO BEBÊ',
-    image: 'assets/P5-i5.png',
+    image: 'assets/P5 i5.png',
+    width: '100%',
+    left: '0px',
+    top: '20px',
     fields: [
       { id: 'babyName', label: 'NOME', type: 'texto' },
       { id: 'babySex', label: 'SEXO', type: 'texto' }
@@ -43,11 +54,14 @@ export const DEMO_QUESTIONS = [
     id: 'maternity',
     type: 'choice',
     title: 'DESEJA CONHECER A MATERNIDADE?',
+    image:'assets/P6 i6.png',
+    width: '45%',
+    left: '0px',
+    top: '20px',
     options: [
       { texto: 'SIM' },
       { texto: 'NÃO' }
     ]
-
   },
   {
     id: 'companion',
@@ -61,6 +75,7 @@ export const DEMO_QUESTIONS = [
     type: 'choice',
     title: 'DESEJAM SER INFORMADOS SOBRE OS PROCEDIMENTOS A SEREM REALIZADOS COM VOCÊ E COM O BEBÊ?',
     image: 'assets/P13 i13.png',
+    width: '100%',
     options: [
       { texto: 'SIM' },
       { texto: 'NÃO' }
@@ -94,7 +109,10 @@ export const DEMO_QUESTIONS = [
     options: [
       {
         texto: 'MASSAGENS (REALIZADA PELO ACOMPANHANTE OU PELA DOULA)',
-        imagem: 'assets/P16 i161.png'
+        imagem: 'assets/P16 i161.png',
+        width: '180px',
+        left: '80px',
+        top: '-10px'
       },
       {
         texto: 'TÉCNICAS DE RESPIRAÇÃO',
@@ -169,38 +187,49 @@ export const DEMO_QUESTIONS = [
     subtitle: 'GOSTARIA DE TER AS SEGUINTES OPÇÕES:',
     multiple: true,
     options: [
-      { texto: 'POSIÇÃO DE CÓCORAS (AGACHADA)',
+      {
+        texto: 'POSIÇÃO DE CÓCORAS (AGACHADA)',
         imagem: 'assets/P23 i231.png'
-       },
-      { texto: 'POSIÇÃO DE CÓCORAS ASSISTIDA (COM APOIO OU BARRA DE PARTO)',
+      },
+      {
+        texto: 'POSIÇÃO DE CÓCORAS ASSISTIDA (COM APOIO OU BARRA DE PARTO)',
         imagem: 'assets/P23 i232.png'
-       },
-      { texto: 'POSIÇÃO EM QUATRO APOIOS (GENUPEITORAL)',
+      },
+      {
+        texto: 'POSIÇÃO EM QUATRO APOIOS (GENUPEITORAL)',
         imagem: 'assets/P24 i241.png'
-       },
-      { texto: 'POSIÇÃO AJOELHADA(VERTICAL APOIADA)',
+      },
+      {
+        texto: 'POSIÇÃO AJOELHADA(VERTICAL APOIADA)',
         imagem: 'assets/P24 i242.png'
-       },
-      { texto: 'POSIÇÃO SENTADA',
+      },
+      {
+        texto: 'POSIÇÃO SENTADA',
         imagem: 'assets/P25 i251.png'
       },
-      { texto: 'POSIÇÃO EM PÉ(ORTOSTÁTICA)',
+      {
+        texto: 'POSIÇÃO EM PÉ(ORTOSTÁTICA)',
         imagem: 'assets/P25 i252.png'
-       },
-      { texto: 'POSIÇÕES HORIZONTAIS OU SEMI-RECLINADAS',
-        imagem: 'assets/P26 i261.png'
-       },
-      { texto: 'POSIÇÃO LATERAL(DECÚBITO LATERAL ESQUERDO)',
-        imagem: 'assets/P26 i262.png'
-       },
-      { texto: 'POSIÇÃO SEMI-SENTADA (SEMI-FOWLER)',
+      },
+      {
+        texto: 'POSIÇÕES HORIZONTAIS OU SEMI-RECLINADAS',
+        imagem: 'assets/p26 i261.png'
+      },
+      {
+        texto: 'POSIÇÃO LATERAL(DECÚBITO LATERAL ESQUERDO)',
+        imagem: 'assets/p26 i262.png'
+      },
+      {
+        texto: 'POSIÇÃO SEMI-SENTADA (SEMI-FOWLER)',
         imagem: 'assets/P27 i271.png'
-       },
-      { texto: 'POSIÇÃO LITOTÔMICA(SUPINA, COM PERNAS ELEVADAS)',
+      },
+      {
+        texto: 'POSIÇÃO LITOTÔMICA(SUPINA, COM PERNAS ELEVADAS)',
         imagem: 'assets/P27 i272.png'
-       }
+      }
     ]
-  }, {
+  }, 
+  {
     id: 'parto_agua',
     type: 'choice',
     title: 'GOSTARIA DE TENTAR O PARTO NA ÁGUA',
@@ -208,7 +237,8 @@ export const DEMO_QUESTIONS = [
       { texto: 'SIM' },
       { texto: 'NÃO' }
     ],
-    imagem: 'assets/P28 i28.png'
+    image: 'assets/P28 i28.png',
+    width: '90%'
   },
   {
     id: 'tempo_toque',
@@ -218,7 +248,7 @@ export const DEMO_QUESTIONS = [
     options: [
       { texto: 'SIM' },
       { texto: 'NÃO' }
-    ]
+    ],
   },
 
   {
