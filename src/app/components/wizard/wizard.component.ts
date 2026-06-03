@@ -167,7 +167,7 @@ import { LocalStorageService } from '../../services/local-storage.service';
      (click)="toggleMultiChoice(q.id, opt.texto)">
      
   <div class="absolute left-0 text-brand-purple-dark bg-white border-brand-purple border border-r-0 rounded-l-full p-1 h-12 w-12 flex items-center justify-center z-10 group-hover:bg-brand-pink-light transition-colors"
-       (click)="playSound(); $event.stopPropagation()">
+       (click)="playOptionAudio(opt); $event.stopPropagation()">
                          <mat-icon class="scale-90 opacity-70">volume_up</mat-icon>
                        </div>
                        <div 
