@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AudioService } from '../../services/audio.service';
 import { MatIconModule } from '@angular/material/icon';
@@ -18,7 +18,7 @@ import { ReactiveFormsModule, FormBuilder, Validators } from '@angular/forms';
 
       <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" class="w-full max-w-sm flex flex-col items-center space-y-6">
         <div class="relative w-full flex items-center">
-          <div class="absolute left-0 cursor-pointer text-brand-purple-dark bg-white border-brand-purple border-2 rounded-full p-2 h-14 w-14 flex items-center justify-center z-10 hover:bg-brand-pink-light shadow-md" (click)="playSound()">
+          <div class="absolute left-0 cursor-pointer text-brand-purple-dark bg-white border-brand-purple border-2 rounded-full p-2 h-14 w-14 flex items-center justify-center z-10 hover:bg-brand-pink-light shadow-md" (click)="playNarration()">
              <mat-icon>volume_up</mat-icon>
           </div>
           <input 
@@ -39,7 +39,7 @@ import { ReactiveFormsModule, FormBuilder, Validators } from '@angular/forms';
     </div>
   `
 })
-export class LoginComponent {
+export class LoginComponent implements OnInit{
   private router = inject(Router);
   private audio = inject(AudioService);
   private fb = inject(FormBuilder);
@@ -48,16 +48,24 @@ export class LoginComponent {
     email: ['', [Validators.required, Validators.email]]
   });
 
-  playSound() {
-    this.audio.playBubbleSound();
-  }
+  ngOnInit() {
+  setTimeout(() => {
+    this.audio.playNarration('/audio/A3.1.m4a');
+  }, 500);
+}
+
+  playNarration() {
+  this.audio.playBubbleSound();
+  this.audio.playNarration('/audio/A3.2.m4a');
+}
 
   onSubmit() {
-    if (this.loginForm.valid) {
-        this.audio.playBubbleSound();
-        this.router.navigate(['/wizard']);
-    }
+  if (this.loginForm.valid) {
+    this.audio.stopNarration();
+    this.audio.playBubbleSound();
+    this.router.navigate(['/wizard']);
   }
+}
 }
 
 

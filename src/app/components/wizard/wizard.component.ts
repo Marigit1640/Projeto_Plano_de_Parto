@@ -27,9 +27,18 @@ import { LocalStorageService } from '../../services/local-storage.service';
               
               <!-- Optional Logo -->
               <div
-  *ngIf="q.id === 'intro'"
+  *ngIf="q.id === 'presentation'"
   class="mb-8 flex items-center justify-center gap-2"
 >
+  <div class="fixed bottom-8 right-8 z-50">
+  <button
+    class="audio-btn"
+    (click)="playQuestionAudio()">
+
+    <mat-icon>volume_up</mat-icon>
+
+  </button>
+</div>
   <img
     src="assets/P2 i2.png"
     class="w-20 h-20 object-contain flex-shrink-0"
@@ -54,25 +63,28 @@ import { LocalStorageService } from '../../services/local-storage.service';
               <h2 *ngIf="q.title" class="text-2xl font-display font-bold text-brand-purple-dark uppercase mb-6">{{q.title}}</h2>
               <p *ngIf="q.text" class="text-sm font-medium text-gray-700 leading-relaxed text-justify mb-8">{{q.text}}</p>
               
-              <div *ngIf="q.videoUrl" class="w-full mb-8 rounded-2xl overflow-hidden shadow-lg border-2 border-brand-purple bg-black">
-                 <video controls class="w-full h-auto aspect-video">
-                   <source [src]="q.videoUrl" type="video/mp4">
-                   Seu navegador não suporta vídeos.
-                 </video>
-              </div>
 
-              
               <img
-  *ngIf="q.image && q.id !== 'intro'"
+  *ngIf="q.image && q.id !== 'presentation'"
   [src]="q.image"
   [style.width]="$any(q).width || '140px'"
   class="object-contain self-start mt-4"
   alt="Imagem explicativa"
 />
 <div class="mt-auto pt-8 w-full flex justify-center">
+<div class="fixed bottom-6 right-6 z-50">
+  <button
+    class="audio-btn"
+    (click)="playQuestionAudio()">
+    <mat-icon>volume_up</mat-icon>
+  </button>
+</div>
                  <button (click)="next()" class="button-primary bg-brand-purple text-white shadow-xl hover:bg-brand-purple-dark border-none">
-                   ENTENDI <mat-icon class="ml-2">check_circle</mat-icon>
-                 </button>
+
+  {{ q.id === 'maternity_intro' ? 'COMEÇAR' : 'ENTENDI' }}
+
+  <mat-icon class="ml-2">check_circle</mat-icon>
+</button>
               </div>
            </div>
 
@@ -83,7 +95,7 @@ import { LocalStorageService } from '../../services/local-storage.service';
               
               <form *ngIf="formGroup" [formGroup]="formGroup" class="w-full flex flex-col space-y-4">
                  <div *ngFor="let field of q.fields" class="relative w-full flex items-center">
-                     <div class="absolute left-0 cursor-pointer text-brand-purple-dark bg-white border-brand-purple border-2 rounded-full p-2 h-14 w-14 flex items-center justify-center z-10 hover:bg-brand-pink-light shadow-sm" (click)="playSound()">
+                     <div class="absolute left-0 cursor-pointer text-brand-purple-dark bg-white border-brand-purple border-2 rounded-full p-2 h-14 w-14 flex items-center justify-center z-10 hover:bg-brand-pink-light shadow-sm" (click)="playFieldAudio(field)">
                          <mat-icon>volume_up</mat-icon>
                      </div>
                      <input 
@@ -118,7 +130,7 @@ import { LocalStorageService } from '../../services/local-storage.service';
               <!-- ADICIONADO: Imagem para o tipo CHOICE (caso decida colocar imagem nestas telas no futuro) -->
               
               <div class="relative w-full flex flex-col items-center mb-8">
-                <div class="absolute left-[-20px] top-[-10px] cursor-pointer text-brand-purple-dark bg-white border-brand-purple border-2 rounded-full p-2 h-16 w-16 flex items-center justify-center z-10 hover:bg-brand-pink-light shadow-md" (click)="playSound()">
+                <div class="absolute left-[-20px] top-[-10px] cursor-pointer text-brand-purple-dark bg-white border-brand-purple border-2 rounded-full p-2 h-16 w-16 flex items-center justify-center z-10 hover:bg-brand-pink-light shadow-md" (click)="playQuestionAudio()">
                    <mat-icon class="scale-125">volume_up</mat-icon>
                 </div>
                 <div class="bg-white border-2 border-brand-purple rounded-3xl pt-8 pb-6 px-4 w-full shadow-sm">
@@ -136,7 +148,7 @@ import { LocalStorageService } from '../../services/local-storage.service';
                  <ng-container *ngFor="let opt of q.options; let i = index">
                     
                     <div *ngIf="!q.multiple" class="relative w-full flex items-center">
-                       <div class="absolute left-0 cursor-pointer text-brand-purple-dark bg-white border-brand-purple border border-r-0 rounded-l-full p-1 h-12 w-12 flex items-center justify-center z-10 hover:bg-brand-pink-light shadow-sm border-r-transparent" (click)="playSound()">
+                       <div class="absolute left-0 cursor-pointer text-brand-purple-dark bg-white border-brand-purple border border-r-0 rounded-l-full p-1 h-12 w-12 flex items-center justify-center z-10 hover:bg-brand-pink-light shadow-sm border-r-transparent" (click)="playOptionAudio(opt); $event.stopPropagation()">
                          <mat-icon class="scale-90 opacity-70">volume_up</mat-icon>
                        </div>
                        <button 
@@ -234,12 +246,22 @@ export class WizardComponent implements OnInit {
       this.answers = saved;
     }
     this.buildFormContext();
+    this.playAutoAudio();
   }
 
   playSound() {
     this.audio.playBubbleSound();
   }
 
+  playQuestionAudio() {
+  const q: any = this.currentQuestion();
+
+  this.audio.playBubbleSound();
+
+  if (q.audioUrl) {
+    this.audio.playNarration(q.audioUrl);
+  }
+}
   buildFormContext() {
     const q = this.currentQuestion();
     if (q.type === 'form') {
@@ -259,7 +281,7 @@ export class WizardComponent implements OnInit {
     this.saveProgress();
     // Auto advance on single choice might be jarring if they misclick. Let's let them click avanÇar, or auto-advance after small delay.
     // Given the UI shows they select and then continue, actually wait, the images don't always show continue button. Let's just auto-advance after 400ms.
-    setTimeout(() => this.next(), 400);
+    
   }
 
   toggleMultiChoice(questionId: string, option: string) {
@@ -305,17 +327,45 @@ export class WizardComponent implements OnInit {
     if (this.currentIndex() < this.questions.length - 1) {
       this.currentIndex.update(v => v + 1);
       this.buildFormContext();
+      this.playAutoAudio();
     } else {
       // navigate to final screen
       this.router.navigate(['/final']);
     }
   }
 
-  prev() {
-    this.audio.playBubbleSound();
-    if (this.currentIndex() > 0) {
-      this.currentIndex.update(v => v - 1);
-      this.buildFormContext();
-    }
+ prev() {
+  this.audio.playBubbleSound();
+
+  if (this.currentIndex() > 0) {
+    this.currentIndex.update(v => v - 1);
+    this.buildFormContext();
+    this.playAutoAudio();
   }
+}
+
+  playAutoAudio() {
+  const q: any = this.currentQuestion();
+
+  if (q.autoAudioUrl) {
+    setTimeout(() => {
+      this.audio.playNarration(q.autoAudioUrl);
+    }, 500);
+  }
+}
+
+playOptionAudio(option: any) {
+  this.audio.playBubbleSound();
+
+  if (option.audioUrl) {
+    this.audio.playNarration(option.audioUrl);
+  }
+}
+playFieldAudio(field: any) {
+  this.audio.playBubbleSound();
+
+  if (field.audioUrl) {
+    this.audio.playNarration(field.audioUrl);
+  }
+}
 }

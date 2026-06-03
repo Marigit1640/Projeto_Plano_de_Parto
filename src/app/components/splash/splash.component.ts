@@ -23,12 +23,13 @@ import { MatIconModule } from '@angular/material/icon';
   />
 </div>
         
-     
-
-      
-      <button class="audio-btn" (click)="playSound()">
-        <mat-icon>volume_up</mat-icon>
-      </button>
+      <button
+          class="audio-btn"
+          (click)="playNarration()"
+          aria-label="Ouvir explicação desta tela">
+          <mat-icon>volume_up</mat-icon>
+        </button>
+        
       <div class="absolute bottom-10 w-full px-6">
          <button class="button-primary font-bold shadow-lg shadow-purple-200" (click)="navigate()">INICIAR</button>
       </div>
@@ -39,12 +40,14 @@ export class SplashComponent {
   private router = inject(Router);
   private audio = inject(AudioService);
 
-  playSound() {
-    this.audio.playBubbleSound();
-  }
+  playNarration() {
+  this.audio.playBubbleSound();
+  this.audio.playNarration('/audio/A1.m4a');
+}
 
   navigate() {
-    this.audio.playBubbleSound();
-    this.router.navigate(['/login']);
-  }
+  this.audio.stopNarration();
+  this.audio.playBubbleSound();
+  this.router.navigate(['/login']);
+}
 }

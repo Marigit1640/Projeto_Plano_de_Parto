@@ -1,13 +1,26 @@
 
 export const DEMO_QUESTIONS = [
   {
+  id: 'presentation',
+  type: 'info',
+  image: 'assets/P2 i2.png',
+  text: 'Este aplicativo foi criado com base em informações científicas sobre gestação e plano de parto.\n\nAqui, você encontra orientações para se sentir mais segura, informada e preparada para o nascimento do seu bebê.',
+  audioUrl: '/audio/A2.m4a'
+},
+  
+  {
     id: 'intro',
     type: 'info',
     title: 'VOCÊ SABE O QUE É UM PLANO DE PARTO?',
-    image: 'assets/P2 i2.png',
+    image: 'assets/P7 i7.png',
+    posicao: {
+    bottom: '20px',
+    left: '0px',
+    width: '140px'
+  },
     text: 'O Plano de parto é um jeito simples de você gestante conversar com a equipe de saúde. Nele, você pode dizer o que quer, o que espera e como prefere que seja o seu parto e o pós-parto. Assim, você participa das decisões sobre o seu corpo e do seu bebê, tendo suas escolhas respeitadas.',
-    audioUrl: '/audio/saiba-mais.mp3',
-    videoUrl: '/video/intro.mp4'
+    audioUrl: '/audio/A7.2.m4a',
+    autoAudioUrl: '/audio/A7.1.m4a'
   },
   {
     id: 'why',
@@ -20,17 +33,19 @@ export const DEMO_QUESTIONS = [
     width: '140px'
   },
     text: 'Fazer um plano de parto ajuda você a se sentir mais segura, informada e preparada para esse momento tão especial. Ele permite que você conheça melhor seus direitos, pense sobre como gostaria que fosse o nascimento do seu bebê e converse com a equipe de saúde sobre suas vontades, dúvidas e preferências. Além disso, o plano de parto contribui para que seu parto seja mais humanizado, respeitoso e com menos intervenções desnecessárias. Essa prática é recomendada pela Organização Mundial da Saúde desde 1996, justamente por ajudar a garantir que você participe ativamente das decisões sobre o seu parto e se torne protagonista desse momento.',
-    audioUrl: '/audio/por-que.mp3'
+    audioUrl: '/audio/A8.2.m4a',
+    autoAudioUrl: '/audio/A8.1.m4a'
   },
   {
     id: 'personal_info',
     type: 'form',
     title: 'INFORMAÇÕES PESSOAIS',
+    autoAudioUrl: '/audio/A4.1.m4a',
     fields: [
-      { id: 'name', label: 'NOME', type: 'text' },
-      { id: 'dob', label: 'DATA DE NASCIMENTO', type: 'date' },
-      { id: 'cpf', label: 'CPF', type: 'text' },
-      { id: 'phone', label: 'TELEFONE', type: 'tel' }
+      { id: 'name', label: 'NOME', type: 'text', audioUrl: '/audio/A4.2.m4a' },
+      { id: 'dob', label: 'DATA DE NASCIMENTO', type: 'date', audioUrl: '/audio/A4.3.m4a' },
+      { id: 'cpf', label: 'CPF', type: 'text', audioUrl: '/audio/A4.4.m4a' },
+      { id: 'phone', label: 'TELEFONE', type: 'tel', audioUrl: '/audio/A4.5.m4a' }
     ],
     image: 'assets/P4 i4.png',
     width: '140px',
@@ -41,26 +56,37 @@ export const DEMO_QUESTIONS = [
     id: 'baby_info',
     type: 'form',
     title: 'INFORMAÇÕES DO BEBÊ',
+    autoAudioUrl: '/audio/A5.1.m4a',
     image: 'assets/P5 i5.png',
     width: '100%',
     left: '0px',
     top: '20px',
     fields: [
-      { id: 'babyName', label: 'NOME', type: 'texto' },
-      { id: 'babySex', label: 'SEXO', type: 'texto' }
+      { id: 'babyName', label: 'NOME', type: 'texto', audioUrl: '/audio/A5.2.m4a' },
+      { id: 'babySex', label: 'SEXO', type: 'texto', audioUrl: '/audio/A5.3.m4a' }
     ]
   },
+  {
+  id: 'maternity_intro',
+  type: 'info',
+  title: 'AGORA É O MOMENTO DE CONSTRUIR SEU PLANO DE PARTO!',
+  text: 'Registre suas preferências e escolhas para viver esse momento de forma segura, respeitosa e de acordo com o que é importante para você.',
+  audioUrl: '/audio/A10.2.m4a',
+  autoAudioUrl: '/audio/A10.1.m4a'
+},
+
   {
     id: 'maternity',
     type: 'choice',
     title: 'DESEJA CONHECER A MATERNIDADE?',
+    autoAudioUrl: '/audio/A11.1.m4a',
     image:'assets/P6 i6.png',
     width: '45%',
     left: '0px',
     top: '20px',
     options: [
-      { texto: 'SIM' },
-      { texto: 'NÃO' }
+      { texto: 'SIM', audioUrl: '/audio/A11.2.m4a' },
+      { texto: 'NÃO', audioUrl: '/audio/A11.3.m4a' }
     ]
   },
   {
