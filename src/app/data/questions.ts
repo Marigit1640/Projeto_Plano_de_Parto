@@ -13,11 +13,8 @@ export const DEMO_QUESTIONS = [
     type: 'info',
     title: 'VOCÊ SABE O QUE É UM PLANO DE PARTO?',
     image: 'assets/P7 i7.png',
-    posicao: {
-      bottom: '20px',
-      left: '0px',
-      width: '140px'
-    },
+    width: '140px',
+    imagePosition: 'right',
     text: 'O Plano de parto é um jeito simples de você gestante conversar com a equipe de saúde. Nele, você pode dizer o que quer, o que espera e como prefere que seja o seu parto e o pós-parto. Assim, você participa das decisões sobre o seu corpo e do seu bebê, tendo suas escolhas respeitadas.',
     audioUrl: '/audio/A7.2.m4a',
     autoAudioUrl: '/audio/A7.1.m4a',
@@ -117,7 +114,7 @@ export const DEMO_QUESTIONS = [
     title: 'TEREI UMA DOULA ME ACOMPANHANDO?',
     image: 'assets/P14 i14.png',
     width: '50%',
-    left: '0px',
+    imagePosition: 'center',
     top: '20px',
     autoAudioUrl: '/audio/A14.1.m4a',
     options: [
@@ -147,35 +144,41 @@ export const DEMO_QUESTIONS = [
       {
         texto: 'MASSAGENS (REALIZADA PELO ACOMPANHANTE OU PELA DOULA)',
         imagem: 'assets/P16 i161.png',
-        width: '180px',
+        width: '90px',
         left: '80px',
         top: '-10px',
-        audioUrl: '/audio/A16.2.m4a'
+        audioUrl: '/audio/A16.2.m4a',
+        videoUrl: 'https://youtu.be/JLTeGLylAJQ?si=Isn0ww90LSPYfTw2'
       },
       {
         texto: 'TÉCNICAS DE RESPIRAÇÃO',
         imagem: 'assets/P16 i162.png',
-        audioUrl: '/audio/A16.3.m4a'
+        audioUrl: '/audio/A16.3.m4a',
+        videoUrl:'https://youtu.be/CSS69sLN5No?si=z1rAWbSt-b0sTJi7'
       },
       {
         texto: 'MOVIMENTAR E/OU ANDAR CASO EU QUEIRA',
         imagem: 'assets/P17 i171.png',
-        audioUrl: '/audio/A17.1.m4a'
+        audioUrl: '/audio/A17.1.m4a',
+        videoUrl:'https://youtu.be/9ElgbOr0Dtc?si=o0o_fEX-eguYdsM9'
       },
       {
         texto: 'EXERCÍCIO DE RELAXAMENTO COM BOLA',
         imagem: 'assets/P17 i172.png',
-        audioUrl: '/audio/A17.2.m4a'
+        audioUrl: '/audio/A17.2.m4a',
+        videoUrl:'https://youtu.be/-0TV2GKegAE?si=grcRVufNhE_gUcfb'
       },
       {
         texto: 'BANHO DE CHUVEIRO',
         imagem: 'assets/P18 i181.png',
-        audioUrl: '/audio/A18.1.m4a'
+        audioUrl: '/audio/A18.1.m4a',
+        videoUrl: 'https://youtu.be/lyvN5KgNerU?si=SKyHJnL-sEphGzBH'
       },
       {
         texto: 'ANALGESIA MEDICAMENTOSA POR ANESTESIA',
         imagem: 'assets/P18 i182.png',
-        audioUrl: '/audio/A18.2.m4a'
+        audioUrl: '/audio/A18.2.m4a',
+        videoUrl: 'https://youtu.be/ZWt_K6Z2ebw?si=XtLmSia8Ufvvvocj'
       },
       {
         texto: 'OUTRO',
@@ -194,7 +197,7 @@ export const DEMO_QUESTIONS = [
       { texto: 'SIM', audioUrl: '/audio/A19.2 sim.m4a' },
       { texto: 'NÃO', audioUrl: '/audio/A22.3.m4a' }
     ],
-    image: 'assets/P19 i19.jpg'
+    image: 'assets/P19 i19.jpg',
   },
   {
     id: 'food',
@@ -207,7 +210,8 @@ export const DEMO_QUESTIONS = [
     { texto: 'GELATINA', audioUrl: '/audio/A20.4.m4a' },
     { texto: 'CHÁS', audioUrl: '/audio/A20.5.m4a' },
     { texto: 'OUTROS', audioUrl: '/audio/A20.6.m4a' }],
-    image: 'assets/P20 i20.jpg'
+    image: 'assets/P20 i20.jpg',
+    videoUrl: 'https://youtu.be/zwmtm18r9YY?si=D3LI19q_Y8gNZzzL'
   },
   {
     id: 'care',
@@ -273,22 +277,26 @@ export const DEMO_QUESTIONS = [
       {
         texto: 'POSIÇÕES HORIZONTAIS OU SEMI-RECLINADAS',
         imagem: 'assets/p26 i261.png',
-        audioUrl: '/audio/A26.1.m4a'
+        audioUrl: '/audio/A26.1.m4a',
+        videoUrl: 'https://youtu.be/stfa_fjo-Ss?si=dzOMtHZ-xE-QzeiN'
       },
       {
         texto: 'POSIÇÃO LATERAL(DECÚBITO LATERAL ESQUERDO)',
         imagem: 'assets/p26 i262.png',
-        audioUrl: '/audio/A26.2.m4a'
+        audioUrl: '/audio/A26.2.m4a',
+        videoUrl: 'https://youtu.be/_8qbXoPdTEo?si=yb2w87fU921O2aMt'
       },
       {
         texto: 'POSIÇÃO SEMI-SENTADA (SEMI-FOWLER)',
         imagem: 'assets/P27 i271.png',
-        audioUrl: '/audio/A27.1.m4a'
+        audioUrl: '/audio/A27.1.m4a',
+        videoUrl: 'https://youtu.be/btAbCinrDQQ?si=3p1eus61rTRlcMYR'
       },
       {
         texto: 'POSIÇÃO LITOTÔMICA(SUPINA, COM PERNAS ELEVADAS)',
         imagem: 'assets/P27 i272.png',
-        audioUrl: '/audio/A27.2.m4a'
+        audioUrl: '/audio/A27.2.m4a',
+        videoUrl: 'https://youtu.be/NGrTEjnpyYs?si=ijwmoo8x6vbX6ePt'
       }
     ]
   },
@@ -302,6 +310,7 @@ export const DEMO_QUESTIONS = [
       { texto: 'NÃO', audioUrl: '/audio/A28.3.m4a' }
     ],
     image: 'assets/P28 i28.png',
+    videoUrl: 'https://youtu.be/NGrTEjnpyYs?si=ijwmoo8x6vbX6ePt',
     width: '90%'
   },
   {
@@ -325,7 +334,8 @@ export const DEMO_QUESTIONS = [
       { texto: 'SIM', audioUrl: '/audio/A30.2.m4a' },
       { texto: 'NÃO', audioUrl: '/audio/A30.4.m4a' }
     ],
-    image: 'assets/P30 i30.png'
+    image: 'assets/P30 i30.png',
+    videoUrl: 'https://youtu.be/g7Cg2y67Tes?si=ecF-kw7mUDkJbvhr'
   },
   {
     id: 'cesarean_companion',
@@ -336,7 +346,8 @@ export const DEMO_QUESTIONS = [
       { texto: 'SIM', audioUrl: '/audio/A31.2.m4a' },
       { texto: 'NÃO', audioUrl: '/audio/A31.3.m4a' }
     ],
-    image: 'assets/P31 i31.png'
+    image: 'assets/P31 i31.png',
+    videoUrl: 'https://youtu.be/g7Cg2y67Tes?si=ecF-kw7mUDkJbvhr'
   },
   {
     id: 'after_birth',
@@ -350,7 +361,8 @@ export const DEMO_QUESTIONS = [
       { texto: 'INICIAR A AMAMENTAÇÃO O MAIS RÁPIDO POSSÍVEL E DENTRO DA PRIMEIRA HORA DE VIDA', audioUrl: '/audio/A32.4.m4a' },
       { texto: 'TER PELO MENOS UMA HORA CONTÍNUA COM MEU BEBÊ NO COLO, SE ESTIVER TUDO BEM', audioUrl: '/audio/A32.5.m4a' }
     ],
-    image: 'assets/P32 i32.png'
+    image: 'assets/P32 i32.png',
+    videoUrl: 'https://youtu.be/ovIi4oH8XY8?si=GdRv_2yMmmtI0Htq'
   },
   {
     id: 'cord_cutting',
@@ -361,7 +373,8 @@ export const DEMO_QUESTIONS = [
     { texto: 'POR MIM MESMA', audioUrl: '/audio/A33.3.m4a' },
     { texto: 'MARIDO / PARCEIRO(A) / ACOMPANHANTE / PAI DO BEBÊ', audioUrl: '/audio/A33.4.m4a' }
     ],
-    image: 'assets/P33 i33.png'
+    image: 'assets/P33 i33.png',
+    videoUrl: 'https://youtu.be/UqulKkAWhJs?si=hsngdBsRlbm_Cf1o'
   },
   {
     id: 'baby_care',

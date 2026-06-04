@@ -78,9 +78,11 @@ import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
       CLIQUE AQUI E SAIBA MAIS
     </p>
 
-    <span class="text-3xl text-brand-purple">
-      ↙
-    </span>
+    <img
+    src="assets/seta.jpg"
+    alt="Seta"
+    class="w-20 mt-1"
+  />
   </div>
 
   <img
@@ -116,7 +118,7 @@ import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
               
               <form *ngIf="formGroup" [formGroup]="formGroup" class="w-full flex flex-col space-y-4">
                  <div *ngFor="let field of q.fields" class="relative w-full flex items-center">
-                     <div class="absolute left-0 cursor-pointer text-brand-purple-dark bg-white border-brand-purple border-2 rounded-full p-2 h-14 w-14 flex items-center justify-center z-10 hover:bg-brand-pink-light shadow-sm" (click)="playFieldAudio(field)">
+                     <div class="absolute left-0 top-1/2 -translate-y-1/2 cursor-pointer text-brand-purple-dark bg-white border-brand-purple border-2 rounded-full p-2 h-14 w-14 flex items-center justify-center z-10 hover:bg-brand-pink-light shadow-sm" (click)="playFieldAudio(field)">
                          <mat-icon>volume_up</mat-icon>
                      </div>
                      <input 
@@ -135,9 +137,11 @@ import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
     CLIQUE AQUI E SAIBA MAIS
   </p>
 
-  <span class="text-3xl text-brand-purple">
-    ↙
-  </span>
+  <img
+    src="assets/seta.jpg"
+    alt="Seta"
+    class="w-20 mt-1"
+  />
 </div>
               <img
   *ngIf="q.image"
@@ -163,7 +167,7 @@ import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
               <!-- ADICIONADO: Imagem para o tipo CHOICE (caso decida colocar imagem nestas telas no futuro) -->
               
               <div class="relative w-full flex flex-col items-center mb-8">
-                <div class="absolute left-[-20px] top-[-10px] cursor-pointer text-brand-purple-dark bg-white border-brand-purple border-2 rounded-full p-2 h-16 w-16 flex items-center justify-center z-10 hover:bg-brand-pink-light shadow-md" (click)="playQuestionAudio()">
+               <div class="absolute left-[-20px] top-[-10px] cursor-pointer text-brand-purple-dark bg-white border-brand-purple border-2 rounded-full p-2 h-16 w-16 flex items-center justify-center z-10 hover:bg-brand-pink-light shadow-md">
                    <mat-icon class="scale-125">volume_up</mat-icon>
                 </div>
                 <div class="bg-white border-2 border-brand-purple rounded-3xl pt-8 pb-6 px-4 w-full shadow-sm">
@@ -176,52 +180,51 @@ import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
               <div class="flex flex-col w-full space-y-4">
                  <ng-container *ngFor="let opt of q.options; let i = index">
                     
-                    <div *ngIf="!q.multiple" class="relative w-full flex items-center">
-                       <div class="absolute left-0 cursor-pointer text-brand-purple-dark bg-white border-brand-purple border border-r-0 rounded-l-full p-1 h-12 w-12 flex items-center justify-center z-10 hover:bg-brand-pink-light shadow-sm border-r-transparent" (click)="playOptionAudio(opt); $event.stopPropagation()">
-                         <mat-icon class="scale-90 opacity-70">volume_up</mat-icon>
-                       </div>
-                       <button 
-                         (click)="selectSingleChoice(q.id, opt.texto)"
-                         [class.bg-brand-purple]="answers[q.id] === opt.texto"
-                         [class.text-white]="answers[q.id] === opt.texto"
-                         [class.bg-white]="answers[q.id] !== opt.texto"
-                         class="pl-14 pr-4 w-full h-12 border-2 border-brand-purple rounded-full text-[11px] font-bold tracking-wider uppercase text-brand-purple-dark transition-colors text-left flex items-center"
-                       >
-                          {{opt.texto}}
-                       </button>
-                    </div>
-                    
+<div class="relative w-full flex items-center">
 
-<div *ngIf="q.multiple"
-     class="relative w-full flex flex-col group cursor-pointer"
-     (click)="toggleMultiChoice(q.id, opt.texto)">
-     
-  <div class="absolute left-0 text-brand-purple-dark bg-white border-brand-purple border border-r-0 rounded-l-full p-1 h-12 w-12 flex items-center justify-center z-10 group-hover:bg-brand-pink-light transition-colors"
-       (click)="playOptionAudio(opt); $event.stopPropagation()">
-                         <mat-icon class="scale-90 opacity-70">volume_up</mat-icon>
-                       </div>
-                       <div 
-                         [class.bg-brand-purple]="isArraySelected(q.id, opt.texto)"
-                        [class.text-white]="isArraySelected(q.id, opt.texto)"
-[class.bg-white]="!isArraySelected(q.id, opt.texto)"
-                         class="pl-14 pr-4 w-full min-h-[48px] py-2 border-2 border-brand-purple rounded-full text-[11px] font-bold tracking-wider uppercase text-brand-purple-dark transition-colors text-left flex items-center"
-                       >
-                          <mat-icon *ngIf="isArraySelected(q.id, opt.texto)" class="mr-2 scale-75">
-  check_circle
-</mat-icon>
-                          {{opt.texto}}
-                       </div>
-                       <img
-  *ngIf="$any(opt).imagem"
-  [src]="$any(opt).imagem"
-  [style.width]="$any(opt).width || '140px'"
-  class="object-contain mx-auto my-2"
-  [style.marginLeft]="$any(opt).left"
-  [style.marginTop]="$any(opt).top"
-  alt="Imagem da opção"
-/>
-                       
-                    </div>
+  <div
+    class="absolute left-[-12px] top-1/2 -translate-y-1/2
+           cursor-pointer text-brand-purple-dark
+           bg-white border-brand-purple border-2
+           rounded-full h-14 w-14
+           flex items-center justify-center
+           z-10 shadow-md"
+    (click)="playOptionAudio(opt); $event.stopPropagation()">
+
+    <mat-icon class="scale-90">
+      volume_up
+    </mat-icon>
+
+  </div>
+
+  <button
+    (click)="selectSingleChoice(q.id, opt.texto)"
+    [class.bg-brand-purple]="answers[q.id] === opt.texto"
+    [class.text-white]="answers[q.id] === opt.texto"
+    [class.bg-white]="answers[q.id] !== opt.texto"
+    class="pl-20 pr-4 w-full h-12
+       border-2 border-brand-purple
+       rounded-full
+       text-[11px] font-bold
+       tracking-wider uppercase
+       transition-colors
+       text-left flex items-center">
+
+    {{opt.texto}}
+
+  </button>
+
+</div>
+
+  <img
+    *ngIf="$any(opt).imagem"
+    [src]="$any(opt).imagem"
+    [style.width]="$any(opt).width || '140px'"
+    class="object-contain mx-auto my-2 cursor-pointer"
+    (click)="$any(opt).videoUrl && openVideo($any(opt).videoUrl)"
+    [style.marginTop]="$any(opt).top"
+    alt="Imagem da opção"
+  />
 
                  </ng-container>
               </div>
@@ -235,29 +238,24 @@ import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
     CLIQUE AQUI E SAIBA MAIS
   </p>
 
-  <span class="text-3xl text-brand-purple">
-    ↓
-  </span>
+  <img
+    src="assets/seta.jpg"
+    alt="Seta"
+    class="w-20 mt-1"
+  />
 </div>
 
 
   <img
-
-    [src]="q.image"
-
-    [style.width]="$any(q).width || '140px'"
-
-    class="object-contain mt-6 cursor-pointer"
-
-    [style.marginLeft]="$any(q).left"
-
-    [style.marginTop]="$any(q).top"
-
-    alt="Imagem da pergunta"
-
-    (click)="$any(q).videoUrl && openVideo($any(q).videoUrl)"
-
-  />
+  [src]="q.image"
+  [style.width]="$any(q).width || '140px'"
+  [style.marginTop]="$any(q).top"
+  [style.marginLeft]="$any(q).imagePosition === 'right' ? '25px' : 'auto'"
+  [style.marginRight]="$any(q).imagePosition === 'center' ? 'auto' : null"
+  class="object-contain mt-6 cursor-pointer mx-auto block"
+  alt="Imagem da pergunta"
+  (click)="$any(q).videoUrl && openVideo($any(q).videoUrl)"
+/>
 
 </div>
               <div class="mt-8 w-full flex flex-col items-center" *ngIf="q.multiple || (answers[q.id] && answers[q.id] !== '')">
