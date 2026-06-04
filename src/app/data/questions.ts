@@ -20,18 +20,13 @@ export const DEMO_QUESTIONS = [
     },
     text: 'O Plano de parto é um jeito simples de você gestante conversar com a equipe de saúde. Nele, você pode dizer o que quer, o que espera e como prefere que seja o seu parto e o pós-parto. Assim, você participa das decisões sobre o seu corpo e do seu bebê, tendo suas escolhas respeitadas.',
     audioUrl: '/audio/A7.2.m4a',
-    autoAudioUrl: '/audio/A7.1.m4a'
+    autoAudioUrl: '/audio/A7.1.m4a',
+    videoUrl: 'https://youtu.be/dsQO9OoceZg?si=p-qjWk6PqAF-phW5'
   },
   {
     id: 'why',
     type: 'info',
     title: 'POR QUE FAZER UM PLANO DE PARTO?',
-    image: 'assets/P7 i7.png',
-    posicao: {
-      bottom: '20px',
-      left: '0px',
-      width: '140px'
-    },
     text: 'Fazer um plano de parto ajuda você a se sentir mais segura, informada e preparada para esse momento tão especial. Ele permite que você conheça melhor seus direitos, pense sobre como gostaria que fosse o nascimento do seu bebê e converse com a equipe de saúde sobre suas vontades, dúvidas e preferências. Além disso, o plano de parto contribui para que seu parto seja mais humanizado, respeitoso e com menos intervenções desnecessárias. Essa prática é recomendada pela Organização Mundial da Saúde desde 1996, justamente por ajudar a garantir que você participe ativamente das decisões sobre o seu parto e se torne protagonista desse momento.',
     audioUrl: '/audio/A8.2.m4a',
     autoAudioUrl: '/audio/A8.1.m4a'
@@ -81,7 +76,7 @@ export const DEMO_QUESTIONS = [
     title: 'DESEJA CONHECER A MATERNIDADE?',
     autoAudioUrl: '/audio/A11.1.m4a',
     image: 'assets/P6 i6.png',
-    width: '45%',
+    width: '100%',
     left: '0px',
     top: '20px',
     options: [
@@ -110,7 +105,7 @@ export const DEMO_QUESTIONS = [
     autoAudioUrl: '/audio/A13.1.m4a',
     title: 'DESEJAM SER INFORMADOS SOBRE OS PROCEDIMENTOS A SEREM REALIZADOS COM VOCÊ E COM O BEBÊ?',
     image: 'assets/P13 i13.png',
-    width: '100%',
+    width: '60%',
     options: [
       { texto: 'SIM', audioUrl: '/audio/A13.2.m4a' },
       { texto: 'NÃO', audioUrl: '/audio/A13.3.m4a' }
@@ -121,12 +116,15 @@ export const DEMO_QUESTIONS = [
     type: 'choice',
     title: 'TEREI UMA DOULA ME ACOMPANHANDO?',
     image: 'assets/P14 i14.png',
-    width: '100%',
+    width: '50%',
+    left: '0px',
+    top: '20px',
     autoAudioUrl: '/audio/A14.1.m4a',
     options: [
       { texto: 'SIM', audioUrl: '/audio/A14.2.m4a' },
       { texto: 'NÃO', audioUrl: '/audio/A14.3.m4a' }
-    ]
+    ],
+    videoUrl: 'https://youtu.be/L01F3mZu1UY'
   },
   {
     id: 'photo',

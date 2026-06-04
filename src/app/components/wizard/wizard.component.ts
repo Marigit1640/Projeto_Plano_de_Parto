@@ -6,6 +6,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { DEMO_QUESTIONS } from '../../data/questions';
 import { AudioService } from '../../services/audio.service';
 import { LocalStorageService } from '../../services/local-storage.service';
+import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-wizard',
@@ -64,13 +65,33 @@ import { LocalStorageService } from '../../services/local-storage.service';
               <p *ngIf="q.text" class="text-sm font-medium text-gray-700 leading-relaxed text-justify mb-8">{{q.text}}</p>
               
 
-              <img
+              <div
   *ngIf="q.image && q.id !== 'presentation'"
-  [src]="q.image"
-  [style.width]="$any(q).width || '140px'"
-  class="object-contain self-start mt-4"
-  alt="Imagem explicativa"
-/>
+  class="relative self-start mt-4"
+>
+
+  <div
+    *ngIf="$any(q).videoUrl"
+    class="flex flex-col items-center mb-2"
+  >
+    <p class="text-xs font-bold text-brand-purple whitespace-nowrap">
+      CLIQUE AQUI E SAIBA MAIS
+    </p>
+
+    <span class="text-3xl text-brand-purple">
+      ↙
+    </span>
+  </div>
+
+  <img
+    [src]="q.image"
+    [style.width]="$any(q).width || '140px'"
+    class="object-contain cursor-pointer"
+    alt="Imagem explicativa"
+    (click)="openVideo($any(q).videoUrl)"
+  />
+
+</div>
 <div class="mt-auto pt-8 w-full flex justify-center">
 <div class="fixed bottom-6 right-6 z-50">
   <button
@@ -106,12 +127,24 @@ import { LocalStorageService } from '../../services/local-storage.service';
                      />
                  </div>
               </form>
+<div
+  *ngIf="$any(q).videoUrl"
+  class="flex flex-col items-start mb-2"
+>
+  <p class="text-xs font-bold text-brand-purple">
+    CLIQUE AQUI E SAIBA MAIS
+  </p>
 
+  <span class="text-3xl text-brand-purple">
+    ↙
+  </span>
+</div>
               <img
   *ngIf="q.image"
   [src]="q.image"
   [style.width]="$any(q).width || '140px'"
-  class="object-contain mt-4 self-start"
+  class="object-contain cursor-pointer"
+  (click)="openVideo($any(q).videoUrl)"
   [style.marginLeft]="$any(q).left"
   [style.marginTop]="$any(q).top"
   alt="Imagem do formulário"
@@ -138,11 +171,7 @@ import { LocalStorageService } from '../../services/local-storage.service';
                   <p *ngIf="q.subtitle" class="text-xs text-brand-purple-dark font-medium text-center mt-2">{{q.subtitle}}</p>
                 </div>
               </div>
-              <img
-  *ngIf="$any(q).imagemTopo"
-  [src]="$any(q).imagemTopo"
-  class="w-40 mx-auto mb-6 object-contain"
-/>
+              
 
               <div class="flex flex-col w-full space-y-4">
                  <ng-container *ngFor="let opt of q.options; let i = index">
@@ -161,6 +190,7 @@ import { LocalStorageService } from '../../services/local-storage.service';
                           {{opt.texto}}
                        </button>
                     </div>
+                    
 
 <div *ngIf="q.multiple"
      class="relative w-full flex flex-col group cursor-pointer"
@@ -195,16 +225,41 @@ import { LocalStorageService } from '../../services/local-storage.service';
 
                  </ng-container>
               </div>
-              <img
-                *ngIf="q.image"
-                [src]="q.image"
-                [style.width]="$any(q).width || '140px'"
-                class="object-contain mt-6"
-                [style.marginLeft]="$any(q).left"
-                [style.marginTop]="$any(q).top"
-                alt="Imagem da pergunta"
-              />
-              
+              <div *ngIf="q.image" class="relative">
+
+<div
+  *ngIf="$any(q).videoUrl"
+  class="flex flex-col items-center mb-4 mt-4"
+>
+  <p class="text-xs font-bold text-brand-purple">
+    CLIQUE AQUI E SAIBA MAIS
+  </p>
+
+  <span class="text-3xl text-brand-purple">
+    ↓
+  </span>
+</div>
+
+
+  <img
+
+    [src]="q.image"
+
+    [style.width]="$any(q).width || '140px'"
+
+    class="object-contain mt-6 cursor-pointer"
+
+    [style.marginLeft]="$any(q).left"
+
+    [style.marginTop]="$any(q).top"
+
+    alt="Imagem da pergunta"
+
+    (click)="$any(q).videoUrl && openVideo($any(q).videoUrl)"
+
+  />
+
+</div>
               <div class="mt-8 w-full flex flex-col items-center" *ngIf="q.multiple || (answers[q.id] && answers[q.id] !== '')">
                  <button (click)="next()" class="button-primary bg-brand-purple text-white border-transparent">
                    AVANÇAR <mat-icon class="ml-2">arrow_forward</mat-icon>
@@ -212,7 +267,27 @@ import { LocalStorageService } from '../../services/local-storage.service';
               </div>
            </div>
         </div>
+<div
+  *ngIf="videoModalOpen()"
+  class="fixed inset-0 bg-black/70 flex items-center justify-center z-50 p-4">
 
+  <div class="bg-white rounded-2xl p-4 w-full max-w-3xl relative">
+
+    <button
+      (click)="closeVideo()"
+      class="absolute top-2 right-2 text-xl">
+      ✕
+    </button>
+
+    <iframe
+      class="w-full h-[400px]"
+      [src]="videoUrl"
+      allowfullscreen>
+    </iframe>
+
+  </div>
+
+</div>
      </div>
   `,
 
@@ -231,6 +306,7 @@ export class WizardComponent implements OnInit {
   private audio = inject(AudioService);
   private storage = inject(LocalStorageService);
   private fb = inject(FormBuilder);
+  private sanitizer = inject(DomSanitizer);
 
   questions = DEMO_QUESTIONS;
   currentIndex = signal<number>(0);
@@ -239,6 +315,8 @@ export class WizardComponent implements OnInit {
 
   answers: Record<string, any> = {};
   formGroup: FormGroup | null = null;
+  videoModalOpen = signal(false);
+  videoUrl: SafeResourceUrl | null = null;
 
   ngOnInit() {
     const saved = this.storage.getData('plano_parto');
@@ -367,5 +445,32 @@ playFieldAudio(field: any) {
   if (field.audioUrl) {
     this.audio.playNarration(field.audioUrl);
   }
+}
+
+openVideo(url: string) {
+  let embedUrl = url;
+
+  if (url.includes('youtu.be/')) {
+    const videoId = url.split('youtu.be/')[1].split('?')[0];
+    embedUrl = `https://www.youtube.com/embed/${videoId}`;
+  }
+
+  if (url.includes('watch?v=')) {
+    const videoId = url.split('watch?v=')[1].split('&')[0];
+    embedUrl = `https://www.youtube.com/embed/${videoId}`;
+  }
+
+  this.videoUrl =
+    this.sanitizer.bypassSecurityTrustResourceUrl(embedUrl);
+
+  this.videoModalOpen.set(true);
+}
+
+closeVideo() {
+  this.videoModalOpen.set(false);
+
+  setTimeout(() => {
+    this.videoUrl = null;
+  }, 100);
 }
 }
