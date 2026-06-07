@@ -167,9 +167,13 @@ import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
               <!-- ADICIONADO: Imagem para o tipo CHOICE (caso decida colocar imagem nestas telas no futuro) -->
               
               <div class="relative w-full flex flex-col items-center mb-8">
-               <div class="absolute left-[-20px] top-[-10px] cursor-pointer text-brand-purple-dark bg-white border-brand-purple border-2 rounded-full p-2 h-16 w-16 flex items-center justify-center z-10 hover:bg-brand-pink-light shadow-md">
-                   <mat-icon class="scale-125">volume_up</mat-icon>
-                </div>
+               <div
+  class="absolute left-[-20px] top-[-10px] cursor-pointer text-brand-purple-dark bg-white border-brand-purple border-2 rounded-full p-2 h-16 w-16 flex items-center justify-center z-10 hover:bg-brand-pink-light shadow-md"
+  (click)="playQuestionAudio()">
+
+   <mat-icon class="scale-125">volume_up</mat-icon>
+
+</div>
                 <div class="bg-white border-2 border-brand-purple rounded-3xl pt-8 pb-6 px-4 w-full shadow-sm">
                   <h2 class="text-[13px] font-bold text-brand-purple-dark uppercase text-center leading-relaxed">{{q.title}}</h2>
                   <p *ngIf="q.subtitle" class="text-xs text-brand-purple-dark font-medium text-center mt-2">{{q.subtitle}}</p>
@@ -198,10 +202,26 @@ import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
   </div>
 
   <button
-    (click)="selectSingleChoice(q.id, opt.texto)"
-    [class.bg-brand-purple]="answers[q.id] === opt.texto"
-    [class.text-white]="answers[q.id] === opt.texto"
-    [class.bg-white]="answers[q.id] !== opt.texto"
+    (click)="q.multiple
+      ? toggleMultiChoice(q.id, opt.texto)
+      : selectSingleChoice(q.id, opt.texto)"
+    [class.bg-brand-purple]="
+  q.multiple
+    ? isArraySelected(q.id, opt.texto)
+    : answers[q.id] === opt.texto
+"
+
+[class.text-white]="
+  q.multiple
+    ? isArraySelected(q.id, opt.texto)
+    : answers[q.id] === opt.texto
+"
+
+[class.bg-white]="
+  q.multiple
+    ? !isArraySelected(q.id, opt.texto)
+    : answers[q.id] !== opt.texto
+"
     class="pl-20 pr-4 w-full h-12
        border-2 border-brand-purple
        rounded-full
@@ -258,7 +278,13 @@ import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 />
 
 </div>
-              <div class="mt-8 w-full flex flex-col items-center" *ngIf="q.multiple || (answers[q.id] && answers[q.id] !== '')">
+              <div
+  class="mt-8 w-full flex flex-col items-center"
+  *ngIf="
+    q.multiple
+      ? (answers[q.id]?.length > 0)
+      : (answers[q.id] && answers[q.id] !== '')
+  ">
                  <button (click)="next()" class="button-primary bg-brand-purple text-white border-transparent">
                    AVANÇAR <mat-icon class="ml-2">arrow_forward</mat-icon>
                  </button>
@@ -334,8 +360,10 @@ export class WizardComponent implements OnInit {
 
   this.audio.playBubbleSound();
 
-  if (q.audioUrl) {
-    this.audio.playNarration(q.audioUrl);
+  const audio = q.audioUrl || q.autoAudioUrl;
+
+  if (audio) {
+    this.audio.playNarration(audio);
   }
 }
   buildFormContext() {

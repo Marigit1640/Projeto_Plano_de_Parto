@@ -33,6 +33,17 @@ import { DEMO_QUESTIONS } from '../../data/questions';
         <button (click)="generatePdf()" class="button-primary font-bold shadow-lg bg-brand-purple text-white border-transparent">
           BAIXAR PDF <mat-icon class="ml-2 py-0 my-0 relative top-[2px]">picture_as_pdf</mat-icon>
         </button>
+        <button
+  (click)="openPdf()"
+  class="button-primary font-bold shadow-lg">
+
+  ABRIR PDF
+
+  <mat-icon class="ml-2">
+    open_in_new
+  </mat-icon>
+
+</button>
         <button (click)="generateCsv()" class="button-primary font-bold shadow-lg text-brand-purple-dark hover:bg-brand-purple hover:text-white">
           BAIXAR CSV <mat-icon class="ml-2 py-0 my-0 relative top-[2px]">table_chart</mat-icon>
         </button>
@@ -72,7 +83,6 @@ export class FinalComponent {
   generateCsv() {
     this.audio.playBubbleSound();
     const data = this.storage.getData('plano_parto') || {};
-    
     let csvContent = "data:text/csv;charset=utf-8,";
     csvContent += "Pergunta,Resposta\n";
 
@@ -111,4 +121,8 @@ export class FinalComponent {
        this.router.navigate(['/']);
     }
   }
+  openPdf() {
+  const data = this.storage.getData('plano_parto') || {};
+  this.pdfService.generatePdf(data);
+}
 }
