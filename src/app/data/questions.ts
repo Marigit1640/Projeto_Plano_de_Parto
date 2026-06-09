@@ -285,7 +285,7 @@ export const DEMO_QUESTIONS = [
       },
       {
         texto: 'POSIÇÃO LATERAL(DECÚBITO LATERAL ESQUERDO)',
-        imagem: 'assets/p26 i262.png',
+        imagem: 'assets/P26 i262.png',
         audioUrl: '/audio/A26.2.m4a',
         videoUrl: 'https://youtu.be/_8qbXoPdTEo?si=yb2w87fU921O2aMt'
       },
