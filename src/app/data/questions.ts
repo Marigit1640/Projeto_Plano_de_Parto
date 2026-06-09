@@ -144,9 +144,6 @@ export const DEMO_QUESTIONS = [
       {
         texto: 'MASSAGENS (REALIZADA PELO ACOMPANHANTE OU PELA DOULA)',
         imagem: 'assets/P16 i161.png',
-        width: '90px',
-        left: '80px',
-        top: '-10px',
         audioUrl: '/audio/A16.2.m4a',
         videoUrl: 'https://youtu.be/JLTeGLylAJQ?si=Isn0ww90LSPYfTw2'
       },
@@ -247,36 +244,42 @@ export const DEMO_QUESTIONS = [
       {
         texto: 'POSIÇÃO DE CÓCORAS (AGACHADA)',
         imagem: 'assets/P23 i231.png',
-        audioUrl: '/audio/A23.2.m4a'
+        audioUrl: '/audio/A23.2.m4a',
+        videoUrl: 'https://youtu.be/KRzw4dlgWAI?si=yCJ8qgG3bVu0wzHm'
       },
       {
         texto: 'POSIÇÃO DE CÓCORAS ASSISTIDA (COM APOIO OU BARRA DE PARTO)',
         imagem: 'assets/P23 i232.png',
-        audioUrl: '/audio/A23.3.m4a'
+        audioUrl: '/audio/A23.3.m4a',
+        videoUrl: 'https://youtu.be/KRzw4dlgWAI?si=yCJ8qgG3bVu0wzHm'
       },
       {
         texto: 'POSIÇÃO EM QUATRO APOIOS (GENUPEITORAL)',
         imagem: 'assets/P24 i241.png',
-        audioUrl: '/audio/A24.1.m4a'
+        audioUrl: '/audio/A24.1.m4a',
+        videoUrl: 'https://youtu.be/f_-15t3tfVY?si=VvEWqvqHZgByDFaV'
       },
       {
         texto: 'POSIÇÃO AJOELHADA(VERTICAL APOIADA)',
         imagem: 'assets/P24 i242.png',
-        audioUrl: '/audio/A24.2.m4a'
+        audioUrl: '/audio/A24.2.m4a',
+        videoUrl: 'https://youtu.be/f_-15t3tfVY?si=VvEWqvqHZgByDFaV'
       },
       {
         texto: 'POSIÇÃO SENTADA',
         imagem: 'assets/P25 i251.png',
-        audioUrl: '/audio/A25.1.m4a'
+        audioUrl: '/audio/A25.1.m4a',
+        videoUrl: 'https://youtu.be/YiYp-1V9L_M?si=jGRSjARdHwFZzoRO'
       },
       {
         texto: 'POSIÇÃO EM PÉ(ORTOSTÁTICA)',
         imagem: 'assets/P25 i252.png',
-        audioUrl: '/audio/A25.2.m4a'
+        audioUrl: '/audio/A25.2.m4a',
+        videoUrl: 'https://youtu.be/YiYp-1V9L_M?si=jGRSjARdHwFZzoRO'
       },
       {
         texto: 'POSIÇÕES HORIZONTAIS OU SEMI-RECLINADAS',
-        imagem: 'assets/p26 i261.png',
+        imagem: 'assets/p26 i261.jfif',
         audioUrl: '/audio/A26.1.m4a',
         videoUrl: 'https://youtu.be/stfa_fjo-Ss?si=dzOMtHZ-xE-QzeiN'
       },

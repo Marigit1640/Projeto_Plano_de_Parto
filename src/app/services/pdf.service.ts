@@ -13,7 +13,9 @@ buildPdfMake.vfs =
 @Injectable({ providedIn: 'root' })
 export class PdfService {
 
-  generatePdf(data: any) {
+  private createPdf(data: any) {
+
+  
     console.log('DADOS RECEBIDOS NO PDF:', data);
     try {
 const hoje = new Date().toLocaleDateString('pt-BR');
@@ -422,33 +424,26 @@ cardAnswer: {
 }
 }
 };
+return buildPdfMake.createPdf(documentDefinition);
 
-      console.log('Antes do createPdf');
 
-      buildPdfMake
-  .createPdf(documentDefinition)
-  .getBlob((blob: Blob) => {
+} catch (error) {
+  console.error('ERRO PDF:', error);
+}
 
-    const url = URL.createObjectURL(blob);
+}
 
-    const a = document.createElement('a');
-    a.href = url;
-    const nomeArquivo =
-  `Plano_de_Parto_${data.name || 'Gestante'}.pdf`;
 
-a.download = nomeArquivo;
+generatePdf(data: any) {
+  const pdf = this.createPdf(data);
 
-    document.body.appendChild(a);
-    a.click();
-    document.body.removeChild(a);
+  pdf.download(
+    `Plano_de_Parto_${data.name || 'Gestante'}.pdf`
+  );
+}
+openPdf(data: any) {
+  const pdf = this.createPdf(data);
 
-    URL.revokeObjectURL(url);
-  });
-
-      console.log('Depois do createPdf');
-
-    } catch (error) {
-      console.error('ERRO PDF:', error);
-    }
-  }
+  pdf.open();
+}
 }

@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { MatIconModule } from '@angular/material/icon';
@@ -6,6 +6,7 @@ import { PdfService } from '../../services/pdf.service';
 import { LocalStorageService } from '../../services/local-storage.service';
 import { AudioService } from '../../services/audio.service';
 import { DEMO_QUESTIONS } from '../../data/questions';
+
 
 @Component({
   selector: 'app-final',
@@ -33,15 +34,42 @@ import { DEMO_QUESTIONS } from '../../data/questions';
         <button (click)="generatePdf()" class="button-primary font-bold shadow-lg bg-brand-purple text-white border-transparent">
           BAIXAR PDF <mat-icon class="ml-2 py-0 my-0 relative top-[2px]">picture_as_pdf</mat-icon>
         </button>
-        <button
-  (click)="openPdf()"
+  <button
+    (click)="openPdf()"
+    class="button-primary font-bold shadow-lg">
+
+    ABRIR PDF
+
+    <img
+    src="assets/P36 i361.jfif"
+    alt="PDF"
+    class="w-6 h-6 ml-2 inline-block">
+
+  </button>
+
+  <button
+    (click)="shareWhatsapp()"
+    class="button-primary font-bold shadow-lg bg-green-600 text-white">
+
+    WHATSAPP
+
+    <img
+    src="assets/P36 i362.jfif"
+    alt="WhatsApp"
+    class="w-6 h-6 ml-2 inline-block">
+
+  </button>
+
+  <button
+  (click)="shareEmail()"
   class="button-primary font-bold shadow-lg">
 
-  ABRIR PDF
+  E-MAIL
 
-  <mat-icon class="ml-2">
-    open_in_new
-  </mat-icon>
+  <img
+    src="assets/P36 i363.jfif"
+    alt="Email"
+    class="w-6 h-6 ml-2 inline-block">
 
 </button>
         <button (click)="generateCsv()" class="button-primary font-bold shadow-lg text-brand-purple-dark hover:bg-brand-purple hover:text-white">
@@ -64,14 +92,23 @@ import { DEMO_QUESTIONS } from '../../data/questions';
     }
   `]
 })
-export class FinalComponent {
+
+export class FinalComponent implements OnInit {
   private pdfService = inject(PdfService);
   private storage = inject(LocalStorageService);
   private audio = inject(AudioService);
   private router = inject(Router);
 
+ngOnInit() {
+    setTimeout(() => {
+      this.audio.playNarration('/audio/A36.1.m4a');
+    }, 500);
+  }
+
   playSound() {
     this.audio.playBubbleSound();
+    this.audio.playNarration('/audio/A36.1.m4a');
+
   }
 
   generatePdf() {
@@ -121,8 +158,31 @@ export class FinalComponent {
        this.router.navigate(['/']);
     }
   }
-  openPdf() {
-  const data = this.storage.getData('plano_parto') || {};
-  this.pdfService.generatePdf(data);
+openPdf() {
+  const data =
+    this.storage.getData('plano_parto') || {};
+
+  this.pdfService.openPdf(data);
+}
+shareWhatsapp() {
+
+  const texto =
+    'Olá! Segue meu Plano de Parto.';
+
+  const url =
+    `https://wa.me/?text=${encodeURIComponent(texto)}`;
+
+  window.open(url, '_blank');
+}
+
+shareEmail() {
+
+  const assunto = 'Plano de Parto';
+
+  const corpo =
+    'Olá! Segue meu Plano de Parto.';
+
+  window.location.href =
+    `mailto:?subject=${encodeURIComponent(assunto)}&body=${encodeURIComponent(corpo)}`;
 }
 }
