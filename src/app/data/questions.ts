@@ -398,6 +398,7 @@ export const DEMO_QUESTIONS = [
       { texto: 'SIM', audioUrl: '/audio/A35.2.m4a' },
       { texto: 'NÃO', audioUrl: '/audio/A35.3.m4a' }
     ],
-    image: 'assets/P35 i35.png'
+    image: 'assets/P35 i35.png',
+    videoUrl: 'https://youtu.be/YBcuOH7jpAo?si=ibXKhM9e9c8x6rS1'
   }
 ];

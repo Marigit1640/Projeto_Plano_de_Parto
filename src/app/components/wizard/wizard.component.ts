@@ -174,8 +174,8 @@ import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
    <mat-icon class="scale-125">volume_up</mat-icon>
 
 </div>
-                <div class="bg-white border-2 border-brand-purple rounded-3xl pt-8 pb-6 pl-12 pr-4 w-full shadow-sm">
-                  <h2 class="text-[13px] font-bold text-brand-purple-dark uppercase text-center leading-relaxed">{{q.title}}</h2>
+                <div class="bg-white border-2 border-brand-purple rounded-3xl py-6 px-6 w-full shadow-sm">
+                  <h2 class="text-[13px] font-bold text-brand-purple-dark uppercase text-center leading-relaxed px-4">{{q.title}}</h2>
                   <p *ngIf="q.subtitle" class="text-xs text-brand-purple-dark font-medium text-center mt-2">{{q.subtitle}}</p>
                 </div>
               </div>
