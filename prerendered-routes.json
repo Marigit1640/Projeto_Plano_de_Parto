@@ -1,0 +1,8 @@
+{
+  "routes": {
+    "/Projeto_Plano_de_Parto": {},
+    "/Projeto_Plano_de_Parto/final": {},
+    "/Projeto_Plano_de_Parto/login": {},
+    "/Projeto_Plano_de_Parto/wizard": {}
+  }
+}
