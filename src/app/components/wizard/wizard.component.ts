@@ -12,7 +12,7 @@ import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
   selector: 'app-wizard',
   imports: [CommonModule, ReactiveFormsModule, MatIconModule],
   template: `
-    <div class="flex flex-col items-center min-h-screen p-6 w-full relative pb-24">
+    <div class="flex flex-col items-center min-h-screen p-6 w-full relative pb-40">
         <!-- Top Navigation / Progress -->
         <div class="w-full flex justify-between items-center mb-6" *ngIf="currentIndex() > 0">
            <button (click)="prev()" class="text-brand-purple p-2" aria-label="Voltar">
@@ -27,8 +27,8 @@ import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
            <div *ngIf="q.type === 'info'" class="flex flex-col items-center text-center w-full relative">
               
               <!-- Optional Logo -->
-              <div
-  *ngIf="q.id === 'presentation'"
+             <div
+  *ngIf="q.id === 'presentation' || q.id === 'developers'"
   class="mb-8 flex items-center justify-center gap-2"
 >
   <div class="fixed bottom-8 right-8 z-50">
@@ -40,23 +40,27 @@ import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 
   </button>
 </div>
-  <img
-    src="assets/P2 i2.png"
-    class="w-20 h-20 object-contain flex-shrink-0"
-    alt="Logo UFSJ"
-  />
+ <img
+  [src]="q.image"
+  class="w-20 h-20 object-contain flex-shrink-0"
+  alt="Logo"
+/>
 
   <div class="text-brand-purple-dark uppercase leading-tight">
-    <p class="font-semibold italic text-sm">
-      UNIVERSIDADE FEDERAL
-    </p>
-    <p class="font-semibold italic text-sm">
-      DE SÃO JOÃO DEL-REI
-    </p>
-    <p class="font-semibold italic text-sm">
-      CAMPUS CENTRO-OESTE
-    </p>
-  </div>
+
+  <ng-container *ngIf="q.id === 'presentation'">
+    <p class="font-semibold italic text-sm">UNIVERSIDADE FEDERAL</p>
+    <p class="font-semibold italic text-sm">DE SÃO JOÃO DEL-REI</p>
+    <p class="font-semibold italic text-sm">CAMPUS CENTRO-OESTE</p>
+  </ng-container>
+
+  <ng-container *ngIf="q.id === 'developers'">
+    <p class="font-semibold italic text-sm">CEFET-MG</p>
+    <p class="font-semibold italic text-sm">CAMPUS DIVINÓPOLIS</p>
+  </ng-container>
+
+</div>
+
 </div>
               <!-- ADICIONADO: Imagem para o tipo INFO -->
               
@@ -66,7 +70,7 @@ import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
               
 
               <div
-  *ngIf="q.image && q.id !== 'presentation'"
+  *ngIf="q.image && q.id !== 'presentation' && q.id !== 'developers'"
   class="relative self-start mt-4"
 >
 
@@ -291,6 +295,37 @@ import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
               </div>
            </div>
         </div>
+        <!-- RODAPÉ -->
+
+<div class="fixed bottom-4 left-0 w-full flex justify-center z-40">
+
+  <div class="w-full max-w-sm px-6">
+
+    <div class="flex items-center">
+
+      <div class="flex-1 h-px bg-brand-purple opacity-75"></div>
+
+      <mat-icon
+        class="mx-4 text-brand-purple opacity-100 text-[14px]">
+
+        favorite_border
+
+      </mat-icon>
+
+      <div class="flex-1 h-px bg-brand-purple opacity-50"></div>
+
+    </div>
+
+    <p
+      class="text-center mt-1 text-[11px] tracking-wide text-brand-purple opacity-115">
+
+      UFSJ • CEFET-MG
+
+    </p>
+
+  </div>
+
+</div>
 <div
   *ngIf="videoModalOpen()"
   class="fixed inset-0 bg-black/70 flex items-center justify-center z-50 p-4">

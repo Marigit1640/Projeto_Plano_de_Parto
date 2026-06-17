@@ -7,6 +7,13 @@ export const DEMO_QUESTIONS = [
     text: 'Este aplicativo foi criado com base em informações científicas sobre gestação e plano de parto.\n\nAqui, você encontra orientações para se sentir mais segura, informada e preparada para o nascimento do seu bebê.',
     audioUrl: '/audio/A2.m4a'
   },
+  {
+     id: 'developers',
+    type: 'info',
+    image: 'assets/CEFET-MG_logo.png',
+    text: 'Este aplicativo foi desenvolvido por meio de uma parceria entre a UFSJ e o departamento de computação do CEFET-MG campus Divinópolis.\n\nFoi desenvolvido pelas alunas Ana Laura Cândida Cajueiro da Silva e Mariana Maria Marques Ferreira sob a orientação da coordenadora dos cursos técnicos do departamento de computação do campus Divinópolis Thabatta Moreira Alves de Araújo e do professor Roberth Oliveira Corgosinho.',
+
+  },
 
   {
     id: 'intro',
@@ -313,7 +320,7 @@ export const DEMO_QUESTIONS = [
       { texto: 'NÃO', audioUrl: '/audio/A28.3.m4a' }
     ],
     image: 'assets/P28 i28.png',
-    videoUrl: 'https://youtu.be/NGrTEjnpyYs?si=ijwmoo8x6vbX6ePt',
+    videoUrl: 'https://youtu.be/Uj5t_oHDLlA?is=UcvGhFb5_la4s6dj',
     width: '90%'
   },
   {
