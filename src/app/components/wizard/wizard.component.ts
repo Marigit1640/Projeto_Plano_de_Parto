@@ -67,6 +67,29 @@ import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 
               <h2 *ngIf="q.title" class="text-2xl font-display font-bold text-brand-purple-dark uppercase mb-6">{{q.title}}</h2>
               <p *ngIf="q.text" class="text-sm font-medium text-gray-700 leading-relaxed text-justify mb-8">{{q.text}}</p>
+              <div *ngIf="q.id === 'presentation'" class="mt-8">
+
+  <div class="flex items-center justify-center gap-2 mb-6">
+
+    <img
+      [src]="$any(q).secondImage"
+      class="w-20 h-20 object-contain"
+      alt="Logo CEFET"
+    />
+
+    <div class="text-brand-purple-dark uppercase leading-tight">
+      <p class="font-semibold italic text-sm">CEFET-MG</p>
+      <p class="font-semibold italic text-sm">CAMPUS DIVINÓPOLIS</p>
+    </div>
+
+  </div>
+
+  <p
+    class="text-sm font-medium text-gray-700 leading-relaxed text-justify">
+    {{$any(q).developersText}}
+  </p>
+
+</div>
               
 
               <div

@@ -39,6 +39,7 @@
     "@types/express": "^5.0.1",
     "@types/node": "^20.17.19",
     "@types/pdfmake": "^0.3.3",
+    "angular-cli-ghpages": "^3.1.0",
     "angular-eslint": "21.1.0",
     "concurrently": "^9.2.1",
     "cross-env": "^10.1.0",

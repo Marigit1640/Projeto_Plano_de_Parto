@@ -75,7 +75,17 @@ import { DEMO_QUESTIONS } from '../../data/questions';
         <button (click)="generateCsv()" class="button-primary font-bold shadow-lg text-brand-purple-dark hover:bg-brand-purple hover:text-white">
           BAIXAR CSV <mat-icon class="ml-2 py-0 my-0 relative top-[2px]">table_chart</mat-icon>
         </button>
-        
+        <button
+  (click)="goToAbout()"
+  class="button-primary font-bold shadow-lg">
+
+  QUEM SOMOS NÓS
+
+  <mat-icon class="ml-2">
+    groups
+  </mat-icon>
+
+</button>
         <button (click)="restart()" class="text-brand-purple-light font-bold text-sm tracking-wide pt-6 uppercase hover:text-brand-purple transition-colors flex items-center justify-center">
            <mat-icon class="mr-1 scale-75">refresh</mat-icon> Refazer Plano
         </button>
@@ -101,13 +111,13 @@ export class FinalComponent implements OnInit {
 
 ngOnInit() {
     setTimeout(() => {
-      this.audio.playNarration('/audio/A36.1.m4a');
+      this.audio.playNarration('audio/A36.1.m4a');
     }, 500);
   }
 
   playSound() {
     this.audio.playBubbleSound();
-    this.audio.playNarration('/audio/A36.1.m4a');
+    this.audio.playNarration('audio/A36.1.m4a');
 
   }
 
@@ -184,5 +194,9 @@ shareEmail() {
 
   window.location.href =
     `mailto:?subject=${encodeURIComponent(assunto)}&body=${encodeURIComponent(corpo)}`;
+}
+goToAbout() {
+  this.audio.playBubbleSound();
+  this.router.navigate(['/about']);
 }
 }

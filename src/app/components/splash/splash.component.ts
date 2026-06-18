@@ -42,7 +42,7 @@ export class SplashComponent {
 
   playNarration() {
   this.audio.playBubbleSound();
-  this.audio.playNarration('/audio/A1.m4a');
+  this.audio.playNarration('audio/A1.m4a');
 }
 
   navigate() {

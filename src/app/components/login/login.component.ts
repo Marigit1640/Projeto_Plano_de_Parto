@@ -50,13 +50,13 @@ export class LoginComponent implements OnInit{
 
   ngOnInit() {
   setTimeout(() => {
-    this.audio.playNarration('/audio/A3.1.m4a');
+    this.audio.playNarration('audio/A3.1.m4a');
   }, 500);
 }
 
   playNarration() {
   this.audio.playBubbleSound();
-  this.audio.playNarration('/audio/A3.2.m4a');
+  this.audio.playNarration('audio/A3.2.m4a');
 }
 
   onSubmit() {
