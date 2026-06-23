@@ -121,11 +121,13 @@ ngOnInit() {
 
   }
 
-  generatePdf() {
-    this.audio.playBubbleSound();
-    const data = this.storage.getData('plano_parto') || {};
-    this.pdfService.generatePdf(data);
-  }
+generatePdf() {
+  this.audio.playBubbleSound();
+
+  this.router.navigate(['/pdf-preview'], {
+    state: { autoPrint: true }
+  });
+}
 
   generateCsv() {
     this.audio.playBubbleSound();
@@ -168,12 +170,12 @@ ngOnInit() {
        this.router.navigate(['/']);
     }
   }
+  
 openPdf() {
-  const data =
-    this.storage.getData('plano_parto') || {};
-
-  this.pdfService.openPdf(data);
+  this.audio.playBubbleSound();
+  this.router.navigate(['/pdf-preview']);
 }
+
 shareWhatsapp() {
 
   const texto =

@@ -13,3 +13,5 @@ npm server -o
 Comandos fazer a build
 ng build --configuration production --base-href=/Projeto_Plano_de_Parto/
 ng deploy --base-href=/Projeto_Plano_de_Parto/
+PDF
+npm install jspdf html2canvas

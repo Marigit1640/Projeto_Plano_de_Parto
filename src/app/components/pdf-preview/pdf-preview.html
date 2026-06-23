@@ -1,0 +1,344 @@
+
+<div id="pdf-content" class="pdf-page print-area">
+
+<div class="hero">
+
+  <div class="hero-top">
+
+    <div class="hero-left">
+
+      <img
+        src="assets/mother-icon.png.png"
+        alt="Plano de Parto"
+        class="mother-icon"
+      >
+
+      <div class="title-area">
+
+        <h1>PLANO DE PARTO</h1>
+
+        <p>
+          Respeito, informação e autonomia
+          para um parto positivo
+        </p>
+
+      </div>
+
+    </div>
+
+    <div class="logos">
+
+      <img
+        src="assets/CEFET-MG_logo.png"
+        alt="CEFET"
+      >
+
+      <img
+        src="assets/P2 i2.png"
+        alt="UFSJ"
+      >
+
+    </div>
+
+  </div>
+
+</div>
+  <div class="cover-card">
+
+  <h2>Plano de Parto de</h2>
+
+  <h1>{{ data.name || 'Gestante' }}</h1>
+
+  <p>
+    Documento contendo as preferências da gestante para
+    trabalho de parto, parto, nascimento e pós-parto.
+  </p>
+
+  <div class="cover-info">
+
+    <div>
+      <span>Bebê: </span>
+      <strong>{{ data.babyName || '-' }}</strong>
+    </div>
+
+    <div>
+      <span>Data de emissão: </span>
+      <strong>{{ today.toLocaleDateString('pt-BR') }}</strong>
+    </div>
+
+  </div>
+
+</div>
+
+  <!-- DADOS PESSOAIS -->
+
+  <div class="section-card">
+
+    <h2>DADOS PESSOAIS</h2>
+
+    <div class="info-grid">
+
+      <div class="info-item">
+        <span>Nome</span>
+        <strong>{{ data.name || '-' }}</strong>
+      </div>
+
+      <div class="info-item">
+        <span>CPF</span>
+        <strong>{{ data.cpf || '-' }}</strong>
+      </div>
+
+      <div class="info-item">
+        <span>Telefone</span>
+        <strong>{{ data.phone || '-' }}</strong>
+      </div>
+
+      <div class="info-item">
+        <span>Data de nascimento</span>
+        <strong>{{ data.dob || '-' }}</strong>
+      </div>
+
+    </div>
+
+  </div>
+
+  <!-- BEBÊ -->
+
+  <div class="section-card">
+
+    <h2>DADOS DO BEBÊ</h2>
+
+    <div class="info-grid">
+
+      <div class="info-item">
+        <span>Nome do bebê</span>
+        <strong>{{ data.babyName || '-' }}</strong>
+      </div>
+
+      <div class="info-item">
+        <span>Sexo</span>
+        <strong>{{ data.babySex || '-' }}</strong>
+      </div>
+
+    </div>
+
+  </div>
+
+  <!-- ACOMPANHANTE -->
+
+  <div class="section-card">
+
+    <h2>ACOMPANHANTE</h2>
+
+    <div class="info-item">
+
+      <span>Escolha</span>
+
+      <strong>
+  {{ formatValue(data.companion) }}
+</strong>
+
+    </div>
+
+  </div>
+
+  <!-- TRABALHO DE PARTO -->
+
+  <div class="section-card">
+
+    <h2>TRABALHO DE PARTO</h2>
+
+    <div class="info-grid">
+
+      <div class="info-item">
+  <span>Alívio da dor</span>
+  <strong>{{ formatValue(data.pain_relief) }}</strong>
+</div>
+
+<div class="info-item">
+  <span>Posições escolhidas</span>
+  <strong>{{ formatValue(data.positions_options) }}</strong>
+</div>
+
+<div class="info-item">
+  <span>Alimentação</span>
+  <strong>{{ formatValue(data.food) }}</strong>
+</div>
+
+<div class="info-item">
+  <span>Cuidados desejados</span>
+  <strong>{{ formatValue(data.care) }}</strong>
+</div>
+
+    </div>
+
+  </div>
+
+  <!-- NASCIMENTO -->
+
+  <div class="section-card">
+
+    <h2>PARTO E NASCIMENTO</h2>
+
+    <div class="info-grid">
+
+      <div class="info-item">
+        <span>Parto na água</span>
+        <strong>{{ data.parto_agua }}</strong>
+      </div>
+
+      <div class="info-item">
+        <span>Episiotomia</span>
+        <strong>{{ data.episiotomy }}</strong>
+      </div>
+
+      <div class="info-item">
+        <span>Corte do cordão</span>
+        <strong>{{ data.cord_cutting }}</strong>
+      </div>
+
+      <div class="info-item">
+        <span>Após o nascimento</span>
+        <strong>{{ formatValue(data.after_birth) }}</strong>
+      </div>
+
+      <div class="info-item">
+  <span>Posições escolhidas para o parto</span>
+  <strong>
+    {{ formatValue(data.positions_options) }}
+  </strong>
+</div>
+
+    </div>
+
+  </div>
+
+  <!-- PÓS-PARTO -->
+
+  <div class="section-card">
+
+    <h2>PÓS-PARTO</h2>
+
+    <div class="info-grid">
+
+      <div class="info-item">
+        <span>Cuidados com o bebê</span>
+        <strong>{{ data.baby_care }}</strong>
+      </div>
+
+      <div class="info-item">
+        <span>DIU pós-parto</span>
+        <strong>{{ data.diu }}</strong>
+      </div>
+
+    </div>
+
+  </div>
+  <div class="section-card">
+
+  <h2>PREFERÊNCIAS GERAIS</h2>
+
+  <div class="info-grid">
+
+    <div class="info-item">
+      <span>Conhecer maternidade</span>
+      <strong>{{ data.maternity || '-' }}</strong>
+    </div>
+
+    <div class="info-item">
+      <span>Informar procedimentos</span>
+      <strong>{{ data.procedures_informed || '-' }}</strong>
+    </div>
+
+    <div class="info-item">
+      <span>Doula</span>
+      <strong>{{ data.doula || '-' }}</strong>
+    </div>
+
+    <div class="info-item">
+      <span>Fotografar parto</span>
+      <strong>{{ data.photo || '-' }}</strong>
+    </div>
+
+    <div class="info-item">
+      <span>Comunicar intervenções</span>
+      <strong>{{ data.interventions || '-' }}</strong>
+    </div>
+
+    <div class="info-item">
+      <span>Toque vaginal a cada 4h</span>
+      <strong>{{ data.tempo_toque || '-' }}</strong>
+    </div>
+
+    <div class="info-item">
+      <span>Acompanhante em cesárea</span>
+      <strong>{{ data.cesarean_companion || '-' }}</strong>
+    </div>
+
+  </div>
+
+</div>
+
+<div class="section-card">
+
+  <h2>RESUMO DAS ESCOLHAS</h2>
+
+  <div class="info-grid">
+
+    <div class="info-item">
+      <span>Alívio da dor</span>
+      <strong>{{ formatValue(data.pain_relief) }}</strong>
+    </div>
+
+    <div class="info-item">
+      <span>Posições para o parto</span>
+      <strong>{{ formatValue(data.positions_options) }}</strong>
+    </div>
+
+    <div class="info-item">
+      <span>Ambiente desejado</span>
+      <strong>{{ formatValue(data.care) }}</strong>
+    </div>
+
+    <div class="info-item">
+      <span>Após o nascimento</span>
+      <strong>{{ formatValue(data.after_birth) }}</strong>
+    </div>
+
+  </div>
+
+</div>
+<div class="footer">
+
+  <p>
+    Este documento expressa as preferências da gestante
+    e deve ser considerado pela equipe assistencial.
+  </p>
+
+  <div class="signature-area">
+
+    <div class="signature-box">
+      <div class="line"></div>
+      <span>Gestante</span>
+    </div>
+
+    <div class="signature-box">
+      <div class="line"></div>
+      <span>Profissional de Saúde</span>
+    </div>
+
+  </div>
+
+  <div class="footer-date">
+    Emitido em {{ today.toLocaleDateString('pt-BR') }}
+  </div>
+
+</div>
+<div class="footer-info">
+
+  Plano de Parto gerado pelo aplicativo educativo
+  desenvolvido pela UFSJ e CEFET-MG.
+
+</div>
+
+</div>

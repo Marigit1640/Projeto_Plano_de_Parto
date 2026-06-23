@@ -22,7 +22,7 @@ export const DEMO_QUESTIONS = [
     text: 'O Plano de parto é um jeito simples de você gestante conversar com a equipe de saúde. Nele, você pode dizer o que quer, o que espera e como prefere que seja o seu parto e o pós-parto. Assim, você participa das decisões sobre o seu corpo e do seu bebê, tendo suas escolhas respeitadas.',
     audioUrl: 'audio/A7.2.m4a',
     autoAudioUrl: 'audio/A7.1.m4a',
-    videoUrl: 'https://youtu.be/dsQO9OoceZg?si=p-qjWk6PqAF-phW5'
+    videoUrl: 'https://youtu.be/CX_DLA0LE6o?is=F-RgjUWcR-gPo1ZH'
   },
   {
     id: 'why',
@@ -58,8 +58,8 @@ export const DEMO_QUESTIONS = [
     left: '0px',
     top: '20px',
     fields: [
-      { id: 'babyName', label: 'NOME', type: 'texto', audioUrl: 'audio/A5.2.m4a' },
-      { id: 'babySex', label: 'SEXO', type: 'texto', audioUrl: 'audio/A5.3.m4a' }
+      { id: 'babyName', label: 'NOME DO BEBÊ', type: 'texto', audioUrl: 'audio/A5.2.m4a' },
+      { id: 'babySex', label: 'SEXO DO BEBÊ', type: 'texto', audioUrl: 'audio/A5.3.m4a' }
     ]
   },
   {
@@ -354,7 +354,7 @@ export const DEMO_QUESTIONS = [
       { texto: 'NÃO', audioUrl: 'audio/A31.3.m4a' }
     ],
     image: 'assets/P31 i31.png',
-    videoUrl: 'https://youtu.be/g7Cg2y67Tes?si=ecF-kw7mUDkJbvhr'
+    videoUrl: 'https://youtu.be/22M2ceN2OYY?is=S3s_EfN0JZBRkXSt'
   },
   {
     id: 'after_birth',

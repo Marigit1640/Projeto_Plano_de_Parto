@@ -4,6 +4,7 @@ import { LoginComponent } from './components/login/login.component';
 import { WizardComponent } from './components/wizard/wizard.component';
 import { FinalComponent } from './components/final/final.component';
 import { AboutComponent } from './pages/about/about';
+import { PdfPreview } from './components/pdf-preview/pdf-preview';
 
 export const routes: Routes = [
   { path: '', component: SplashComponent },
@@ -13,6 +14,10 @@ export const routes: Routes = [
    {
   path: 'about',
   component: AboutComponent
+},
+{
+  path: 'pdf-preview',
+  component: PdfPreview
 },
   { path: '**', redirectTo: '' }
 ];

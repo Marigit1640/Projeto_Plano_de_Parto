@@ -148,12 +148,14 @@ import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
                      <div class="absolute left-0 top-1/2 -translate-y-1/2 cursor-pointer text-brand-purple-dark bg-white border-brand-purple border-2 rounded-full p-2 h-14 w-14 flex items-center justify-center z-10 hover:bg-brand-pink-light shadow-sm" (click)="playFieldAudio(field)">
                          <mat-icon>volume_up</mat-icon>
                      </div>
-                     <input 
-                       [type]="field.type" 
-                       [formControlName]="field.id"
-                       [placeholder]="field.label"
-                       class="pl-16 pr-6 w-full h-14 border-2 border-brand-purple rounded-full text-xs font-semibold tracking-wide uppercase text-brand-purple-dark focus:outline-none focus:ring-2 focus:ring-brand-purple-light shadow-sm bg-white placeholder-brand-purple/60"
-                     />
+                   <input
+  [type]="field.type === 'date' ? 'text' : field.type"
+  [formControlName]="field.id"
+  [placeholder]="field.label"
+  (focus)="field.type === 'date' && ($event.target.type = 'date')"
+  (blur)="field.type === 'date' && !$any($event.target).value && ($event.target.type = 'text')"
+  class="pl-16 pr-6 w-full h-14 border-2 border-brand-purple rounded-full text-xs font-semibold tracking-wide uppercase text-brand-purple-dark focus:outline-none focus:ring-2 focus:ring-brand-purple-light shadow-sm bg-white placeholder-brand-purple/60"
+/>
                  </div>
               </form>
 <div
