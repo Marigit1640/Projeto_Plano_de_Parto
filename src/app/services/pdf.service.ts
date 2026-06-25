@@ -34,10 +34,17 @@ export class PdfService {
         quality: 1
       },
 
-      html2canvas: {
-        scale: 2,
-        useCORS: true
-      },
+     html2canvas: {
+  scale: 3,
+  useCORS: true,
+  scrollX: 0,
+  scrollY: 0,
+  windowWidth: element.scrollWidth,
+  windowHeight: element.scrollHeight
+},
+pagebreak: {
+  mode: ['avoid-all', 'css', 'legacy']
+},
 
       jsPDF: {
         unit: 'mm',
