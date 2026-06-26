@@ -47,7 +47,7 @@ import { DEMO_QUESTIONS } from '../../data/questions';
 
   </button>
 
-  <button
+  <!--<button
     (click)="shareWhatsapp()"
     class="button-primary font-bold shadow-lg bg-green-600 text-white">
 
@@ -71,7 +71,8 @@ import { DEMO_QUESTIONS } from '../../data/questions';
     alt="Email"
     class="w-6 h-6 ml-2 inline-block">
 
-</button>
+</button>-->
+
         <button (click)="generateCsv()" class="button-primary font-bold shadow-lg text-brand-purple-dark hover:bg-brand-purple hover:text-white">
           BAIXAR CSV <mat-icon class="ml-2 py-0 my-0 relative top-[2px]">table_chart</mat-icon>
         </button>

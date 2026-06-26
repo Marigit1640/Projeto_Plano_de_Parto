@@ -3,8 +3,8 @@ export const DEMO_QUESTIONS = [
   {
   id: 'presentation',
   type: 'info',
-  image: 'assets/P2 i2.png',
-  secondImage: 'assets/CEFET-MG_logo.png',
+  image: 'assets/logo_ufsj.png',
+  secondImage: 'assets/logo_cefet.png',
   text: 'Este aplicativo foi criado com base em informações científicas sobre gestação e plano de parto.\n\nAqui, você encontra orientações para se sentir mais segura, informada e preparada para o nascimento do seu bebê.',
 
   developersText: 'Este aplicativo foi desenvolvido por meio de uma parceria entre a UFSJ e o Departamento de Computação do CEFET-MG campus Divinópolis.',
