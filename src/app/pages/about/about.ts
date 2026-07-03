@@ -35,12 +35,12 @@ import { MatIconModule } from '@angular/material/icon';
   class="mb-8 flex items-center justify-center gap-6">
 
   <img
-    src="assets/CEFET-MG_logo.png"
+    src="assets/logo_cefet.png"
     alt="CEFET-MG"
     class="w-20 h-20 object-contain">
 
   <img
-    src="assets/P2 i2.png"
+    src="assets/logo_ufsj.png"
     alt="UFSJ"
     class="w-20 h-20 object-contain">
 
