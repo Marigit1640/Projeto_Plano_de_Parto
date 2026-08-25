@@ -1,4 +1,4 @@
-import { Component, inject, OnInit } from '@angular/core';
+import { Component, inject, OnInit, ViewChild, ChangeDetectorRef } from '@angular/core';
 import { Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { MatIconModule } from '@angular/material/icon';
@@ -6,11 +6,13 @@ import { PdfService } from '../../services/pdf.service';
 import { LocalStorageService } from '../../services/local-storage.service';
 import { AudioService } from '../../services/audio.service';
 import { DEMO_QUESTIONS } from '../../data/questions';
-
+import { SharePdfComponent } from '../share-pdf/share-pdf.component';
+import { PdfPreview } from '../pdf-preview/pdf-preview';
 
 @Component({
   selector: 'app-final',
-  imports: [CommonModule, MatIconModule],
+  standalone: true,
+  imports: [CommonModule, MatIconModule, SharePdfComponent, PdfPreview],
   template: `
     <div class="flex flex-col items-center justify-center min-h-screen p-6 text-center animate-fade-in relative pb-16">
       
@@ -31,66 +33,40 @@ import { DEMO_QUESTIONS } from '../../data/questions';
       </p>
 
       <div class="w-full max-w-sm flex flex-col space-y-4">
+        
+        <!-- Componente de compartilhamento nativo -->
+        <app-share-pdf 
+          [pdfBlob]="meuPdfGerado" 
+          fileName="meu-plano-de-parto.pdf">
+        </app-share-pdf>
+
         <button (click)="generatePdf()" class="button-primary font-bold shadow-lg bg-brand-purple text-white border-transparent">
           BAIXAR PDF <mat-icon class="ml-2 py-0 my-0 relative top-[2px]">picture_as_pdf</mat-icon>
         </button>
-  <button
-    (click)="openPdf()"
-    class="button-primary font-bold shadow-lg">
 
-    ABRIR PDF
-
-    <img
-    src="assets/P36 i361.jfif"
-    alt="PDF"
-    class="w-6 h-6 ml-2 inline-block">
-
-  </button>
-
-  <!--<button
-    (click)="shareWhatsapp()"
-    class="button-primary font-bold shadow-lg bg-green-600 text-white">
-
-    WHATSAPP
-
-    <img
-    src="assets/P36 i362.jfif"
-    alt="WhatsApp"
-    class="w-6 h-6 ml-2 inline-block">
-
-  </button>
-
-  <button
-  (click)="shareEmail()"
-  class="button-primary font-bold shadow-lg">
-
-  E-MAIL
-
-  <img
-    src="assets/P36 i363.jfif"
-    alt="Email"
-    class="w-6 h-6 ml-2 inline-block">
-
-</button>-->
+        <button (click)="openPdf()" class="button-primary font-bold shadow-lg">
+          ABRIR PDF
+          <img src="assets/P36 i361.jfif" alt="PDF" class="w-6 h-6 ml-2 inline-block">
+        </button>
 
         <button (click)="generateCsv()" class="button-primary font-bold shadow-lg text-brand-purple-dark hover:bg-brand-purple hover:text-white">
           BAIXAR CSV <mat-icon class="ml-2 py-0 my-0 relative top-[2px]">table_chart</mat-icon>
         </button>
-        <button
-  (click)="goToAbout()"
-  class="button-primary font-bold shadow-lg">
 
-  QUEM SOMOS NÓS
+        <button (click)="goToAbout()" class="button-primary font-bold shadow-lg">
+          QUEM SOMOS NÓS
+          <mat-icon class="ml-2">groups</mat-icon>
+        </button>
 
-  <mat-icon class="ml-2">
-    groups
-  </mat-icon>
-
-</button>
         <button (click)="restart()" class="text-brand-purple-light font-bold text-sm tracking-wide pt-6 uppercase hover:text-brand-purple transition-colors flex items-center justify-center">
            <mat-icon class="mr-1 scale-75">refresh</mat-icon> Refazer Plano
         </button>
       </div>
+    </div>
+
+    <!-- DIV OCULTA PARA O GERADOR DE PDF LER O CONTEÚDO SEM O USUÁRIO VER -->
+    <div style="position: absolute; top: -9999px; left: -9999px; visibility: hidden; z-index: -1;">
+       <app-pdf-preview></app-pdf-preview>
     </div>
   `,
   styles: [`
@@ -103,32 +79,72 @@ import { DEMO_QUESTIONS } from '../../data/questions';
     }
   `]
 })
-
 export class FinalComponent implements OnInit {
   private pdfService = inject(PdfService);
   private storage = inject(LocalStorageService);
   private audio = inject(AudioService);
   private router = inject(Router);
+  private cdr = inject(ChangeDetectorRef); // Injetando o detector de mudanças
 
-ngOnInit() {
+  // Referência direta ao componente de preview oculto na tela
+  @ViewChild(PdfPreview) pdfPreviewComponent!: PdfPreview;
+
+  meuPdfGerado: Blob | null = null;
+
+  async ngOnInit() {
     setTimeout(() => {
       this.audio.playNarration('audio/A36.1.m4a');
     }, 500);
+
+    // Aguarda 1 segundo completo para garantir que o componente oculto renderizou
+    setTimeout(async () => {
+      await this.carregarPdfBlob();
+    }, 1000);
+  }
+
+  async carregarPdfBlob() {
+    try {
+      console.log('Iniciando a busca pelo elemento do PDF...');
+      
+      if (!this.pdfPreviewComponent || !this.pdfPreviewComponent.pdfContent) {
+        console.warn('Componente de preview ou referência ainda não disponíveis.');
+        return;
+      }
+
+      const element = this.pdfPreviewComponent.getPdfElement();
+      if (!element) {
+        console.warn('Elemento HTML retornado é nulo.');
+        return;
+      }
+
+      console.log('Elemento encontrado com sucesso. Gerando o Blob...');
+      const blob = await this.pdfService.generatePdfBlob(element, 'meu-plano-de-parto.pdf');
+      
+      if (blob) {
+        console.log('Blob gerado com sucesso!', blob);
+        this.meuPdfGerado = blob;
+        
+        // Força o Angular a redesenhar a tela e destravar o botão imediatamente
+        this.cdr.detectChanges();
+      } else {
+        console.error('O serviço retornou um blob nulo.');
+      }
+    } catch (err) {
+      console.error('ERRO CRÍTICO ao gerar Blob do PDF:', err);
+    }
   }
 
   playSound() {
     this.audio.playBubbleSound();
     this.audio.playNarration('audio/A36.1.m4a');
-
   }
 
-generatePdf() {
-  this.audio.playBubbleSound();
-
-  this.router.navigate(['/pdf-preview'], {
-    state: { autoPrint: true }
-  });
-}
+  generatePdf() {
+    this.audio.playBubbleSound();
+    this.router.navigate(['/pdf-preview'], {
+      state: { autoPrint: true }
+    });
+  }
 
   generateCsv() {
     this.audio.playBubbleSound();
@@ -140,7 +156,6 @@ generatePdf() {
        if (q.type === 'form') {
          q.fields?.forEach(f => {
             let val = data[f.id] || 'Não informado';
-            // wrap in quotes to handle commas
             csvContent += `"${f.label}","${val}"\n`;
          });
        } else if (q.type === 'choice') {
@@ -159,7 +174,7 @@ generatePdf() {
     const link = document.createElement("a");
     link.setAttribute("href", encodedUri);
     link.setAttribute("download", "Meu_Plano_de_Parto.csv");
-    document.body.appendChild(link); // Required for FF
+    document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);
   }
@@ -172,34 +187,13 @@ generatePdf() {
     }
   }
   
-openPdf() {
-  this.audio.playBubbleSound();
-  this.router.navigate(['/pdf-preview']);
-}
+  openPdf() {
+    this.audio.playBubbleSound();
+    this.router.navigate(['/pdf-preview']);
+  }
 
-shareWhatsapp() {
-
-  const texto =
-    'Olá! Segue meu Plano de Parto.';
-
-  const url =
-    `https://wa.me/?text=${encodeURIComponent(texto)}`;
-
-  window.open(url, '_blank');
-}
-
-shareEmail() {
-
-  const assunto = 'Plano de Parto';
-
-  const corpo =
-    'Olá! Segue meu Plano de Parto.';
-
-  window.location.href =
-    `mailto:?subject=${encodeURIComponent(assunto)}&body=${encodeURIComponent(corpo)}`;
-}
-goToAbout() {
-  this.audio.playBubbleSound();
-  this.router.navigate(['/about']);
-}
+  goToAbout() {
+    this.audio.playBubbleSound();
+    this.router.navigate(['/about']);
+  }
 }

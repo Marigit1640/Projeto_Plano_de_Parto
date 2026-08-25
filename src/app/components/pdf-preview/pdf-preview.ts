@@ -39,17 +39,20 @@ export class PdfPreview implements OnInit, AfterViewInit {
   }
 
 ngAfterViewInit() {
-  const nav = history.state;
+    // Verifica se estamos no navegador antes de usar o history
+    if (typeof window !== 'undefined') {
+      const nav = history.state;
 
-if (nav?.autoPrint) {
-  setTimeout(() => {
-    this.pdfService.generatePdf(
-      'pdf-content',
-      'Plano_de_Parto.pdf'
-    );
-  }, 1000);
-}
-}
+      if (nav?.autoPrint) {
+        setTimeout(() => {
+          this.pdfService.generatePdf(
+            'pdf-content',
+            'Plano_de_Parto.pdf'
+          );
+        }, 1000);
+      }
+    }
+  }
 generatePdf() {
   this.pdfService.generatePdf(
     'pdf-content',
@@ -66,4 +69,9 @@ generatePdf() {
 
   return String(value);
 }
+
+// Retorna o elemento HTML para o serviço conseguir gerar o PDF de fora
+  getPdfElement(): HTMLElement {
+    return this.pdfContent.nativeElement;
+  }
 }
