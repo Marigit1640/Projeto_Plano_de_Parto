@@ -45,9 +45,19 @@ export class SplashComponent {
   this.audio.playNarration('audio/A1.m4a');
 }
 
-  navigate() {
+navigate() {
+  // 1. Para narrações que estiverem tocando na tela
   this.audio.stopNarration();
+
+  // 2. Toca o som do clique (bolha)
   this.audio.playBubbleSound();
-  this.router.navigate(['/login']);
+
+  // 3. Toca o outro áudio por cima (substitua pelo caminho correto do seu arquivo)
+  this.audio.playNarration('audio/iniciar.m4a'); // <-- Coloque o seu áudio aqui
+
+  // 4. Aguarda o tempo necessário para o clique/áudio iniciar antes de trocar de tela
+  setTimeout(() => {
+    this.router.navigate(['/login']);
+  }, 1500); // Ajuste este tempo se o áudio do botão for mais longo
 }
 }

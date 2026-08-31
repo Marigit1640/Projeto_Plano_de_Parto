@@ -6,9 +6,22 @@ import { ReactiveFormsModule, FormBuilder, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-login',
+  standalone: true,
   imports: [MatIconModule, ReactiveFormsModule],
   template: `
-    <div class="flex flex-col items-center justify-center min-h-screen p-6 text-center">
+    <div class="flex flex-col items-center justify-center min-h-screen p-6 text-center relative">
+      
+      <!-- BOTÃO GLOBAL DE SOM (MUTAR/DESMUTAR) -->
+      <div class="fixed top-4 right-4 z-50">
+        <button
+          type="button"
+          (click)="toggleAudioMute()"
+          class="w-12 h-12 bg-white border-2 border-brand-purple text-brand-purple-dark rounded-full shadow-md flex items-center justify-center hover:bg-brand-pink-light transition-all cursor-pointer"
+          [attr.aria-label]="isAudioMuted ? 'Ativar som' : 'Desativar som'">
+          <mat-icon>{{ isAudioMuted ? 'volume_off' : 'volume_up' }}</mat-icon>
+        </button>
+      </div>
+
       <p class="text-brand-purple font-display font-semibold tracking-widest text-sm uppercase mb-4">SEJA BEM VINDA AO SEU</p>
       <h1 class="text-4xl sm:text-5xl font-display font-bold text-brand-purple-dark leading-none uppercase mb-12">
         PLANO DE<br/>
@@ -29,17 +42,22 @@ import { ReactiveFormsModule, FormBuilder, Validators } from '@angular/forms';
           />
         </div>
         <img 
-    src="assets/P3 i3.png" 
-    alt="Imagem tela login email" 
-    class="w-22 h-22 mx-auto "
-  />
+          src="assets/P3 i3.png" 
+          alt="Imagem tela login email" 
+          class="w-22 h-22 mx-auto"
+        />
         
-        <button [disabled]="loginForm.invalid" class="button-primary font-bold shadow-lg mt-8 border-transparent bg-brand-purple text-white hover:bg-brand-purple-dark">CONTINUAR</button>
+        <button 
+          type="submit"
+          [disabled]="loginForm.invalid" 
+          class="button-primary font-bold shadow-lg mt-8 border-transparent bg-brand-purple text-white hover:bg-brand-purple-dark disabled:opacity-50">
+          CONTINUAR
+        </button>
       </form>
     </div>
   `
 })
-export class LoginComponent implements OnInit{
+export class LoginComponent implements OnInit {
   private router = inject(Router);
   private audio = inject(AudioService);
   private fb = inject(FormBuilder);
@@ -49,24 +67,39 @@ export class LoginComponent implements OnInit{
   });
 
   ngOnInit() {
-  setTimeout(() => {
-    this.audio.playNarration('audio/A3.1.m4a');
-  }, 500);
-}
+    setTimeout(() => {
+      this.audio.playNarration('audio/A3.1.m4a');
+    }, 500);
+  }
+
+  toggleAudioMute() {
+    this.audio.toggleMute();
+  }
+
+  get isAudioMuted(): boolean {
+    return this.audio.isMuted();
+  }
 
   playNarration() {
-  this.audio.playBubbleSound();
-  this.audio.playNarration('audio/A3.2.m4a');
-}
+    this.audio.playBubbleSound();
+    this.audio.playNarration('audio/A3.2.m4a');
+  }
 
   onSubmit() {
-  if (this.loginForm.valid) {
-    this.audio.stopNarration();
-    this.audio.playBubbleSound();
-    this.router.navigate(['/wizard']);
+    if (this.loginForm.valid) {
+      // 1. Para narrações que estão tocando na tela
+      this.audio.stopNarration();
+
+      // 2. Toca o som de clique (bolha)
+      this.audio.playBubbleSound();
+
+      // 3. Toca o áudio de confirmação (substitua pelo nome do seu arquivo)
+      this.audio.playNarration('audio/continuar.m4a'); 
+
+      // 4. Aguarda o tempo necessário para o som tocar antes de trocar a página
+      setTimeout(() => {
+        this.router.navigate(['/wizard']);
+      }, 300);
+    }
   }
 }
-}
-
-
-

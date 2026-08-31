@@ -12,13 +12,11 @@ export const DEMO_QUESTIONS = [
   audioUrl: 'audio/A2.m4a'
 },
 
-  {
+{
     id: 'intro',
     type: 'info',
     title: 'VOCÊ SABE O QUE É UM PLANO DE PARTO?',
     image: 'assets/P7 i7.png',
-    width: '140px',
-    imagePosition: 'right',
     text: 'O Plano de parto é um jeito simples de você gestante conversar com a equipe de saúde. Nele, você pode dizer o que quer, o que espera e como prefere que seja o seu parto e o pós-parto. Assim, você participa das decisões sobre o seu corpo e do seu bebê, tendo suas escolhas respeitadas.',
     audioUrl: 'audio/A7.2.m4a',
     autoAudioUrl: 'audio/A7.1.m4a',
@@ -32,7 +30,7 @@ export const DEMO_QUESTIONS = [
     audioUrl: 'audio/A8.2.m4a',
     autoAudioUrl: 'audio/A8.1.m4a'
   },
-  {
+{
     id: 'personal_info',
     type: 'form',
     title: 'INFORMAÇÕES PESSOAIS',
@@ -41,7 +39,9 @@ export const DEMO_QUESTIONS = [
       { id: 'name', label: 'NOME', type: 'text', audioUrl: 'audio/A4.2.m4a' },
       { id: 'dob', label: 'DATA DE NASCIMENTO', type: 'date', audioUrl: 'audio/A4.3.m4a' },
       { id: 'cpf', label: 'CPF', type: 'text', audioUrl: 'audio/A4.4.m4a' },
-      { id: 'phone', label: 'TELEFONE', type: 'tel', audioUrl: 'audio/A4.5.m4a' }
+      { id: 'phone', label: 'TELEFONE', type: 'tel', audioUrl: 'audio/A4.5.m4a' },
+      // NOVO CAMPO ADICIONADO ABAIXO:
+      { id: 'gestationalAge', label: 'IDADE GESTACIONAL (EX: 32 SEMANAS)', type: 'text', required: false, audioUrl: 'audio/idade gestacional.m4a' }
     ],
     image: 'assets/P4 i4.png',
     width: '140px',
@@ -348,7 +348,7 @@ export const DEMO_QUESTIONS = [
     id: 'cesarean_companion',
     type: 'choice',
     autoAudioUrl: 'audio/A31.1.m4a',
-    title: 'CASO SEJA NECESSÁRIA A CESÁRIA DESEJA A PRESENÇA DO SEU ACOMPANHANTE CONFORME LEI 11.108/2005?',
+    title: 'CASO SEJA NECESSÁRIA A CESÁRIA DESEJA A PRESENÇA DO SEU ACOMPANHANTE CONFORME LEGISLAÇÃO VIGENTE?',
     options: [
       { texto: 'SIM', audioUrl: 'audio/A31.2.m4a' },
       { texto: 'NÃO', audioUrl: 'audio/A31.3.m4a' }
