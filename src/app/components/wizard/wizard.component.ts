@@ -119,7 +119,7 @@ import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
                 />
               </div>
 
-              <div class="mt-auto pt-8 w-full flex justify-center">
+              <div class="mt-auto pt-8 w-full flex justify-center items-center gap-3">
                 <div class="fixed bottom-6 right-6 z-50">
                   <button
                     class="audio-btn"
@@ -128,7 +128,7 @@ import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
                   </button>
                 </div>
 
-                <button (click)="next()" class="button-primary bg-brand-purple text-white shadow-xl hover:bg-brand-purple-dark border-none">
+                <button (click)="next(q.id === 'maternity_intro' ? 'comecar' : 'entendi')" class="button-primary bg-brand-purple text-white shadow-xl hover:bg-brand-purple-dark border-none">
                   {{ q.id === 'maternity_intro' ? 'COMEÇAR' : 'ENTENDI' }}
                   <mat-icon class="ml-2">check_circle</mat-icon>
                 </button>
@@ -180,9 +180,9 @@ import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
                 alt="Imagem do formulário"
               />
               
-              <div class="mt-12 w-full">
-                 <button (click)="next()" [disabled]="formGroup?.invalid" class="button-primary bg-brand-purple text-white border-transparent">
-                    AVANÇAR <mat-icon class="ml-2">arrow_forward</mat-icon>
+              <div class="mt-12 w-full flex justify-center items-center gap-3">
+                 <button (click)="next('avancar')" [disabled]="formGroup?.invalid" class="button-primary bg-brand-purple text-white border-transparent">
+                   AVANÇAR <mat-icon class="ml-2">arrow_forward</mat-icon>
                  </button>
               </div>
            </div>
@@ -262,10 +262,11 @@ import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
               </div>
 
               <div
-                class="mt-8 w-full flex flex-col items-center"
+                class="mt-8 w-full flex justify-center items-center gap-3"
                 *ngIf="q.multiple ? (answers[q.id]?.length > 0) : (answers[q.id] && answers[q.id] !== '')">
-                 <button (click)="next()" class="button-primary bg-brand-purple text-white border-transparent">
-                    AVANÇAR <mat-icon class="ml-2">arrow_forward</mat-icon>
+                 
+                 <button (click)="next('avancar')" class="button-primary bg-brand-purple text-white border-transparent">
+                   AVANÇAR <mat-icon class="ml-2">arrow_forward</mat-icon>
                  </button>
               </div>
            </div>
@@ -362,20 +363,19 @@ export class WizardComponent implements OnInit {
     }
   }
 
-buildFormContext() {
-  const q = this.currentQuestion();
-  if (q.type === 'form') {
-    const group: any = {};
-    q.fields?.forEach((f: any) => {
-      // Se f.required for false, não aplica a validação obrigatoria (Validators.required)
-      const validators = f.required === false ? [] : [Validators.required];
-      group[f.id] = [this.answers[f.id] || '', validators];
-    });
-    this.formGroup = this.fb.group(group);
-  } else {
-    this.formGroup = null;
+  buildFormContext() {
+    const q = this.currentQuestion();
+    if (q.type === 'form') {
+      const group: any = {};
+      q.fields?.forEach((f: any) => {
+        const validators = f.required === false ? [] : [Validators.required];
+        group[f.id] = [this.answers[f.id] || '', validators];
+      });
+      this.formGroup = this.fb.group(group);
+    } else {
+      this.formGroup = null;
+    }
   }
-}
 
   selectSingleChoice(questionId: string, option: string) {
     this.audio.playBubbleSound();
@@ -411,8 +411,19 @@ buildFormContext() {
     this.storage.saveData('plano_parto', this.answers);
   }
 
-  next() {
-    this.audio.playBubbleSound();
+  next(actionType?: 'avancar' | 'comecar' | 'entendi') {
+    // Toca o áudio correspondente ao botão se o tipo for providenciado
+    if (actionType) {
+      const audioMap = {
+        'avancar': 'audio/avancar.m4a',
+        'comecar': 'audio/comecar.m4a',
+        'entendi': 'audio/entendi.m4a'
+      };
+      this.audio.playNarration(audioMap[actionType]);
+    } else {
+      this.audio.playBubbleSound();
+    }
+
     const q = this.currentQuestion();
 
     if (q.type === 'form' && this.formGroup) {
@@ -425,7 +436,10 @@ buildFormContext() {
     if (this.currentIndex() < this.questions.length - 1) {
       this.currentIndex.update(v => v + 1);
       this.buildFormContext();
-      this.playAutoAudio();
+      // O timeout aqui dá um pequeno respiro para o áudio do botão anterior antes de tentar tocar o do card automático
+      setTimeout(() => {
+        this.playAutoAudio();
+      }, 1500);
     } else {
       this.router.navigate(['/final']);
     }

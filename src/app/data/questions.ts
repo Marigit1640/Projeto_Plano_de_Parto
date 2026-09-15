@@ -404,5 +404,16 @@ export const DEMO_QUESTIONS = [
     ],
     image: 'assets/P35 i35.png',
     videoUrl: 'https://youtu.be/YBcuOH7jpAo?si=ibXKhM9e9c8x6rS1'
+  },
+  {
+    id: 'SALPINGOTRIPSIA ',
+    type: 'choice',
+    autoAudioUrl: '',
+    title: 'CASO SEJA POSSÍVEL E ESTEJA DE ACORDO COM OS CRITÉRIOS CLÍNICOS E A LEGISLAÇÃO VIGENTE, DESEJA REALIZAR A SALPINGOTRIPSIA BILATERAL (LAQUEADURA)  COMO MÉTODO CONTRACEPTIVO DEFINITIVO NO PÓS-PARTO?',
+    options: [
+      { texto: 'SIM', audioUrl: 'audio/A30.2.m4a' },
+      { texto: 'NÃO', audioUrl: 'audio/A30.4.m4a' }
+    ]
   }
+
 ];
