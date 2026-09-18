@@ -93,7 +93,7 @@ export class LoginComponent implements OnInit {
       // 2. Toca o som de clique (bolha)
       this.audio.playBubbleSound();
 
-      // 3. Toca o áudio de confirmação (substitua pelo nome do seu arquivo)
+      // 3. Toca o áudio de confirmação 
       this.audio.playNarration('audio/continuar.m4a'); 
 
       // 4. Aguarda o tempo necessário para o som tocar antes de trocar a página

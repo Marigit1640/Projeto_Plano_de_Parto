@@ -1,18 +1,14 @@
-
 export const DEMO_QUESTIONS = [
   {
-  id: 'presentation',
-  type: 'info',
-  image: 'assets/logo_ufsj.png',
-  secondImage: 'assets/logo_cefet.png',
-  text: 'Este aplicativo foi criado com base em informações científicas sobre gestação e plano de parto.\n\nAqui, você encontra orientações para se sentir mais segura, informada e preparada para o nascimento do seu bebê.',
-
-  developersText: 'Este aplicativo foi desenvolvido por meio de uma parceria entre a UFSJ e o Departamento de Computação do CEFET-MG campus Divinópolis.',
-
-  audioUrl: 'audio/A2.m4a'
-},
-
-{
+    id: 'presentation',
+    type: 'info',
+    image: 'assets/logo_ufsj.png',
+    secondImage: 'assets/logo_cefet.png',
+    text: 'Este aplicativo foi criado com base em informações científicas sobre gestação e plano de parto.\n\nAqui, você encontra orientações para se sentir mais segura, informada e preparada para o nascimento do seu bebê.',
+    developersText: 'Este aplicativo foi desenvolvido por meio de uma parceria entre a UFSJ e o Departamento de Computação do CEFET-MG campus Divinópolis.',
+    audioUrl: 'audio/A2.m4a'
+  },
+  {
     id: 'intro',
     type: 'info',
     title: 'VOCÊ SABE O QUE É UM PLANO DE PARTO?',
@@ -30,7 +26,7 @@ export const DEMO_QUESTIONS = [
     audioUrl: 'audio/A8.2.m4a',
     autoAudioUrl: 'audio/A8.1.m4a'
   },
-{
+  {
     id: 'personal_info',
     type: 'form',
     title: 'INFORMAÇÕES PESSOAIS',
@@ -40,7 +36,6 @@ export const DEMO_QUESTIONS = [
       { id: 'dob', label: 'DATA DE NASCIMENTO', type: 'date', audioUrl: 'audio/A4.3.m4a' },
       { id: 'cpf', label: 'CPF', type: 'text', audioUrl: 'audio/A4.4.m4a' },
       { id: 'phone', label: 'TELEFONE', type: 'tel', audioUrl: 'audio/A4.5.m4a' },
-      // NOVO CAMPO ADICIONADO ABAIXO:
       { id: 'gestationalAge', label: 'IDADE GESTACIONAL (EX: 32 SEMANAS)', type: 'text', required: false, audioUrl: 'audio/idade gestacional.m4a' }
     ],
     image: 'assets/P4 i4.png',
@@ -70,7 +65,6 @@ export const DEMO_QUESTIONS = [
     audioUrl: 'audio/A10.2.m4a',
     autoAudioUrl: 'audio/A10.1.m4a'
   },
-
   {
     id: 'maternity',
     type: 'choice',
@@ -98,7 +92,8 @@ export const DEMO_QUESTIONS = [
       { texto: 'PAI DO BEBÊ', audioUrl: 'audio/A12.5.m4a' },
       { texto: 'AMIGO (A)', audioUrl: 'audio/A12.6.m4a' },
       { texto: 'NENHUM', audioUrl: 'audio/A12.7.m4a' },
-      { texto: 'OUTRO', audioUrl: 'audio/A12.8.m4a' }]
+      { texto: 'OUTRO', audioUrl: 'audio/A12.8.m4a' }
+    ]
   },
   {
     id: 'procedures_informed',
@@ -155,19 +150,19 @@ export const DEMO_QUESTIONS = [
         texto: 'TÉCNICAS DE RESPIRAÇÃO',
         imagem: 'assets/P16 i162.png',
         audioUrl: 'audio/A16.3.m4a',
-        videoUrl:'https://youtu.be/CSS69sLN5No?si=z1rAWbSt-b0sTJi7'
+        videoUrl: 'https://youtu.be/CSS69sLN5No?si=z1rAWbSt-b0sTJi7'
       },
       {
         texto: 'MOVIMENTAR E/OU ANDAR CASO EU QUEIRA',
         imagem: 'assets/P17 i171.png',
         audioUrl: 'audio/A17.1.m4a',
-        videoUrl:'https://youtu.be/9ElgbOr0Dtc?si=o0o_fEX-eguYdsM9'
+        videoUrl: 'https://youtu.be/9ElgbOr0Dtc?si=o0o_fEX-eguYdsM9'
       },
       {
         texto: 'EXERCÍCIO DE RELAXAMENTO COM BOLA',
         imagem: 'assets/P17 i172.png',
         audioUrl: 'audio/A17.2.m4a',
-        videoUrl:'https://youtu.be/-0TV2GKegAE?si=grcRVufNhE_gUcfb'
+        videoUrl: 'https://youtu.be/-0TV2GKegAE?si=grcRVufNhE_gUcfb'
       },
       {
         texto: 'BANHO DE CHUVEIRO',
@@ -187,7 +182,6 @@ export const DEMO_QUESTIONS = [
       }
     ]
   },
-
   {
     id: 'positions',
     type: 'choice',
@@ -198,7 +192,7 @@ export const DEMO_QUESTIONS = [
       { texto: 'SIM', audioUrl: 'audio/A19.2 sim.m4a' },
       { texto: 'NÃO', audioUrl: 'audio/A22.3.m4a' }
     ],
-    image: 'assets/P19 i19.jpg',
+    image: 'assets/P19 i19.jpg'
   },
   {
     id: 'food',
@@ -206,11 +200,13 @@ export const DEMO_QUESTIONS = [
     autoAudioUrl: 'audio/A20.1.m4a',
     title: 'DURANTE O TRABALHO DE PARTO, DESEJA INGERIR ALIMENTOS LEVES, TAIS COMO (ASSINALE UM OU MAIS ITENS):',
     multiple: true,
-    options: [{ texto: 'ÁGUA', audioUrl: 'audio/A20.2.m4a' },
-    { texto: 'SUCO DE FRUTAS', audioUrl: 'audio/A20.3.m4a' },
-    { texto: 'GELATINA', audioUrl: 'audio/A20.4.m4a' },
-    { texto: 'CHÁS', audioUrl: 'audio/A20.5.m4a' },
-    { texto: 'OUTROS', audioUrl: 'audio/A20.6.m4a' }],
+    options: [
+      { texto: 'ÁGUA', audioUrl: 'audio/A20.2.m4a' },
+      { texto: 'SUCO DE FRUTAS', audioUrl: 'audio/A20.3.m4a' },
+      { texto: 'GELATINA', audioUrl: 'audio/A20.4.m4a' },
+      { texto: 'CHÁS', audioUrl: 'audio/A20.5.m4a' },
+      { texto: 'OUTROS', audioUrl: 'audio/A20.6.m4a' }
+    ],
     image: 'assets/P20 i20.jpg',
     videoUrl: 'https://youtu.be/zwmtm18r9YY?si=D3LI19q_Y8gNZzzL'
   },
@@ -224,14 +220,14 @@ export const DEMO_QUESTIONS = [
       { texto: 'AMBIENTE COM POUCA LUMINOSIDADE', audioUrl: 'audio/A21.2.m4a' },
       { texto: 'OUVIR MÚSICA DE MINHA ESCOLHA', audioUrl: 'audio/A21.3.m4a' },
       { texto: 'POUCO BARULHO E CONVERSA', audioUrl: 'audio/A21.4.m4a' },
-      { texto: 'PRIVACIDADE', audioUrl: 'audio/A21.5.m4a'  }
+      { texto: 'PRIVACIDADE', audioUrl: 'audio/A21.5.m4a' }
     ]
   },
   {
     id: 'interventions',
     type: 'choice',
     autoAudioUrl: 'audio/A22.1.m4a',
-    title: 'DESEJA QUE COMUNIQUEM A VOCÊ EAO SEU ACOMPANHANTE SOBRE QUALQUER INTERVENÇÃO NECESSÁRIA DURANTE O TRABALHO DE PARTO ? (SORO, OXIGÊNIO,  ROMPIMENTO DE BOLSA, OCITOCINA OU CESÁRIA)',
+    title: 'DESEJA QUE COMUNIQUEM A VOCÊ EAO SEU ACOMPANHANTE SOBRE QUALQUER INTERVENÇÃO NECESSÁRIA DURANTE O TRABALHO DE PARTO ? (SORO, OXIGÊNIO, ROMPIMENTO DE BOLSA, OCITOCINA OU CESÁRIA)',
     options: [
       { texto: 'SIM', audioUrl: 'audio/A22.2.m4a' },
       { texto: 'NÃO', audioUrl: 'audio/A22.3.m4a' }
@@ -329,9 +325,8 @@ export const DEMO_QUESTIONS = [
     options: [
       { texto: 'SIM', audioUrl: 'audio/A29.2.m4a' },
       { texto: 'NÃO', audioUrl: 'audio/A29.3.m4a' }
-    ],
+    ]
   },
-
   {
     id: 'episiotomy',
     type: 'choice',
@@ -376,9 +371,10 @@ export const DEMO_QUESTIONS = [
     type: 'choice',
     title: 'QUANTO AO CORTE DO CORDÃO UMBILICAL, DESEJO QUE SEJA FEITO EM TEMPO OPORTUNO PELO:',
     autoAudioUrl: 'audio/A33.1.m4a',
-    options: [{ texto: 'PROFISSIONAL', audioUrl: 'audio/A33.2.m4a' },
-    { texto: 'POR MIM MESMA', audioUrl: 'audio/A33.3.m4a' },
-    { texto: 'MARIDO / PARCEIRO(A) / ACOMPANHANTE / PAI DO BEBÊ', audioUrl: 'audio/A33.4.m4a' }
+    options: [
+      { texto: 'PROFISSIONAL', audioUrl: 'audio/A33.2.m4a' },
+      { texto: 'POR MIM MESMA', audioUrl: 'audio/A33.3.m4a' },
+      { texto: 'MARIDO / PARCEIRO(A) / ACOMPANHANTE / PAI DO BEBÊ', audioUrl: 'audio/A33.4.m4a' }
     ],
     image: 'assets/P33 i33.png',
     videoUrl: 'https://youtu.be/UqulKkAWhJs?si=hsngdBsRlbm_Cf1o'
@@ -406,14 +402,39 @@ export const DEMO_QUESTIONS = [
     videoUrl: 'https://youtu.be/YBcuOH7jpAo?si=ibXKhM9e9c8x6rS1'
   },
   {
-    id: 'SALPINGOTRIPSIA ',
+    id: 'SALPINGOTRIPSIA',
     type: 'choice',
     autoAudioUrl: '',
-    title: 'CASO SEJA POSSÍVEL E ESTEJA DE ACORDO COM OS CRITÉRIOS CLÍNICOS E A LEGISLAÇÃO VIGENTE, DESEJA REALIZAR A SALPINGOTRIPSIA BILATERAL (LAQUEADURA)  COMO MÉTODO CONTRACEPTIVO DEFINITIVO NO PÓS-PARTO?',
+    title: 'CASO SEJA POSSÍVEL E ESTEJA DE ACORDO COM OS CRITÉRIOS CLÍNICOS E A LEGISLAÇÃO VIGENTE, DESEJA REALIZAR A SALPINGOTRIPSIA BILATERAL (LAQUEADURA) COMO MÉTODO CONTRACEPTIVO DEFINITIVO NO PÓS-PARTO?',
     options: [
       { texto: 'SIM', audioUrl: 'audio/A30.2.m4a' },
       { texto: 'NÃO', audioUrl: 'audio/A30.4.m4a' }
     ]
+  },
+  {
+    id: 'other_preferences',
+    type: 'choice',
+    title: 'EXISTE ALGUMA OUTRA SITUAÇÃO OU PREFERÊNCIA QUE VOCÊ DESEJA REGISTRAR NO SEU PLANO DE PARTO?',
+    subtitle: 'SELECIONE UMA OU MAIS OPÇÕES, CASO SE APLIQUE À SUA SITUAÇÃO:',
+    multiple: true,
+    hasNotes: true,
+    notesPlaceholder: 'Caso tenha outra situação ou preferência, escreva aqui...',
+    options: [
+      {
+        texto: 'CONTRAINDICAÇÃO OU IMPOSSIBILIDADE CLÍNICA PARA AMAMENTAÇÃO: Desejo registrar no meu Plano de Parto que, por questões clínicas, a amamentação poderá não ser indicada ou poderá haver necessidade de cuidados específicos relacionados à alimentação do bebê.'
+      },
+      {
+        texto: 'RECUSA DE TRANSFUSÃO OU RECEBIMENTO DE SANGUE E/OU HEMODERIVADOS: Por motivos pessoais, culturais ou religiosos, desejo registrar que não aceito receber transfusão de sangue e/ou determinados hemoderivados, conforme minhas convicções. Informo, também, que toda a documentação relacionada a este procedimento está registrada em Cartório e constam dos documentos sob os cuidados da pessoa que está me acompanhando.'
+      },
+      {
+        texto: 'ENTREGA LEGAL DO BEBÊ PARA ADOÇÃO: Desejo registrar que, após o nascimento, tenho a intenção de realizar a entrega legal do bebê para adoção, seguindo os procedimentos e orientações previstos na legislação e serviços responsáveis (Justiça e rede de proteção local). Desta forma, prefiro evitar contato com o bebê, sem sofrer julgamentos ou sanções. O bebê deverá ser entregue, de forma voluntária, sigilosa e segura à equipe da Vara da Infância e da Juventude/CRAS/CREAS.'
+      },
+      {
+        texto: 'NENHUMA DAS OPÇÕES ACIMA'
+      },
+      {
+        texto: 'OUTRA SITUAÇÃO OU PREFERÊNCIA (UTILIZE O CAMPO DE TEXTO ABAIXO)'
+      }
+    ]
   }
-
 ];

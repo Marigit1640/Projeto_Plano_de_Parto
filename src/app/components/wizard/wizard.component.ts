@@ -100,14 +100,9 @@ import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
                   *ngIf="$any(q).videoUrl"
                   class="flex flex-col items-center mb-2"
                 >
-                  <p class="text-xs font-bold text-brand-purple whitespace-nowrap">
+                  <p class="text-base font-bold text-brand-purple whitespace-nowrap">
                     CLIQUE AQUI E SAIBA MAIS
                   </p>
-                  <img
-                    src="assets/seta.jpg"
-                    alt="Seta"
-                    class="w-20 mt-1"
-                  />
                 </div>
 
                 <img
@@ -159,14 +154,9 @@ import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
                 *ngIf="$any(q).videoUrl"
                 class="flex flex-col items-start mb-2"
               >
-                <p class="text-xs font-bold text-brand-purple">
+                <p class="text-base font-bold text-brand-purple">
                   CLIQUE AQUI E SAIBA MAIS
                 </p>
-                <img
-                  src="assets/seta.jpg"
-                  alt="Seta"
-                  class="w-20 mt-1"
-                />
               </div>
 
               <img
@@ -182,7 +172,7 @@ import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
               
               <div class="mt-12 w-full flex justify-center items-center gap-3">
                  <button (click)="next('avancar')" [disabled]="formGroup?.invalid" class="button-primary bg-brand-purple text-white border-transparent">
-                   AVANÇAR <mat-icon class="ml-2">arrow_forward</mat-icon>
+                    AVANÇAR <mat-icon class="ml-2">arrow_forward</mat-icon>
                  </button>
               </div>
            </div>
@@ -201,11 +191,12 @@ import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
                 </div>
               </div>
 
+              <!-- OPÇÕES DE ESCOLHA (AJUSTADO PARA SUPORTAR TEXTOS LONGOS) -->
               <div class="flex flex-col w-full space-y-4">
                  <ng-container *ngFor="let opt of q.options; let i = index">
                     <div class="relative w-full flex items-center">
                       <div
-                        class="absolute left-[-12px] top-1/2 -translate-y-1/2 cursor-pointer text-brand-purple-dark bg-white border-brand-purple border-2 rounded-full h-14 w-14 flex items-center justify-center z-10 shadow-md"
+                        class="absolute left-[-10px] top-1/2 -translate-y-1/2 cursor-pointer text-brand-purple-dark bg-white border-brand-purple border-2 rounded-full h-12 w-12 flex items-center justify-center z-10 shadow-md flex-shrink-0"
                         (click)="playOptionAudio(opt); $event.stopPropagation()">
                         <mat-icon class="scale-90">volume_up</mat-icon>
                       </div>
@@ -217,7 +208,7 @@ import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
                         [class.bg-brand-purple]="q.multiple ? isArraySelected(q.id, opt.texto) : answers[q.id] === opt.texto"
                         [class.text-white]="q.multiple ? isArraySelected(q.id, opt.texto) : answers[q.id] === opt.texto"
                         [class.bg-white]="q.multiple ? !isArraySelected(q.id, opt.texto) : answers[q.id] !== opt.texto"
-                        class="pl-20 pr-4 w-full h-12 border-2 border-brand-purple rounded-full text-[11px] font-bold tracking-wider uppercase transition-colors text-left flex items-center">
+                        class="pl-14 pr-4 py-3 w-full min-h-[52px] border-2 border-brand-purple rounded-2xl text-[11px] font-bold tracking-wider uppercase transition-colors text-left flex items-center leading-relaxed">
                         {{opt.texto}}
                       </button>
                     </div>
@@ -234,19 +225,28 @@ import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
                  </ng-container>
               </div>
 
+              <!-- BLOCO DE NOTAS / TEXTAREA -->
+              <div *ngIf="$any(q).hasNotes" class="w-full mt-6 flex flex-col">
+                <label class="text-xs font-bold text-brand-purple-dark uppercase mb-2">
+                  ESCREVA ABAIXO SUAS OBSERVAÇÕES:
+                </label>
+                <textarea
+                  [rows]="4"
+                  [placeholder]="$any(q).notesPlaceholder || 'Digite aqui suas observações...'"
+                  [value]="answers[q.id + '_notes'] || ''"
+                  (input)="onNotesChange(q.id, $event)"
+                  class="w-full p-4 border-2 border-brand-purple rounded-2xl text-xs font-semibold text-brand-purple-dark focus:outline-none focus:ring-2 focus:ring-brand-purple-light shadow-sm bg-white placeholder-brand-purple/50 resize-none">
+                </textarea>
+              </div>
+
               <div *ngIf="q.image" class="relative">
                 <div
                   *ngIf="$any(q).videoUrl"
                   class="flex flex-col items-center mb-4 mt-4"
                 >
-                  <p class="text-xs font-bold text-brand-purple">
+                  <p class="text-base font-bold text-brand-purple">
                     CLIQUE AQUI E SAIBA MAIS
                   </p>
-                  <img
-                    src="assets/seta.jpg"
-                    alt="Seta"
-                    class="w-20 mt-1"
-                  />
                 </div>
 
                 <img
@@ -261,12 +261,13 @@ import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
                 />
               </div>
 
+              <!-- BOTÃO AVANÇAR -->
               <div
                 class="mt-8 w-full flex justify-center items-center gap-3"
-                *ngIf="q.multiple ? (answers[q.id]?.length > 0) : (answers[q.id] && answers[q.id] !== '')">
+                *ngIf="canAdvance(q)">
                  
                  <button (click)="next('avancar')" class="button-primary bg-brand-purple text-white border-transparent">
-                   AVANÇAR <mat-icon class="ml-2">arrow_forward</mat-icon>
+                    AVANÇAR <mat-icon class="ml-2">arrow_forward</mat-icon>
                  </button>
               </div>
            </div>
@@ -340,7 +341,6 @@ export class WizardComponent implements OnInit {
     this.playAutoAudio();
   }
 
-  // Métodos do botão global de som
   toggleAudioMute() {
     this.audio.toggleMute();
   }
@@ -375,6 +375,26 @@ export class WizardComponent implements OnInit {
     } else {
       this.formGroup = null;
     }
+  }
+
+  onNotesChange(questionId: string, event: Event) {
+    const value = (event.target as HTMLTextAreaElement).value;
+    this.answers[questionId + '_notes'] = value;
+    this.saveProgress();
+  }
+
+  canAdvance(q: any): boolean {
+    if (!q) return false;
+
+    const hasMulti = q.multiple && Array.isArray(this.answers[q.id]) && this.answers[q.id].length > 0;
+    const hasSingle = !q.multiple && !!(this.answers[q.id] && this.answers[q.id] !== '');
+    const hasNotesValue = !!(q.hasNotes && this.answers[q.id + '_notes']?.trim().length > 0);
+
+    if (!q.options || q.options.length === 0) {
+      return hasNotesValue;
+    }
+
+    return hasMulti || hasSingle || hasNotesValue;
   }
 
   selectSingleChoice(questionId: string, option: string) {
@@ -412,7 +432,6 @@ export class WizardComponent implements OnInit {
   }
 
   next(actionType?: 'avancar' | 'comecar' | 'entendi') {
-    // Toca o áudio correspondente ao botão se o tipo for providenciado
     if (actionType) {
       const audioMap = {
         'avancar': 'audio/avancar.m4a',
@@ -436,7 +455,6 @@ export class WizardComponent implements OnInit {
     if (this.currentIndex() < this.questions.length - 1) {
       this.currentIndex.update(v => v + 1);
       this.buildFormContext();
-      // O timeout aqui dá um pequeno respiro para o áudio do botão anterior antes de tentar tocar o do card automático
       setTimeout(() => {
         this.playAutoAudio();
       }, 1500);
