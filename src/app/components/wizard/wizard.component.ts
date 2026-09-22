@@ -1,6 +1,6 @@
 import { Component, inject, OnInit, signal, computed } from '@angular/core';
 import { Router } from '@angular/router';
-import { CommonModule } from '@angular/common';
+import { CommonModule, Location } from '@angular/common';
 import { ReactiveFormsModule, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatIconModule } from '@angular/material/icon';
 import { DEMO_QUESTIONS } from '../../data/questions';
@@ -26,8 +26,8 @@ import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
         </div>
 
         <!-- Top Navigation / Progress -->
-        <div class="w-full flex justify-between items-center mb-6" *ngIf="currentIndex() > 0">
-           <button (click)="prev()" class="text-brand-purple p-2" aria-label="Voltar">
+        <div class="w-full flex justify-between items-center mb-6">
+           <button type="button" (click)="prev()" class="text-brand-purple p-2" aria-label="Voltar">
               <mat-icon>arrow_back</mat-icon>
            </button>
            <span class="text-brand-purple font-medium text-xs">{{currentIndex() + 1}} / {{questions.length}}</span>
@@ -45,6 +45,7 @@ import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
               >
                 <div class="fixed bottom-8 right-8 z-50">
                   <button
+                    type="button"
                     class="audio-btn"
                     (click)="playQuestionAudio()">
                     <mat-icon>volume_up</mat-icon>
@@ -117,13 +118,14 @@ import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
               <div class="mt-auto pt-8 w-full flex justify-center items-center gap-3">
                 <div class="fixed bottom-6 right-6 z-50">
                   <button
+                    type="button"
                     class="audio-btn"
                     (click)="playQuestionAudio()">
                     <mat-icon>volume_up</mat-icon>
                   </button>
                 </div>
 
-                <button (click)="next(q.id === 'maternity_intro' ? 'comecar' : 'entendi')" class="button-primary bg-brand-purple text-white shadow-xl hover:bg-brand-purple-dark border-none">
+                <button type="button" (click)="next(q.id === 'maternity_intro' ? 'comecar' : 'entendi')" class="button-primary bg-brand-purple text-white shadow-xl hover:bg-brand-purple-dark border-none">
                   {{ q.id === 'maternity_intro' ? 'COMEÇAR' : 'ENTENDI' }}
                   <mat-icon class="ml-2">check_circle</mat-icon>
                 </button>
@@ -171,7 +173,7 @@ import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
               />
               
               <div class="mt-12 w-full flex justify-center items-center gap-3">
-                 <button (click)="next('avancar')" [disabled]="formGroup?.invalid" class="button-primary bg-brand-purple text-white border-transparent">
+                 <button type="button" (click)="next('avancar')" [disabled]="formGroup?.invalid" class="button-primary bg-brand-purple text-white border-transparent">
                     AVANÇAR <mat-icon class="ml-2">arrow_forward</mat-icon>
                  </button>
               </div>
@@ -191,7 +193,7 @@ import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
                 </div>
               </div>
 
-              <!-- OPÇÕES DE ESCOLHA (AJUSTADO PARA SUPORTAR TEXTOS LONGOS) -->
+              <!-- OPÇÕES DE ESCOLHA -->
               <div class="flex flex-col w-full space-y-4">
                  <ng-container *ngFor="let opt of q.options; let i = index">
                     <div class="relative w-full flex items-center">
@@ -202,6 +204,7 @@ import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
                       </div>
 
                       <button
+                        type="button"
                         (click)="q.multiple
                           ? toggleMultiChoice(q.id, opt.texto)
                           : selectSingleChoice(q.id, opt.texto)"
@@ -266,7 +269,7 @@ import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
                 class="mt-8 w-full flex justify-center items-center gap-3"
                 *ngIf="canAdvance(q)">
                  
-                 <button (click)="next('avancar')" class="button-primary bg-brand-purple text-white border-transparent">
+                 <button type="button" (click)="next('avancar')" class="button-primary bg-brand-purple text-white border-transparent">
                     AVANÇAR <mat-icon class="ml-2">arrow_forward</mat-icon>
                  </button>
               </div>
@@ -292,6 +295,7 @@ import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
           class="fixed inset-0 bg-black/70 flex items-center justify-center z-50 p-4">
           <div class="bg-white rounded-2xl p-4 w-full max-w-3xl relative">
             <button
+              type="button"
               (click)="closeVideo()"
               class="absolute top-2 right-2 text-xl">
               ✕
@@ -317,6 +321,7 @@ import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 })
 export class WizardComponent implements OnInit {
   private router = inject(Router);
+  private location = inject(Location); // Injetando o Location do Angular
   private audio = inject(AudioService);
   private storage = inject(LocalStorageService);
   private fb = inject(FormBuilder);
@@ -463,15 +468,25 @@ export class WizardComponent implements OnInit {
     }
   }
 
-  prev() {
-    this.audio.playBubbleSound();
+ prev() {
+  this.audio.playBubbleSound();
 
-    if (this.currentIndex() > 0) {
-      this.currentIndex.update(v => v - 1);
-      this.buildFormContext();
-      this.playAutoAudio();
-    }
+  const q = this.currentQuestion();
+
+  // Se for uma pergunta de formulário, salva o que o usuário alterou antes de voltar
+  if (q.type === 'form' && this.formGroup) {
+    Object.assign(this.answers, this.formGroup.value);
+    this.saveProgress();
   }
+  //Retorna para a pagina
+  if (this.currentIndex() > 0) {
+    this.currentIndex.update(v => v - 1);
+    this.buildFormContext();
+    this.playAutoAudio();
+  } else {
+    this.location.back();
+  }
+}
 
   playAutoAudio() {
     const q: any = this.currentQuestion();

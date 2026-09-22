@@ -342,7 +342,7 @@ export const DEMO_QUESTIONS = [
   {
     id: 'cesarean_companion',
     type: 'choice',
-    autoAudioUrl: 'audio/A31.1.m4a',
+    autoAudioUrl: 'audio/pag21.m4a',
     title: 'CASO SEJA NECESSÁRIA A CESÁRIA DESEJA A PRESENÇA DO SEU ACOMPANHANTE CONFORME LEGISLAÇÃO VIGENTE?',
     options: [
       { texto: 'SIM', audioUrl: 'audio/A31.2.m4a' },
@@ -404,11 +404,11 @@ export const DEMO_QUESTIONS = [
   {
     id: 'SALPINGOTRIPSIA',
     type: 'choice',
-    autoAudioUrl: '',
+    autoAudioUrl: 'audio/pag26.m4a',
     title: 'CASO SEJA POSSÍVEL E ESTEJA DE ACORDO COM OS CRITÉRIOS CLÍNICOS E A LEGISLAÇÃO VIGENTE, DESEJA REALIZAR A SALPINGOTRIPSIA BILATERAL (LAQUEADURA) COMO MÉTODO CONTRACEPTIVO DEFINITIVO NO PÓS-PARTO?',
     options: [
-      { texto: 'SIM', audioUrl: 'audio/A30.2.m4a' },
-      { texto: 'NÃO', audioUrl: 'audio/A30.4.m4a' }
+      { texto: 'SIM', audioUrl: 'audio/pag26.2.m4a' },
+      { texto: 'NÃO', audioUrl: 'audio/pag26.3.m4a' }
     ]
   },
   {
@@ -416,24 +416,25 @@ export const DEMO_QUESTIONS = [
     type: 'choice',
     title: 'EXISTE ALGUMA OUTRA SITUAÇÃO OU PREFERÊNCIA QUE VOCÊ DESEJA REGISTRAR NO SEU PLANO DE PARTO?',
     subtitle: 'SELECIONE UMA OU MAIS OPÇÕES, CASO SE APLIQUE À SUA SITUAÇÃO:',
+    autoAudioUrl: 'audio/pag27.m4a',
     multiple: true,
     hasNotes: true,
     notesPlaceholder: 'Caso tenha outra situação ou preferência, escreva aqui...',
     options: [
       {
-        texto: 'CONTRAINDICAÇÃO OU IMPOSSIBILIDADE CLÍNICA PARA AMAMENTAÇÃO: Desejo registrar no meu Plano de Parto que, por questões clínicas, a amamentação poderá não ser indicada ou poderá haver necessidade de cuidados específicos relacionados à alimentação do bebê.'
+        texto: 'CONTRAINDICAÇÃO OU IMPOSSIBILIDADE CLÍNICA PARA AMAMENTAÇÃO: Desejo registrar no meu Plano de Parto que, por questões clínicas, a amamentação poderá não ser indicada ou poderá haver necessidade de cuidados específicos relacionados à alimentação do bebê.', audioUrl: 'audio/pag27.3.m4a'
       },
       {
-        texto: 'RECUSA DE TRANSFUSÃO OU RECEBIMENTO DE SANGUE E/OU HEMODERIVADOS: Por motivos pessoais, culturais ou religiosos, desejo registrar que não aceito receber transfusão de sangue e/ou determinados hemoderivados, conforme minhas convicções. Informo, também, que toda a documentação relacionada a este procedimento está registrada em Cartório e constam dos documentos sob os cuidados da pessoa que está me acompanhando.'
+        texto: 'RECUSA DE TRANSFUSÃO OU RECEBIMENTO DE SANGUE E/OU HEMODERIVADOS: Por motivos pessoais, culturais ou religiosos, desejo registrar que não aceito receber transfusão de sangue e/ou determinados hemoderivados, conforme minhas convicções. Informo, também, que toda a documentação relacionada a este procedimento está registrada em Cartório e constam dos documentos sob os cuidados da pessoa que está me acompanhando.', audioUrl: 'audio/pag27.4.m4a'
       },
       {
-        texto: 'ENTREGA LEGAL DO BEBÊ PARA ADOÇÃO: Desejo registrar que, após o nascimento, tenho a intenção de realizar a entrega legal do bebê para adoção, seguindo os procedimentos e orientações previstos na legislação e serviços responsáveis (Justiça e rede de proteção local). Desta forma, prefiro evitar contato com o bebê, sem sofrer julgamentos ou sanções. O bebê deverá ser entregue, de forma voluntária, sigilosa e segura à equipe da Vara da Infância e da Juventude/CRAS/CREAS.'
+        texto: 'ENTREGA LEGAL DO BEBÊ PARA ADOÇÃO: Desejo registrar que, após o nascimento, tenho a intenção de realizar a entrega legal do bebê para adoção, seguindo os procedimentos e orientações previstos na legislação e serviços responsáveis (Justiça e rede de proteção local). Desta forma, prefiro evitar contato com o bebê, sem sofrer julgamentos ou sanções. O bebê deverá ser entregue, de forma voluntária, sigilosa e segura à equipe da Vara da Infância e da Juventude/CRAS/CREAS.', audioUrl: 'audio/pag27.5.m4a'
       },
       {
-        texto: 'NENHUMA DAS OPÇÕES ACIMA'
+        texto: 'NENHUMA DAS OPÇÕES ACIMA', audioUrl: 'audio/pag27.6.m4a'
       },
       {
-        texto: 'OUTRA SITUAÇÃO OU PREFERÊNCIA (UTILIZE O CAMPO DE TEXTO ABAIXO)'
+        texto: 'OUTRA SITUAÇÃO OU PREFERÊNCIA (UTILIZE O CAMPO DE TEXTO ABAIXO)', audioUrl: 'audio/pag27.8.m4a'
       }
     ]
   }
