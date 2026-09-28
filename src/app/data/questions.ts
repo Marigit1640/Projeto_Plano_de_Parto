@@ -75,8 +75,8 @@ export const DEMO_QUESTIONS = [
     left: '0px',
     top: '20px',
     options: [
-      { texto: 'SIM', audioUrl: 'audio/A11.2.m4a' },
-      { texto: 'NÃO', audioUrl: 'audio/A11.3.m4a' }
+      { texto: 'SIM', audioUrl: 'audio/sim.m4a' },
+      { texto: 'NÃO', audioUrl: 'audio/nao.m4a' }
     ]
   },
   {
@@ -103,8 +103,8 @@ export const DEMO_QUESTIONS = [
     image: 'assets/P13 i13.png',
     width: '60%',
     options: [
-      { texto: 'SIM', audioUrl: 'audio/A13.2.m4a' },
-      { texto: 'NÃO', audioUrl: 'audio/A13.3.m4a' }
+      { texto: 'SIM', audioUrl: 'audio/sim.m4a' },
+      { texto: 'NÃO', audioUrl: 'audio/nao.m4a' }
     ]
   },
   {
@@ -117,8 +117,8 @@ export const DEMO_QUESTIONS = [
     top: '20px',
     autoAudioUrl: 'audio/A14.1.m4a',
     options: [
-      { texto: 'SIM', audioUrl: 'audio/A14.2.m4a' },
-      { texto: 'NÃO', audioUrl: 'audio/A14.3.m4a' }
+      { texto: 'SIM', audioUrl: 'audio/sim.m4a' },
+      { texto: 'NÃO', audioUrl: 'audio/nao.m4a' }
     ],
     videoUrl: 'https://youtu.be/L01F3mZu1UY'
   },
@@ -129,8 +129,8 @@ export const DEMO_QUESTIONS = [
     image: 'assets/P15 i 15.png',
     autoAudioUrl: 'audio/A15.1.m4a',
     options: [
-      { texto: 'SIM', audioUrl: 'audio/A15.2.m4a' },
-      { texto: 'NÃO', audioUrl: 'audio/A15.3.m4a' }
+      { texto: 'SIM', audioUrl: 'audio/sim.m4a' },
+      { texto: 'NÃO', audioUrl: 'audio/nao.m4a' }
     ]
   },
   {
@@ -189,8 +189,8 @@ export const DEMO_QUESTIONS = [
     subtitle: 'GOSTARIA DE TER LIBERDADE DE ESCOLHER DIVERSAS POSIÇÕES DURANTE O SEU TRABALHO DE PARTO?',
     autoAudioUrl: 'audio/A19.1.m4a',
     options: [
-      { texto: 'SIM', audioUrl: 'audio/A19.2 sim.m4a' },
-      { texto: 'NÃO', audioUrl: 'audio/A22.3.m4a' }
+      { texto: 'SIM', audioUrl: 'audio/sim.m4a' },
+      { texto: 'NÃO', audioUrl: 'audio/nao.m4a' }
     ],
     image: 'assets/P19 i19.jpg'
   },
@@ -229,8 +229,8 @@ export const DEMO_QUESTIONS = [
     autoAudioUrl: 'audio/A22.1.m4a',
     title: 'DESEJA QUE COMUNIQUEM A VOCÊ EAO SEU ACOMPANHANTE SOBRE QUALQUER INTERVENÇÃO NECESSÁRIA DURANTE O TRABALHO DE PARTO ? (SORO, OXIGÊNIO, ROMPIMENTO DE BOLSA, OCITOCINA OU CESÁRIA)',
     options: [
-      { texto: 'SIM', audioUrl: 'audio/A22.2.m4a' },
-      { texto: 'NÃO', audioUrl: 'audio/A22.3.m4a' }
+      { texto: 'SIM', audioUrl: 'audio/sim.m4a' },
+      { texto: 'NÃO', audioUrl: 'audio/nao.m4a' }
     ]
   },
   {
@@ -309,8 +309,8 @@ export const DEMO_QUESTIONS = [
     title: 'GOSTARIA DE TENTAR O PARTO NA ÁGUA',
     autoAudioUrl: 'audio/A28.1.m4a',
     options: [
-      { texto: 'SIM', audioUrl: 'audio/A28.2.m4a' },
-      { texto: 'NÃO', audioUrl: 'audio/A28.3.m4a' }
+      { texto: 'SIM', audioUrl: 'audio/sim.m4a' },
+      { texto: 'NÃO', audioUrl: 'audio/nao.m4a' }
     ],
     image: 'assets/P28 i28.png',
     videoUrl: 'https://youtu.be/Uj5t_oHDLlA?is=UcvGhFb5_la4s6dj',
@@ -323,8 +323,8 @@ export const DEMO_QUESTIONS = [
     title: 'DESEJA QUE O TOQUE VAGINAL SEJA REALIZADO A CADA 4 HORAS, CONFORME PRECONIZA O MINISTÉRIO DA SAÚDE?',
     subtitle: 'SE NECESSÁRIO O TOQUE COM MAIS FREQUÊNCIA, DESEJA QUE COMUNIQUEM A VOCÊ E AO SEU ACOMPANHANTE?',
     options: [
-      { texto: 'SIM', audioUrl: 'audio/A29.2.m4a' },
-      { texto: 'NÃO', audioUrl: 'audio/A29.3.m4a' }
+      { texto: 'SIM', audioUrl: 'audio/sim.m4a' },
+      { texto: 'NÃO', audioUrl: 'audio/nao.m4a' }
     ]
   },
   {
@@ -333,8 +333,8 @@ export const DEMO_QUESTIONS = [
     autoAudioUrl: 'audio/A30.1.m4a',
     title: 'DESEJA QUE, NA HORA DO NASCIMENTO, SEJAM EVITADAS TANTO A MANIPULAÇÃO DO SEU PERÍNEO QUANTO A REALIZAÇÃO DE EPISIOTOMIA?',
     options: [
-      { texto: 'SIM', audioUrl: 'audio/A30.2.m4a' },
-      { texto: 'NÃO', audioUrl: 'audio/A30.4.m4a' }
+      { texto: 'SIM', audioUrl: 'audio/sim.m4a' },
+      { texto: 'NÃO', audioUrl: 'audio/nao.m4a' }
     ],
     image: 'assets/P30 i30.png',
     videoUrl: 'https://youtu.be/g7Cg2y67Tes?si=ecF-kw7mUDkJbvhr'
@@ -345,8 +345,8 @@ export const DEMO_QUESTIONS = [
     autoAudioUrl: 'audio/pag21.m4a',
     title: 'CASO SEJA NECESSÁRIA A CESÁRIA DESEJA A PRESENÇA DO SEU ACOMPANHANTE CONFORME LEGISLAÇÃO VIGENTE?',
     options: [
-      { texto: 'SIM', audioUrl: 'audio/A31.2.m4a' },
-      { texto: 'NÃO', audioUrl: 'audio/A31.3.m4a' }
+      { texto: 'SIM', audioUrl: 'audio/sim.m4a' },
+      { texto: 'NÃO', audioUrl: 'audio/nao.m4a' }
     ],
     image: 'assets/P31 i31.png',
     videoUrl: 'https://youtu.be/22M2ceN2OYY?is=S3s_EfN0JZBRkXSt'
@@ -385,8 +385,8 @@ export const DEMO_QUESTIONS = [
     title: 'GOSTARIA QUE, SE POSSÍVEL, TODOS OS CUIDADOS DE ROTINA COM O SEU BEBÊ FOSSEM REALIZADOS APÓS A PRIMEIRA HORA DE VIDA, CONFORME AS RECOMENDAÇÕES DA ORGANIZAÇÃO MUNDIAL DA SAÚDE (OMS) E DO MINISTÉRIO DA SAÚDE?',
     autoAudioUrl: 'audio/A34.1.m4a',
     options: [
-      { texto: 'SIM', audioUrl: 'audio/A34.2.m4a' },
-      { texto: 'NÃO', audioUrl: 'audio/A34.3.m4a' }
+      { texto: 'SIM', audioUrl: 'audio/sim.m4a' },
+      { texto: 'NÃO', audioUrl: 'audio/nao.m4a' }
     ]
   },
   {
@@ -395,8 +395,8 @@ export const DEMO_QUESTIONS = [
     title: 'DESEJA, SE POSSÍVEL, A INSERÇÃO DO DIU DE COBRE OU HORMONAL(CONFORME CRITÉRIOS CLÍNICOS) NO PÓS-PARTO IMEDIATO, PARA APROVEITAR A INTERNAÇÃO E GARANTIR SUA CONTRACEPÇÃO?',
     autoAudioUrl: 'audio/A35.1.m4a',
     options: [
-      { texto: 'SIM', audioUrl: 'audio/A35.2.m4a' },
-      { texto: 'NÃO', audioUrl: 'audio/A35.3.m4a' }
+      { texto: 'SIM', audioUrl: 'audio/sim.m4a' },
+      { texto: 'NÃO', audioUrl: 'audio/nao.m4a' }
     ],
     image: 'assets/P35 i35.png',
     videoUrl: 'https://youtu.be/YBcuOH7jpAo?si=ibXKhM9e9c8x6rS1'
@@ -407,8 +407,8 @@ export const DEMO_QUESTIONS = [
     autoAudioUrl: 'audio/pag26.m4a',
     title: 'CASO SEJA POSSÍVEL E ESTEJA DE ACORDO COM OS CRITÉRIOS CLÍNICOS E A LEGISLAÇÃO VIGENTE, DESEJA REALIZAR A SALPINGOTRIPSIA BILATERAL (LAQUEADURA) COMO MÉTODO CONTRACEPTIVO DEFINITIVO NO PÓS-PARTO?',
     options: [
-      { texto: 'SIM', audioUrl: 'audio/pag26.2.m4a' },
-      { texto: 'NÃO', audioUrl: 'audio/pag26.3.m4a' }
+      { texto: 'SIM', audioUrl: 'audio/sim.m4a' },
+      { texto: 'NÃO', audioUrl: 'audio/nao.m4a' }
     ]
   },
   {
