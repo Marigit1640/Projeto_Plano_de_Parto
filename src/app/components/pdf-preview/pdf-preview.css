@@ -3,46 +3,50 @@
   margin: 0;
 }
 
-.pdf-page {
-  width: 210mm !important;
-  min-height: 297mm !important;
-  box-shadow: 0 20px 80px rgba(0,0,0,.08);
-  max-width: none !important;
-}
-
+/* --- O FUNDO DA TELA (Fora do PDF) --- */
 :host {
   position: fixed;
   inset: 0;
-
   width: 100vw;
   height: 100vh;
-
   z-index: 9999;
-
   overflow-y: auto;
-
+  
   display: flex;
   justify-content: center;
-
-  background: #ebe2ec;
+  align-items: flex-start; 
+  
+  padding: 40px 0; 
+  background: #f0f2f5; 
 }
 
+/* --- O DOCUMENTO PDF --- */
+.pdf-page {
+  width: 210mm !important;
+  min-height: 297mm !important;
+  max-width: none !important;
+  
+  flex-shrink: 0; 
+  height: max-content; 
+  padding-bottom: 30px; 
+  
+  border: 1px solid #d4d0e6;
+  box-shadow: 0 10px 40px rgba(0,0,0,.06);
+  
+  /* Degradê de Azul Pastel para Lilás Pastel no fundo do PDF */
+  background: linear-gradient(135deg, #e6ebf5 0%, #ece5f0 100%); 
+}
+
+/* --- CABEÇALHO (HERO) --- */
 .hero {
   width: 100%;
-
-   background: linear-gradient(
-    135deg,
-    #4c1d95 0%,
-    #5b21b6 50%,
-    #7c3aed 100%
-  );
-
+  background: transparent; 
   padding: 20px 35px;
-
   box-sizing: border-box;
+  border-bottom: 2px solid #dcd8eb;
 }
 
-.hero-top{
+.hero-top {
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -57,31 +61,23 @@
 .mother-icon {
   width: 100px;
   height: 100px;
-  filter:
-    drop-shadow(0 0 10px rgba(255,255,255,.15));
   object-fit: contain;
 }
 
 .title-area h1 {
   margin: 0;
-
-  color: white;
-
+  color: #6a62a3; 
   font-size: 34px;
   font-weight: 800;
-
   letter-spacing: .5px;
 }
 
 .title-area p {
   margin-top: 6px;
-
-  color: white;
-
+  color: #5a5f7c; 
   font-size: 14px;
-
-  opacity: .95;
 }
+
 .logos {
   display: flex;
   flex-direction: row;
@@ -95,286 +91,188 @@
   object-fit: contain;
 }
 
-
-.card{
-  margin:24px;
-  padding:24px;
-
-  background:white;
-
-  border:1px solid #e8def8;
-
-  border-radius:20px;
-
-  box-shadow:0 2px 10px rgba(0,0,0,.05);
-}
-
-.card h2{
-  color:#5B21B6;
-
-  margin-top:0;
-  margin-bottom:25px;
-
-  text-align:left;
-
-  font-size:22px;
-
-  font-weight:700;
-
-  border-bottom:1px solid #eee5ff;
-
-  padding-bottom:12px;
-}
-.card::before{
-  content:"";
-
-  width:40px;
-  height:40px;
-
-  background:#f4eeff;
-
-  border-radius:10px;
-
-  display:inline-block;
-
-  margin-right:12px;
-
-  vertical-align:middle;
-}
-
-.grid{
-  display:grid;
-
-  grid-template-columns:repeat(2,1fr);
-
-  gap:20px;
-}
-
-.grid div{
-  background:#faf7ff;
-
-  border:1px solid #eee5ff;
-
-  border-radius:12px;
-
-  padding:18px;
-}
-
-.grid strong{
-  display:block;
-
-  color:#666;
-
-  font-size:13px;
-
-  margin-bottom:8px;
-
-  font-weight:500;
-}
-
-.grid p{
-  margin:0;
-
-  font-size:28px;
-
-  font-weight:600;
-
-  color:#222;
-}
-
+/* --- CARDS E SEÇÕES --- */
 .section-card {
-
   margin: 12px 14px;
-
   padding: 20px;
-
-  border-radius: 12px;
-
-  background: #ffffff;
-
-  border: 1px solid #ece6ff;
-
-  box-shadow: 0 2px 10px rgba(91,33,182,.04);
+  border-radius: 8px;
   
+  /* NOVO: Azul beeeem mais claro e sutil, para não pesar */
+  background: #ebf0f7; 
+  border: 1px solid #d4d9e6;
 }
 
 .section-card h2 {
-
-  color: #5B21B6;
-
+  color: #6a62a3; 
   font-size: 15px;
-
   font-weight: 800;
-
   text-align: center;
-
   margin-bottom: 18px;
-
-  border-bottom: 2px solid #ece6ff;
-
+  border-bottom: 1px solid #d4d9e6;
   padding-bottom: 10px;
 }
 
+/* --- GRID DE INFORMAÇÕES --- */
 .info-grid {
-
   display: grid;
-
   grid-template-columns: repeat(4, 1fr);
-
   gap: 10px;
 }
 
+/* Caixas de respostas (campos preenchidos) */
 .info-item {
-
-  background: #ffffff;
-
-  border: 1px solid #e8ddff;
-
-  border-radius: 8px;
-
+  /* NOVO: Um lilás mais presente e marcante, criando um contraste lindo com o fundo azul claro */
+  background: #ede5f5; 
+  border: 1px solid #dcd4e8;
+  border-radius: 6px;
   padding: 12px;
-
   min-height: 50px;
 }
 
 .info-item span {
-
   font-size: 11px;
-
-  color: #777;
-
+  color: #6b668c; 
   margin-bottom: 4px;
-
   display: block;
+  font-weight: 600;
 }
 
 .info-item strong {
-
   font-size: 13px;
-
-  color: #2d1b69;
-
+  color: #312e45; 
   line-height: 1.4;
-
   word-break: break-word;
 }
 
-.footer {
-
-  margin: 20px 14px;
-
-  padding-top: 20px;
-
-  border-top: 1px solid #ddd;
-
-  font-size: 12px;
+.full-width {
+  grid-column: 1 / -1;
 }
 
-.signature-area{
-  margin-top:50px;
-
-  display:flex;
-
-  justify-content:space-around;
-
-  gap:40px;
+.notes-text {
+  margin: 0;
+  color: #312e45;
+  font-size: 13px;
 }
 
-.cover-card h2{
-  color:#6b7280;
-  margin:0;
-}
-
-.cover-card h1 {
-
-  color: #5B21B6;
-
-  font-size: 34px;
-
-  margin: 10px 0;
-
-  font-weight: 800;
-}
-
+/* --- CAPA / COVER CARD --- */
 .cover-card {
-
   margin: 14px;
-
   padding: 20px;
-
-  background: #ffffff;
-
-  border: 1px solid #e8ddff;
-
-  border-radius: 12px;
-
+  
+  /* Ajuste no degradê da capa para acompanhar as novas cores */
+  background: linear-gradient(135deg, #ebf0f7 0%, #ede5f5 100%);
+  border: 1px solid #d4d9e6;
+  border-radius: 8px;
   text-align: center;
 }
 
-.cover-info{
-  display:flex;
-  justify-content:center;
-  gap:60px;
-  margin-top:30px;
+.cover-card h2 {
+  color: #6b668c;
+  margin: 0;
 }
 
-.footer{
-  margin:40px 30px 20px;
-  padding-top:30px;
-
-  border-top:2px solid #eee5ff;
-
-  color:#555;
-  font-size:15px;
+.cover-card h1 {
+  color: #6a62a3; 
+  font-size: 34px;
+  margin: 10px 0;
+  font-weight: 800;
 }
 
-.signature-area{
-  display:flex;
-  justify-content:space-between;
-
-  gap:60px;
-
-  margin-top:60px;
+.cover-info {
+  display: flex;
+  justify-content: center;
+  gap: 60px;
+  margin-top: 30px;
+  color: #5a5f7c;
 }
 
-.signature-box{
-  flex:1;
-  text-align:center;
-  min-width:250px;
+/* --- RODAPÉ E ASSINATURAS --- */
+.footer {
+  margin: 40px 30px 20px;
+  padding-top: 30px;
+  border-top: 1px solid #d4d0e6;
+  color: #6b668c;
+  font-size: 13px;
+  text-align: center;
 }
 
-.line{
-  height:1px;
-  background:#444;
-
-  margin-bottom:12px;
+.signature-area {
+  display: flex;
+  justify-content: space-between;
+  gap: 60px;
+  margin-top: 60px;
 }
 
-.footer-date{
-  margin-top:30px;
-  text-align:right;
-  color:#777;
+.signature-box {
+  flex: 1;
+  text-align: center;
+  min-width: 250px;
 }
 
-.footer-info{
-  text-align:center;
-
-  margin:20px 30px 40px;
-
-  color:#888;
-
-  font-size:13px;
+.line {
+  height: 1px;
+  background: #6a62a3; 
+  margin-bottom: 12px;
 }
 
+.footer-date {
+  margin-top: 30px;
+  text-align: right;
+  color: #6b668c;
+}
+
+.footer-info {
+  text-align: center;
+  margin: 20px 30px 40px;
+  color: #8889a3;
+  font-size: 12px;
+}
+
+/* --- CAIXA DE INTRODUÇÃO (Estilo Cartão de Resposta) --- */
+/* (Movido para fora do @media print) */
+.caixa-introducao {
+  margin: 20px 14px; 
+  border: 1px solid #dcd4e8; 
+  border-radius: 6px; 
+  overflow: hidden; 
+}
+
+.intro-parte-cima {
+  background: #ede5f5; 
+  padding: 16px 20px;
+  text-align: center;
+  border-bottom: 1px solid #dcd4e8; 
+}
+
+.intro-parte-baixo {
+  background: #ebf0f7; 
+  padding: 16px 20px;
+  text-align: center;
+}
+
+.caixa-introducao h3 {
+  color: #6a62a3;
+  font-size: 13px;
+  font-weight: 700;
+  margin: 0 0 6px 0;
+  text-transform: uppercase;
+}
+
+.caixa-introducao p {
+  color: #312e45; 
+  font-size: 13px;
+  margin: 0;
+  line-height: 1.4;
+}
+
+/* --- IMPRESSÃO --- */
 .print-area {
   width: 210mm;
   min-height: 297mm;
 }
 
 @media print {
-
-  html,
-  body {
+  html, body {
     margin: 0;
     padding: 0;
     background: white;
@@ -384,12 +282,15 @@
     width: 210mm;
     min-height: 297mm;
     margin: 0;
+    padding-bottom: 0;
     box-shadow: none;
+    border: none;
   }
 
   .section-card,
   .cover-card,
-  .info-item {
+  .info-item,
+  .caixa-introducao {
     page-break-inside: avoid;
     break-inside: avoid;
   }
@@ -404,6 +305,6 @@
     width: auto !important;
     height: auto !important;
     overflow: visible !important;
+    padding: 0 !important;
   }
-
 }
