@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, ChangeDetectorRef } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 @Component({
@@ -22,10 +22,12 @@ import { CommonModule } from '@angular/common';
   styles: []
 })
 export class SharePdfComponent {
-  // Recebe o Blob do PDF gerado
-  @Input() pdfBlob!: Blob | null; 
+  @Input() pdfBlob!: Blob | null;
   @Input() fileName: string = 'meu-plano-de-parto.pdf';
   isSharing = false;
+
+  // 1. Injetamos o ChangeDetectorRef no construtor
+  constructor(private cdr: ChangeDetectorRef) { }
 
   async shareDocument() {
     if (!this.pdfBlob) {
@@ -34,13 +36,11 @@ export class SharePdfComponent {
     }
     this.isSharing = true;
 
-    // A Web Share API exige um objeto File, então convertemos o Blob
-    const file = new File([this.pdfBlob], this.fileName, { 
-      type: 'application/pdf' 
+    const file = new File([this.pdfBlob], this.fileName, {
+      type: 'application/pdf'
     });
 
     try {
-      // 1. Verifica se o navegador suporta a API e se permite compartilhar ARQUIVOS
       if (navigator.canShare && navigator.canShare({ files: [file] })) {
         await navigator.share({
           title: 'Plano de Parto',
@@ -49,20 +49,19 @@ export class SharePdfComponent {
         });
         console.log('Compartilhamento concluído com sucesso!');
       } else {
-        // 2. Fallback para Desktop ou navegadores incompatíveis (faz o download)
         this.downloadFallback(file);
       }
     } catch (error: any) {
-      // O erro 'AbortError' ocorre se o usuário cancelar o compartilhamento
       if (error.name !== 'AbortError') {
         console.error('Erro inesperado ao compartilhar:', error);
       }
     } finally {
       this.isSharing = false;
+      // 2. Forçamos o Angular a atualizar a view após a API nativa finalizar
+      this.cdr.detectChanges();
     }
   }
 
-  // Método de fallback para baixar o arquivo tradicionalmente
   private downloadFallback(file: File) {
     const url = window.URL.createObjectURL(file);
     const anchor = document.createElement('a');
@@ -70,8 +69,7 @@ export class SharePdfComponent {
     anchor.download = this.fileName;
     document.body.appendChild(anchor);
     anchor.click();
-    
-    // Limpeza
+
     document.body.removeChild(anchor);
     window.URL.revokeObjectURL(url);
   }
