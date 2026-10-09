@@ -59,12 +59,97 @@ import { MatIconModule } from '@angular/material/icon';
       Mariana Maria Marques Ferreira sob a orientação da coordenadora dos cursos
       técnicos do Departamento de Computação do campus Divinópolis,
       Thabatta Moreira Alves de Araújo e do professor
-      Roberth Oliveira Corgosinho.
+      Roberth Oliveira Corgosinho, junto dos alunos da turma de enfermagem da UFSJ.
 
     </p>
 
     <!-- Equipe -->
     <div class="flex flex-col gap-5">
+
+    <!-- Pessoa cefet -->
+      <div
+        class="bg-white/90
+       rounded-3xl
+       p-4
+       shadow-md
+       border
+       border-pink-100
+       flex
+       items-center
+       gap-4
+       hover:scale-[1.02]
+       hover:shadow-lg
+       transition-all
+       duration-300">
+
+        <img
+          src="assets/decon.jpeg"
+          alt="Departamento de computação do CEFET - Divinópolis"
+          class="w-28 h-28 rounded-full
+       border-2 border-pink-200
+       ring-2 ring-pink-100
+       bg-white
+       p-1
+       shadow-sm
+       object-cover
+       hover:scale-105
+       transition-transform
+       duration-300">
+
+        <div>
+          <h3 class="font-bold text-brand-purple-dark text-base">
+            Departamento de Computação do CEFET - Divinópolis
+          </h3>
+
+          <p class="text-sm text-gray-600 leading-relaxed">
+            Alunas do técnico noturno, coordenadora e professor do departamento.
+            
+          </p>
+        </div>
+
+      </div>
+
+      <!-- Prof UFSJ -->
+      <div
+        class="bg-white/90
+       rounded-3xl
+       p-4
+       shadow-md
+       border
+       border-pink-100
+       flex
+       items-center
+       gap-4
+       hover:scale-[1.02]
+       hover:shadow-lg
+       transition-all
+       duration-300">
+
+        <img
+          src="assets/nascer.jpeg"
+          alt="NASCER"
+          class="w-28 h-28 rounded-full
+       border-2 border-pink-200
+       ring-2 ring-pink-100
+       bg-white
+       p-1
+       shadow-sm
+       object-cover
+       hover:scale-105
+       transition-transform
+       duration-300">
+
+        <div>
+          <h3 class="font-bold text-brand-purple-dark text-base">
+            NASCER
+          </h3>
+
+          <p class="text-sm text-gray-600 leading-relaxed">
+            Núcleo de Atenção à Saúde da Coletividade como Estratégia de Rede
+          </p>
+        </div>
+
+      </div>
 
       <!-- Pessoa 1 -->
       <div
@@ -103,8 +188,7 @@ import { MatIconModule } from '@angular/material/icon';
 
           <p class="text-sm text-gray-600 leading-relaxed">
             Graduanda em Enfermagem - Universidade Federal de São João del-Rei (UFSJ).
-            <br>
-            Membro da equipe de desenvolvimento do aplicativo.
+           
           </p>
         </div>
 
@@ -147,8 +231,7 @@ import { MatIconModule } from '@angular/material/icon';
 
           <p class="text-sm text-gray-600 leading-relaxed">
             Graduando em Enfermagem - Universidade Federal de São João del-Rei (UFSJ).
-            <br>
-            Membro da equipe de desenvolvimento do aplicativo.
+            
           </p>
         </div>
 
@@ -191,8 +274,7 @@ import { MatIconModule } from '@angular/material/icon';
 
           <p class="text-sm text-gray-600 leading-relaxed">
             Graduanda em Enfermagem - Universidade Federal de São João del-Rei (UFSJ).
-            <br>
-            Membro da equipe de desenvolvimento do aplicativo.
+            
           </p>
         </div>
 
