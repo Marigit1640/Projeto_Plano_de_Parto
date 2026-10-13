@@ -280,6 +280,92 @@ import { MatIconModule } from '@angular/material/icon';
 
       </div>
 
+      <!-- Pessoa 4 -->
+      <div
+        class="bg-white/90
+       rounded-3xl
+       p-4
+       shadow-md
+       border
+       border-pink-100
+       flex
+       items-center
+       gap-4
+       hover:scale-[1.02]
+       hover:shadow-lg
+       transition-all
+       duration-300">
+
+        <img
+          src="assets/Analaura.jpeg"
+          alt="Ana Laura Cândida Cajueiro da Silva"
+          class="w-28 h-28 rounded-full
+       border-2 border-pink-200
+       ring-2 ring-pink-100
+       bg-white
+       p-1
+       shadow-sm
+       object-cover
+       hover:scale-105
+       transition-transform
+       duration-300">
+
+        <div>
+          <h3 class="font-bold text-brand-purple-dark text-base">
+            Ana Laura Cândida Cajueiro da Silva
+          </h3>
+
+          <p class="text-sm text-gray-600 leading-relaxed">
+            Estudante do curso técnico em informática noturno - CEFET
+           
+          </p>
+        </div>
+
+      </div>
+
+      <!-- Pessoa 4 -->
+      <div
+        class="bg-white/90
+       rounded-3xl
+       p-4
+       shadow-md
+       border
+       border-pink-100
+       flex
+       items-center
+       gap-4
+       hover:scale-[1.02]
+       hover:shadow-lg
+       transition-all
+       duration-300">
+
+        <img
+          src="assets/MarianaM.jpg"
+          alt="Mariana Maria Marques Ferreira"
+          class="w-28 h-28 rounded-full
+       border-2 border-pink-200
+       ring-2 ring-pink-100
+       bg-white
+       p-1
+       shadow-sm
+       object-cover
+       hover:scale-105
+       transition-transform
+       duration-300">
+
+        <div>
+          <h3 class="font-bold text-brand-purple-dark text-base">
+            Mariana Maria Marques Ferreira
+          </h3>
+
+          <p class="text-sm text-gray-600 leading-relaxed">
+            Estudante do curso técnico em informática noturno - CEFET
+           
+          </p>
+        </div>
+
+      </div>
+
     </div>
 
   </div>
